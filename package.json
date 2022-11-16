@@ -1,0 +1,12 @@
+{
+	"devDependencies": {
+		"prettier": "^2.7.1",
+		"prettier-plugin-tailwindcss": "^0.1.13",
+		"tailwindcss": "^3.2.4"
+	},
+	"scripts": {
+		"dev": "npx tailwindcss -i ./src/assets/css/tw_input.css -o ./src/assets/css/styles.css --watch",
+		"prod": "npx tailwindcss -i ./src/assets/css/tw_input.css -o ./src/assets/css/styles.css --minify",
+		"format": "npx prettier --write ."
+	}
+}
