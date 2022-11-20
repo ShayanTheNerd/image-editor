@@ -3,4 +3,99 @@
 @tailwind utilities;
 
 @layer components {
+	/* disabled edit options */
+	.disabled-options {
+		@apply pointer-events-none select-none border-opacity-50 opacity-50 dark:border-opacity-40 dark:opacity-40;
+	}
+
+	/* active filter */
+	.active-filter {
+		@apply bg-royalBlue !text-white !outline-none;
+	}
+
+	/* image preveiw background */
+	.empty-preview {
+		@apply bg-[url('../images/image-placeholder.svg')] bg-cover bg-center bg-no-repeat shadow-inner shadow-gray-400 dark:shadow-slate-900;
+	}
+
+	/* image preview container */
+	.contains-img {
+		@apply border-2 border-gray-400 !bg-none shadow-none;
+	}
+}
+
+button,
+input,
+:not(input[type='range'], img) {
+	transition: all 0.1s;
+}
+
+/* hide all images without a 'src' attribute */
+img {
+	display: none;
+}
+img[src] {
+	display: block;
+}
+
+/* custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+@media screen and (min-width: 768px) {
+	.custom-scrollbar::-webkit-scrollbar {
+		height: 9px;
+		display: block;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb {
+		background-color: #c4c4c4;
+		border-radius: 3px;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+		background-color: #aaaaaa;
+	}
+	.custom-scrollbar::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+}
+
+/* custom input file */
+.custom-file-input {
+	color: transparent;
+	height: 40px;
+	width: 122px;
+	margin-top: 16px;
+	cursor: pointer;
+	border-radius: 4px;
+	position: relative;
+}
+.custom-file-input::-webkit-file-upload-button {
+	visibility: hidden;
+}
+.custom-file-input::before {
+	content: 'select image';
+	text-transform: capitalize;
+	text-align: center;
+	color: #ffffff;
+	background-color: #4b5157;
+	border-radius: 4px;
+	overflow: hidden;
+	padding-inline: 16px;
+	padding-block: 15px;
+	position: absolute;
+	bottom: -7.5px;
+	letter-spacing: 0.5px;
+	left: -5px;
+}
+.custom-file-input:hover::before {
+	background-color: #393e42;
+}
+@media screen and (min-width: 768px) {
+	.custom-file-input {
+		width: 128px;
+	}
+	.custom-file-input::before {
+		padding-inline: 20px;
+		bottom: -7px;
+	}
 }
