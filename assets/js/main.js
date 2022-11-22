@@ -7,10 +7,21 @@ const domStrings = {
 	filterRangeInput: document.getElementById('filterRangeInput'),
 	flipRotateBtns: document.querySelectorAll('#flipRotateBtns button'),
 	resetFiltersBtn: document.getElementById('resetFiltersBtn'),
-	imgInput: document.getElementById('imageInput'),
+	selectImgBtn: document.getElementById('selectImageBtn'),
+	imgInput: document.getElementById('imageFileInput'),
 	imgPreview: document.getElementById('imagePreview'),
 	saveImgBtn: document.getElementById('downloadImageBtn'),
 	copyrightDate: document.getElementById('copyrightDate'),
+};
+
+const globalItems = {
+	imgFileName: null,
+	imgExtension: null,
+	rotationDeg: 0,
+	verticalFlip: 1,
+	horizontalFlip: 1,
+	cssFilterProperties: '',
+	/* brightness(100%) grayscale(0%) blur(0px) hue-rotate(0deg) opacity(100%) contrast(100%) saturate(100%) invert(0%) sepia(0%) */
 };
 
 // set copyright date
@@ -35,6 +46,8 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 
 // preview selected image and activate edit options
 {
+	domStrings.saveImgBtn.disabled = true; /* make sure 'save image' button is disabled (for Firefox) */
+	domStrings.selectImgBtn.addEventListener('click', () => domStrings.imgInput.click());
 	domStrings.imgInput.addEventListener('change', (event) => {
 		// declare data & abbreviations
 		const imgPreview = domStrings.imgPreview;
@@ -51,12 +64,21 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 			// load and preview selected image
 			imgPreview.src = URL.createObjectURL(selectedFile);
 			imgPreview.addEventListener('load', () => {
-				imgPreview.alt = imgPreview.title = selectedFile.name;
+				// get the filename and extension of the imported image
+				const lastDot = selectedFile.name.lastIndexOf('.');
+				globalItems.imgFileName = selectedFile.name.substring(0, lastDot);
+				globalItems.imgExtension = selectedFile.name.substring(lastDot + 1).toLowerCase();
+
+				// set 'alt' and 'name' of the image
+				imgPreview.title = globalItems.imgFileName;
+				imgPreview.alt = selectedFile.name;
 
 				// enable edit options
+				domStrings.saveImgBtn.ariaDisabled = 'false';
 				domStrings.saveImgBtn.removeAttribute('disabled');
 				imgPreview.parentElement.classList.add('contains-img');
 				domStrings.editOptionsContainer.classList.remove('disabled-options');
+				domStrings.editOptionsContainer.querySelector('form').ariaDisabled = 'false';
 			});
 		}
 	});
@@ -66,13 +88,9 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 {
 	// declare data & abbreviations
 	const imgPreview = domStrings.imgPreview;
-	const noFilterValue = imgPreview.style.filter;
 	const filterValue = domStrings.filterValue;
 	const filterBtns = domStrings.filterBtns;
 	const filterRangeInput = domStrings.filterRangeInput;
-	window.rotationDeg = 0;
-	window.verticalFlip = 1;
-	window.horizontalFlip = 1;
 	let filterOptions = {
 		brightness: {
 			max: 200,
@@ -161,6 +179,7 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 
 	function setFilterValue(filter, newFilterValue) {
 		const currentFilter = filterOptions[filter];
+		let cssFilterProperties = '';
 
 		// save new value
 		currentFilter.value = newFilterValue;
@@ -174,15 +193,13 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 		}
 
 		// apply filter
-		/* e.g. brightness(100%) grayscale(0%) blur(0px) hue-rotate(0deg) opacity(100%) contrast(100%) saturate(100%) invert(0%) sepia(0%) */
-		window.cssFilterProperties = ``;
-
-		// create a string out of all filter names and values (except for 'Width' & 'Height')
+		/* create a string out of all filter names and values (except for 'Width' & 'Height') */
 		for (const filter in filterOptions) {
 			cssFilterProperties += `${filter}(${filterOptions[filter].value}${filterOptions[filter].unit})` + ' ';
 		}
+		globalItems.cssFilterProperties = cssFilterProperties;
 
-		imgPreview.style.filter = window.cssFilterProperties;
+		imgPreview.style.filter = globalItems.cssFilterProperties;
 	}
 
 	function flipRotateImg(flipRotateBtn) {
@@ -193,14 +210,14 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 		const flipImg = (axis) => {
 			// flip image based on given axis ('y' or 'x')
 			/* if flip's value is 1, set it to -1; else set it back to 1 */
-			if (axis === 'y') window.verticalFlip = window.verticalFlip === 1 ? -1 : 1;
-			if (axis === 'x') window.horizontalFlip = window.horizontalFlip === 1 ? -1 : 1;
-			imgPreview.style.transform = `scale(${window.verticalFlip},${window.horizontalFlip})`;
+			if (axis === 'y') globalItems.verticalFlip = globalItems.verticalFlip === 1 ? -1 : 1;
+			if (axis === 'x') globalItems.horizontalFlip = globalItems.horizontalFlip === 1 ? -1 : 1;
+			imgPreview.style.transform = `scale(${globalItems.verticalFlip},${globalItems.horizontalFlip})`;
 		};
 		const rotateImg = (direction) => {
-			if (direction === 'left') rotationDeg -= 90;
-			if (direction === 'right') rotationDeg += 90;
-			imgPreview.style.rotate = `${rotationDeg}deg`;
+			if (direction === 'left') globalItems.rotationDeg -= 90;
+			if (direction === 'right') globalItems.rotationDeg += 90;
+			imgPreview.style.rotate = `${globalItems.rotationDeg}deg`;
 		};
 
 		// call correlated method
@@ -276,11 +293,14 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 		};
 
 		// reset filters apllied to the image
-		if (window.rotationDeg % 360 !== 0) window.rotationDeg = 0; /* (rotationDeg % 360 === 0) => image is already rotated back to normal */
-		window.horizontalFlip = window.verticalFlip = 1;
-		imgPreview.style.filter = noFilterValue;
-		imgPreview.style.rotate = `${window.rotationDeg}deg`;
-		imgPreview.style.transform = `scale(${window.verticalFlip},${window.horizontalFlip})`;
+		imgPreview.style.filter = 'none';
+		globalItems.cssFilterProperties = '';
+		globalItems.horizontalFlip = globalItems.verticalFlip = 1;
+		imgPreview.style.transform = `scale(${globalItems.verticalFlip},${globalItems.horizontalFlip})`;
+
+		// (globalItems.rotationDeg % 360 === 0) => image is already rotated back to normal
+		if (globalItems.rotationDeg % 360 !== 0) globalItems.rotationDeg = 0;
+		imgPreview.style.rotate = `${globalItems.rotationDeg}deg`;
 
 		// reset filter properties (set it back to 'Width')
 		initFilter(filterBtns[0].value);
@@ -299,7 +319,7 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 
 		// create download link and download canvas image
 		const link = document.createElement('a');
-		link.download = `${imgPreview.title} (edited)`;
+		link.download = `${globalItems.imgFileName} (edited).${globalItems.imgExtension}`;
 		link.href = canvas.toDataURL();
 		link.click(); /* download edited image */
 	});
@@ -311,10 +331,10 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 		// set canvas properties based on the edited image
 		canvas.width = imgPreview.naturalWidth; /* set canvas width to the image's width */
 		canvas.height = imgPreview.naturalHeight; /* set canvas height to the image's height */
-		ctx.filter = window.cssFilterProperties; /* apply filters to the canvas image */
-		// ctx.scale(window.horizontalFlip, window.verticalFlip); /* flip canvas (horizontally, vertically) */ /* NOT WORKING! */
+		ctx.filter = globalItems.cssFilterProperties; /* apply filters to the canvas image */
+		// ctx.scale(globalItems.horizontalFlip, globalItems.verticalFlip); /* flip canvas (horizontally, vertically) */ /* NOT WORKING! */
 		ctx.translate(canvas.width / 2, canvas.height / 2); /* translate canvas from center */
-		if (window.rotationDeg !== 0) ctx.rotate((window.rotationDeg * Math.PI) / 180);
+		if (globalItems.rotationDeg !== 0) ctx.rotate((globalItems.rotationDeg * Math.PI) / 180);
 		ctx.drawImage(imgPreview, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
 	}
 }

@@ -5,6 +5,9 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta
+			name="description"
+			content="Set different filters such as grayscale, contrast, blur, etc. on any image only with a few clicks. Rotate and filp options provided out of the box!" />
 		<link rel="shortcut icon" href="./assets/images/favicon.svg" type="image/x-icon" />
 		<link rel="stylesheet" href="./assets/css/styles.css" />
 		<script defer src="./assets/js/main.js"></script>
@@ -23,7 +26,7 @@
 				<div
 					id="editOptionsContainer"
 					class="disabled-options order-2 w-full rounded border-2 border-gray-400 p-5 dark:shadow-none md:order-1 md:max-w-xs">
-					<form class="w-full space-y-4 overflow-hidden">
+					<form class="w-full space-y-4 overflow-hidden" aria-disabled="true">
 						<h2 class="-mb-3 ml-1 text-lg capitalize">filters</h2>
 
 						<!-- filter-effect buttons -->
@@ -187,12 +190,19 @@
 
 			<!-- CTA buttons -->
 			<div class="m-auto flex w-full max-w-[270px] items-center justify-between gap-x-4 md:max-w-none md:justify-end">
-				<input type="file" class="custom-file-input" id="imageInput" name="imageInput" accept="image/*" title="Select an image" />
+				<button
+					type="button"
+					id="selectImageBtn"
+					class="mt-4 h-10 w-32 rounded bg-[#4b5157] text-center capitalize tracking-wide text-white support:hover:bg-[#393e42]">
+					select image
+					<input type="file" class="hidden" id="imageFileInput" name="imageFileInput" accept="image/*" title="Select an image" />
+				</button>
 				<button
 					type="button"
 					id="downloadImageBtn"
 					disabled
-					class="mt-4 h-10 w-32 rounded bg-warmBlue text-center capitalize tracking-wide text-white shadow enabled:active:scale-95 disabled:opacity-50 dark:disabled:opacity-40 enabled:support:hover:bg-royalBlue">
+					aria-disabled="true"
+					class="mt-4 h-10 w-32 rounded bg-warmBlue text-center capitalize tracking-wide text-white enabled:active:scale-95 disabled:opacity-50 dark:disabled:opacity-40 enabled:support:hover:bg-royalBlue">
 					save image
 				</button>
 			</div>
