@@ -15,13 +15,13 @@ const domStrings = {
 };
 
 const globalItems = {
+	/* brightness(100%) grayscale(0%) blur(0px) hue-rotate(0deg) opacity(100%) contrast(100%) saturate(100%) invert(0%) sepia(0%) */
+	cssFilterProperties: '',
 	imgFileName: null,
 	imgExtension: null,
 	rotationDeg: 0,
 	verticalFlip: 1,
 	horizontalFlip: 1,
-	cssFilterProperties: '',
-	/* brightness(100%) grayscale(0%) blur(0px) hue-rotate(0deg) opacity(100%) contrast(100%) saturate(100%) invert(0%) sepia(0%) */
 };
 
 // set copyright date
@@ -103,7 +103,7 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 			unit: '%',
 		},
 		blur: {
-			max: 100,
+			max: 10,
 			value: 0,
 			unit: 'px',
 		},
@@ -261,7 +261,7 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 				unit: '%',
 			},
 			blur: {
-				max: 100,
+				max: 10,
 				value: 0,
 				unit: 'px',
 			},
