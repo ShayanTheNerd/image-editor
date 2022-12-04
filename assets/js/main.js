@@ -22,6 +22,48 @@ const globalItems = {
 	rotationDeg: 0,
 	verticalFlip: 1,
 	horizontalFlip: 1,
+	filterOptions: {
+		brightness: {
+			max: 200,
+			value: 100,
+			unit: '%',
+		},
+		grayscale: {
+			max: 100,
+			value: 0,
+			unit: '%',
+		},
+		blur: {
+			max: 10,
+			value: 0,
+			unit: 'px',
+		},
+		'hue-rotate': {
+			max: 100,
+			value: 0,
+			unit: 'deg',
+		},
+		opacity: {
+			max: 100,
+			value: 100,
+			unit: '%',
+		},
+		contrast: {
+			max: 200,
+			value: 100,
+			unit: '%',
+		},
+		saturate: {
+			max: 200,
+			value: 100,
+			unit: '%',
+		},
+		sepia: {
+			max: 100,
+			value: 0,
+			unit: '%',
+		},
+	},
 };
 
 // set copyright date
@@ -91,80 +133,9 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 	const filterValue = domStrings.filterValue;
 	const filterBtns = domStrings.filterBtns;
 	const filterRangeInput = domStrings.filterRangeInput;
-	let filterOptions = {
-		brightness: {
-			max: 200,
-			value: 100,
-			unit: '%',
-		},
-		grayscale: {
-			max: 100,
-			value: 0,
-			unit: '%',
-		},
-		blur: {
-			max: 10,
-			value: 0,
-			unit: 'px',
-		},
-		'hue-rotate': {
-			max: 100,
-			value: 0,
-			unit: 'deg',
-		},
-		opacity: {
-			max: 100,
-			value: 100,
-			unit: '%',
-		},
-		contrast: {
-			max: 200,
-			value: 100,
-			unit: '%',
-		},
-		saturate: {
-			max: 200,
-			value: 100,
-			unit: '%',
-		},
-		sepia: {
-			max: 100,
-			value: 0,
-			unit: '%',
-		},
-	};
+	let filterOptions = structuredClone(globalItems.filterOptions); // deep copy 'filterOptions' property from globalItems Object
 
-	// activate selected filter
-	for (const filterBtn of filterBtns) {
-		filterBtn.addEventListener('click', () => {
-			// remove 'active-filter' class from the previous filter
-			document.querySelector('#filterBtns button.active-filter').classList.remove('active-filter');
-
-			// add 'active-filter' class to the selected filter
-			filterBtn.classList.add('active-filter');
-
-			// init filter properties
-			initFilter(filterBtn.value);
-		});
-	}
-
-	// apply filter
-	filterRangeInput.addEventListener('input', () => {
-		// remove transition
-		imgPreview.style.transition = '';
-
-		filterBtns.forEach(
-			(filterBtn) => filterBtn.classList.contains('active-filter') && setFilterValue(filterBtn.value, filterRangeInput.value),
-		);
-	});
-
-	// flip & rotate image
-	for (const flipRotateBtn of domStrings.flipRotateBtns) flipRotateBtn.addEventListener('click', () => flipRotateImg(flipRotateBtn.value));
-
-	// reset all filters
-	domStrings.resetFiltersBtn.addEventListener('click', resetFilters);
-
-	// functions
+	// functions declarations
 	function initFilter(filter) {
 		const currentFilter = filterOptions[filter];
 
@@ -248,49 +219,8 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 		filterBtns[0].classList.add('active-filter');
 		filterBtns[0].parentElement.scrollTo({ left: 0, behavior: 'smooth' });
 
-		// reset values of 'filterOptions'
-		filterOptions = {
-			brightness: {
-				max: 200,
-				value: 100,
-				unit: '%',
-			},
-			grayscale: {
-				max: 100,
-				value: 0,
-				unit: '%',
-			},
-			blur: {
-				max: 10,
-				value: 0,
-				unit: 'px',
-			},
-			'hue-rotate': {
-				max: 100,
-				value: 0,
-				unit: 'deg',
-			},
-			opacity: {
-				max: 100,
-				value: 100,
-				unit: '%',
-			},
-			contrast: {
-				max: 200,
-				value: 100,
-				unit: '%',
-			},
-			saturate: {
-				max: 200,
-				value: 100,
-				unit: '%',
-			},
-			sepia: {
-				max: 100,
-				value: 0,
-				unit: '%',
-			},
-		};
+		// reset 'filterOptions'
+		filterOptions = globalItems.filterOptions;
 
 		// reset filters apllied to the image
 		imgPreview.style.filter = 'none';
@@ -307,6 +237,38 @@ domStrings.copyrightDate.textContent = new Date().getFullYear();
 
 		saveImg();
 	}
+
+	/* ---------------------------------------------- */
+
+	// activate selected filter
+	for (const filterBtn of filterBtns) {
+		filterBtn.addEventListener('click', () => {
+			// remove 'active-filter' class from the previous filter
+			document.querySelector('#filterBtns button.active-filter').classList.remove('active-filter');
+
+			// add 'active-filter' class to the selected filter
+			filterBtn.classList.add('active-filter');
+
+			// init filter properties
+			initFilter(filterBtn.value);
+		});
+	}
+
+	// apply filter
+	filterRangeInput.addEventListener('input', () => {
+		// remove transition
+		imgPreview.style.transition = '';
+
+		filterBtns.forEach(
+			(filterBtn) => filterBtn.classList.contains('active-filter') && setFilterValue(filterBtn.value, filterRangeInput.value),
+		);
+	});
+
+	// flip & rotate image
+	for (const flipRotateBtn of domStrings.flipRotateBtns) flipRotateBtn.addEventListener('click', () => flipRotateImg(flipRotateBtn.value));
+
+	// reset all filters
+	domStrings.resetFiltersBtn.addEventListener('click', resetFilters);
 }
 
 // save and download edited image
