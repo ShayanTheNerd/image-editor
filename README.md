@@ -26,9 +26,8 @@ And at the end of the day, you can download the edited version of the image
 <br />
 
 ### Developing The Project
-(preferably use ___VS Code & Prettier Code Formatter___ extension)
+Feel free to [Fork](https://github.com/ShayanTheNerd/Image_Editor/fork) and contribute to this project.
 
-<br>
 
 Go to the integrated terminal and type:
 
