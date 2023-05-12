@@ -1,12 +1,38 @@
 {
+	"license": "MIT",
+	"homepage": "https://github.com/ShayanTheNerd/image-editor",
+	"readme": "https://github.com/ShayanTheNerd/image-editor#readme",
+	"author": {
+		"name": "Shayan Zamani",
+		"url": "https://shayan-zamani.me/",
+		"email": "sh.zamani384@gmail.com"
+	},
+	"keywords": [
+		"html css js",
+		"light/dark mode",
+		"responsive design",
+		"online image editor",
+		"tailwindcss CLI template",
+		"supports image drag & drop"
+	],
+	"description": "Easily edit your images in just a few clicks!",
+	"repository": {
+		"type": "git",
+		"directory": "main",
+		"url": "https://github.com/ShayanTheNerd/image-editor"
+	},
+	"bugs": {
+		"email": "sh.zamani384@gmail.com",
+		"url": "https://github.com/ShayanTheNerd/image-editor/issues"
+	},
 	"devDependencies": {
-		"prettier": "^2.7.1",
-		"prettier-plugin-tailwindcss": "^0.1.13",
-		"tailwindcss": "^3.2.4"
+		"prettier": "^2.8.8",
+		"prettier-plugin-tailwindcss": "^0.2.8",
+		"tailwindcss": "^3.3.2"
 	},
 	"scripts": {
-		"dev": "npx tailwindcss -i ./assets/css/tw_input.css -o ./assets/css/styles.css --watch",
-		"prod": "npx tailwindcss -i ./assets/css/tw_input.css -o ./assets/css/styles.css --minify",
-		"format": "npx prettier --write ."
+		"format": "npx prettier --write .",
+		"dev": "npx tailwindcss -i ./assets/css/tw-input.css -o ./assets/css/styles.css --watch",
+		"build": "npx tailwindcss -i ./assets/css/tw-input.css -o ./assets/css/styles.css --minify"
 	}
 }

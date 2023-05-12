@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* overriding some base styles */
+@layer base {
+	/* prettier-ignore */
+	button input:not(input[type='range'], img), a {
+		@apply transition-all duration-100;
+	}
+
+	/* prettier-ignore */
+	:where(button:not(:disabled), a, input):focus-visible {
+		@apply outline outline-[2.5px] outline-offset-[3px] outline-stormGrey;
+	}
+
+	img {
+		@apply scale-0 duration-[400ms];
+	}
+	img[src] {
+		@apply scale-100;
+	}
+}
+
+@layer components {
+	/* custom scrollbar */
+	.custom-scrollbar::-webkit-scrollbar {
+		@apply h-3;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb {
+		@apply dark:bg-stormGrey dark:hover:bg-[#565e64] md:rounded md:bg-[#c4c4c4] md:hover:bg-[#aaaaaa];
+	}
+	.custom-scrollbar::-webkit-scrollbar-track-piece {
+		@apply rounded bg-platinum;
+	}
+
+	/* disabled edit options */
+	.filter-options--disabled {
+		@apply pointer-events-none opacity-50 dark:opacity-40;
+	}
+
+	/* buttons */
+	.btn {
+		@apply flex h-9 origin-center items-center justify-center rounded border border-stormGrey tracking-wide text-stormGrey dark:text-slate-400 support:hover:shadow-[inset_0px_0px_0px_1.5px_#6C757D];
+	}
+	.btn--filter-effect {
+		@apply min-w-[95px] snap-start scroll-ml-px capitalize focus-visible:shadow-[inset_0px_0px_0px_1.5px_#6C757D] focus-visible:outline-transparent md:col-span-1;
+	}
+	.btn--filter-effect--active {
+		@apply !border-royalBlue bg-royalBlue !text-slate-100 focus-visible:shadow-none support:hover:!shadow-none;
+	}
+	.btn--rotate-flip {
+		@apply flex-auto px-3;
+	}
+	.btn--main {
+		@apply h-10 w-[130px] border-none !text-gray-100 shadow duration-100 enabled:active:scale-95 disabled:opacity-50 disabled:focus-visible:outline-none support:hover:shadow-none;
+	}
+
+	/* image placeholder */
+	.image-placeholder {
+		@apply border-none !bg-[url('../image-placeholder.webp')] bg-cover bg-center bg-no-repeat;
+	}
+}

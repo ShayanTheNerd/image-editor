@@ -1,15 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-	content: ['./index.html', './assets/js/main.js'],
+export default {
+	content: ['./index.html', './assets/js/app.js', './assets/js/modules/*.mjs'],
 	darkMode: ['class', '[data-theme="dark"]'],
 	theme: {
 		extend: {
 			screens: {
-				support: { raw: '(hover: hover)' }, // Check if the device supports hover
+				support: { raw: '(hover: hover)' }, // check if the device supports hover
 			},
 			colors: {
-				stormGrey: '#6C757D',
+				platinum: '#e2e1e0',
 				royalBlue: '#2C52ED',
+				stormGrey: '#6C757D',
 				warmBlue: '#2C52EDCC',
 			},
 		},

@@ -1,225 +1,179 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
+<html lang="en-US" dir="ltr" data-theme="light">
+	<!-- prettier-ignore -->
 	<head>
-		<title>Image Editor</title>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Image Editor | Edit Images In Just A Few Clicks!</title>
+
+		<meta name="author" content="Shayan Zamani" />
+		<meta name="color-scheme" content="light dark" />
+		<meta name="theme-color" content="#e2e1e0" id="themeColorMetaTag" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-		<meta
-			name="description"
-			content="Set different filters such as grayscale, contrast, blur, etc. on any image only with a few clicks. Rotate and filp options provided out of the box!" />
-		<link rel="shortcut icon" href="./assets/images/favicon.svg" type="image/x-icon" />
-		<link rel="stylesheet" href="./assets/css/styles.css" />
-		<script defer src="./assets/js/main.js"></script>
+		<meta name="keywords" content="image editor, online free image editor, image filter effects, rotate flip image, download edited image" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="shayan-zamani.me" />
+		<meta property="og:title" name="title" content="Image Editor" />
+		<meta property="og:url" content="https://shayanthenerd.github.io/image-editor/" />
+		<meta property="og:image" content="https://shayanthenerd.github.io/image-editor/og-img.png" />
+		<meta property="og:image:alt" content="image editor" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:description" name="description" content="Easily edit your images in just a few clicks! There are a lot of cool filters and effects such as flip, rotate, grayscale, hue-rotation, blur, contrast, etc." />
+
+		<meta name="twitter:site" content="@shayan-zamani.me" />
+		<meta name="twitter:title" content="Image Editor" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:image" content="https://shayanthenerd.github.io/image-editor/og-img.png" />
+		<meta property="twitter:image:alt" content="image editor" />
+		<meta name="twitter:description" content="Easily edit your images in just a few clicks! There are a lot of cool filters and effects such as flip, rotate, grayscale, hue-rotation, blur, contrast, etc." />
+
+		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="stylesheet" href="assets/css/styles.css" />
+		<script type="module" src="assets/js/app.js"></script>
 	</head>
 
 	<body
-		class="md:h-screenasdfasdfasfasdfawefwfsf flex min-h-[100vh] w-screen flex-col items-center justify-evenly space-y-8 overflow-x-hidden bg-[#e2e1e0] p-2 text-slate-900 dark:bg-gradient-to-br dark:from-stormGrey dark:to-slate-600">
+		class="md:min-h-[100dvh] relative flex flex-col items-center bg-platinum p-3 pb-11 dark:bg-gradient-to-br dark:from-stormGrey dark:to-slate-600 md:justify-center">
 		<main
-			class="m-auto w-full max-w-[900px] rounded-xl bg-white py-4 px-5 shadow-[0_3px_6px_#00000029_,_0_3px_6px_#0000003b] dark:bg-slate-900 dark:text-white">
-			<!-- title -->
-			<h1 class="mb-6 text-2xl font-semibold capitalize tracking-wide md:text-3xl">image editor</h1>
+			class="w-full max-w-[900px] space-y-2 overflow-hidden rounded-lg bg-slate-100 p-3 text-stormGrey shadow-md dark:bg-gray-900 dark:text-gray-100">
+			<h1 class="mb-5 text-2xl font-semibold tracking-wide text-warmBlue dark:text-gray-100 md:text-3xl">
+				Image Editor
+			</h1>
 
-			<!-- filters & image preview -->
-			<section class="flex select-none flex-col items-center justify-center gap-4 md:flex-row">
+			<form id="imgEditForm" class="flex select-none flex-col gap-3 md:grid md:grid-cols-12 md:gap-y-5">
 				<!-- filters -->
-				<div
+				<fieldset
 					id="editOptionsContainer"
-					class="disabled-options order-2 w-full rounded border-2 border-gray-400 p-5 dark:shadow-none md:order-1 md:max-w-xs">
-					<form class="w-full space-y-4 overflow-hidden" aria-disabled="true">
-						<h2 class="-mb-3 ml-1 text-lg capitalize">filters</h2>
+					class="filter-options--disabled order-2 flex min-w-full flex-col space-y-5 overflow-hidden rounded border-2 border-gray-400 p-3 dark:border-stormGrey dark:shadow-none md:order-1 md:col-span-4 md:min-w-0 md:max-w-xs"
+					aria-disabled="true">
+					<h2 class="text-2xl text-gray-800 dark:text-inherit">Filters</h2>
 
-						<!-- filter-effect buttons -->
-						<div
-							id="filterBtns"
-							class="custom-scrollbar grid max-h-min w-full snap-x grid-cols-8 grid-rows-1 gap-x-[104px] overflow-x-auto overflow-y-hidden rounded p-1 pr-[100px] md:grid-cols-4 md:grid-rows-2 md:gap-y-2">
+					<!-- filter effects' buttons container -->
+					<section
+						id="filterBtnsContainer"
+						class="md:custom-scrollbar md:gap-x-[102px] md:pe-[100px] md:ps-1.5 flex snap-x snap-proximity gap-2 overflow-auto scroll-smooth rounded px-1 py-0.5 md:grid md:grid-cols-4 md:py-1 md:pb-2"></section>
+
+					<!-- filter percentage -->
+					<label for="filterRangeInput" class="mx-auto flex w-full max-w-xs flex-col gap-2">
+						<output
+							for="filterRangeInput"
+							class="flex items-baseline justify-between text-gray-800 dark:text-inherit">
+							<span id="filterName" class="capitalize">Brightness</span>
+							<span id="filterValue" class="text-sm">100%</span>
+						</output>
+
+						<input
+							type="range"
+							id="filterRangeInput"
+							min="0"
+							value="100"
+							max="200"
+							step="1"
+							class="focus-visible:outline-offset-[6.5px] h-1.5 w-full rounded accent-warmBlue support:hover:accent-royalBlue" />
+					</label>
+
+					<!-- rotate & flip (spin) buttons -->
+					<section class="mx-auto flex w-full max-w-xs flex-col gap-1.5 text-lg">
+						<p class="text-gray-800 dark:text-inherit">Rotate & Flip</p>
+
+						<div id="spinBtnsContainer" class="flex items-center justify-evenly space-x-2">
+							<!-- vertical flip -->
 							<button
 								type="button"
-								value="brightness"
-								class="active-filter col-span-1 h-9 min-w-[98px] snap-start scroll-ml-1 rounded py-1.5 capitalize text-stormGrey outline outline-1 outline-stormGrey dark:font-medium dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-								brightness
+								data-spin-type="verticalFlip"
+								title="vertical flip"
+								class="btn btn--rotate-flip">
+								<svg class="m-auto h-5 w-5 fill-none stroke-current">
+									<use href="assets/icons.svg#vertical-flip"></use>
+								</svg>
 							</button>
+
+							<!-- horizontal flip -->
 							<button
 								type="button"
-								value="grayscale"
-								class="col-span-1 h-9 min-w-[98px] snap-start scroll-ml-1 rounded py-1.5 capitalize text-stormGrey outline outline-1 outline-stormGrey dark:font-medium dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-								grayscale
+								data-spin-type="horizontalFlip"
+								title="horizontal flip"
+								class="btn btn--rotate-flip">
+								<svg class="m-auto h-5 w-5 fill-none stroke-current">
+									<use href="assets/icons.svg#horizontal-flip"></use>
+								</svg>
 							</button>
+
+							<!-- rotate left -->
 							<button
 								type="button"
-								value="blur"
-								class="col-span-1 h-9 min-w-[98px] snap-start scroll-ml-1 rounded py-1.5 capitalize text-stormGrey outline outline-1 outline-stormGrey dark:font-medium dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-								blur
+								data-spin-type="rotateRight"
+								title="rotate right"
+								class="btn btn--rotate-flip">
+								<svg class="m-auto h-5 w-5 fill-current stroke-none">
+									<use href="assets/icons.svg#rotate-right"></use>
+								</svg>
 							</button>
-							<button
-								type="button"
-								value="hue-rotate"
-								class="col-span-1 h-9 min-w-[98px] snap-start scroll-ml-1 rounded py-1.5 capitalize text-stormGrey outline outline-1 outline-stormGrey dark:font-medium dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-								hue rotate
-							</button>
-							<button
-								type="button"
-								value="opacity"
-								class="col-span-1 h-9 min-w-[98px] snap-start scroll-ml-1 rounded py-1.5 capitalize text-stormGrey outline outline-1 outline-stormGrey dark:font-medium dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-								opacity
-							</button>
-							<button
-								type="button"
-								value="contrast"
-								class="col-span-1 h-9 min-w-[98px] snap-start scroll-ml-1 rounded py-1.5 capitalize text-stormGrey outline outline-1 outline-stormGrey dark:font-medium dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-								contrast
-							</button>
-							<button
-								type="button"
-								value="saturate"
-								class="col-span-1 h-9 min-w-[98px] snap-start scroll-ml-1 rounded py-1.5 capitalize text-stormGrey outline outline-1 outline-stormGrey dark:font-medium dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-								saturate
-							</button>
-							<button
-								type="button"
-								value="sepia"
-								class="col-span-1 h-9 min-w-[98px] snap-start scroll-ml-1 rounded py-1.5 capitalize text-stormGrey outline outline-1 outline-stormGrey dark:font-medium dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-								sepia
+
+							<!-- rotate right -->
+							<button type="button" data-spin-type="rotateLeft" title="rotate left" class="btn btn--rotate-flip">
+								<svg class="m-auto h-5 w-5 fill-current stroke-none">
+									<use href="assets/icons.svg#rotate-left"></use>
+								</svg>
 							</button>
 						</div>
+					</section>
 
-						<!-- filter percentage -->
-						<div class="mx-auto max-w-xs">
-							<label for="filterRangeInput" class="mt-2 space-y-8">
-								<p class="relative w-full">
-									<span class="absolute top-0 left-0 capitalize" id="filterName">brightness</span>
-									<span class="absolute top-0 right-0 text-sm" id="filterValue">100%</span>
-								</p>
-
-								<input
-									type="range"
-									name="filterRange"
-									id="filterRangeInput"
-									value="100"
-									min="0"
-									max="200"
-									step="1"
-									class="h-1.5 w-full accent-warmBlue support:hover:accent-royalBlue" />
-							</label>
-						</div>
-
-						<!-- flip & rotate buttons -->
-						<section class="mx-auto max-w-xs">
-							<h2 class="mb-2 text-lg capitalize">rotate & flip</h2>
-
-							<div id="flipRotateBtns" class="flex items-center justify-evenly space-x-2 px-0.5 sm:space-x-3.5">
-								<!-- vertical flip -->
-								<button
-									type="button"
-									title="Vertical Flip"
-									value="vertical-flip"
-									class="flex-auto rounded px-3 py-2 text-center text-stormGrey outline outline-1 outline-stormGrey dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-									<svg width="20" height="20" class="m-auto" viewBox="0 0 24 24">
-										<path
-											fill="none"
-											stroke="currentColor"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="m3 7l5 5l-5 5V7m18 0l-5 5l5 5V7m-9 13v2m0-8v2m0-8v2m0-8v2" />
-									</svg>
-								</button>
-
-								<!-- horizontal flip -->
-								<button
-									type="button"
-									value="horizontal-flip"
-									title="Horizontal Flip"
-									class="flex-auto rounded px-3 py-2 text-center text-stormGrey outline outline-1 outline-stormGrey dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-									<svg width="20" height="20" class="m-auto" viewBox="0 0 24 24">
-										<path
-											fill="none"
-											stroke="currentColor"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="m17 3l-5 5l-5-5h10m0 18l-5-5l-5 5h10M4 12H2m8 0H8m8 0h-2m8 0h-2" />
-									</svg>
-								</button>
-
-								<!-- rotate left -->
-								<button
-									type="button"
-									value="rotate-left"
-									title="Rotate Left"
-									class="flex-auto rounded px-3 py-2 text-center text-stormGrey outline outline-1 outline-stormGrey dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-									<svg width="20" height="20" class="m-auto" viewBox="0 0 24 24">
-										<path
-											fill="currentColor"
-											d="M6.56 7.98C6.1 7.52 5.31 7.6 5 8.17c-.28.51-.5 1.03-.67 1.58c-.19.63.31 1.25.96 1.25h.01c.43 0 .82-.28.94-.7c.12-.4.28-.79.48-1.17c.22-.37.15-.84-.16-1.15zM5.31 13h-.02c-.65 0-1.15.62-.96 1.25c.16.54.38 1.07.66 1.58c.31.57 1.11.66 1.57.2c.3-.31.38-.77.17-1.15c-.2-.37-.36-.76-.48-1.16a.97.97 0 0 0-.94-.72zm2.85 6.02c.51.28 1.04.5 1.59.66c.62.18 1.24-.32 1.24-.96v-.03c0-.43-.28-.82-.7-.94c-.4-.12-.78-.28-1.15-.48a.97.97 0 0 0-1.16.17l-.03.03c-.45.45-.36 1.24.21 1.55zM13 4.07v-.66c0-.89-1.08-1.34-1.71-.71L9.17 4.83c-.4.4-.4 1.04 0 1.43l2.13 2.08c.63.62 1.7.17 1.7-.72V6.09c2.84.48 5 2.94 5 5.91c0 2.73-1.82 5.02-4.32 5.75a.97.97 0 0 0-.68.94v.02c0 .65.61 1.14 1.23.96A7.976 7.976 0 0 0 20 12c0-4.08-3.05-7.44-7-7.93z" />
-									</svg>
-								</button>
-
-								<!-- rotate right -->
-								<button
-									type="button"
-									title="Rotate Right"
-									value="rotate-right"
-									class="flex-auto rounded px-3 py-2 text-center text-stormGrey outline outline-1 outline-stormGrey dark:text-slate-400 dark:outline-slate-400 support:hover:outline-2">
-									<svg width="20" height="20" class="m-auto" viewBox="0 0 24 24">
-										<path
-											fill="currentColor"
-											d="M14.83 4.83L12.7 2.7c-.62-.62-1.7-.18-1.7.71v.66C7.06 4.56 4 7.92 4 12c0 3.64 2.43 6.71 5.77 7.68c.62.18 1.23-.32 1.23-.96v-.03a.97.97 0 0 0-.68-.94A5.978 5.978 0 0 1 6 12c0-2.97 2.16-5.43 5-5.91v1.53c0 .89 1.07 1.33 1.7.71l2.13-2.08a.99.99 0 0 0 0-1.42zm4.84 4.93c-.16-.55-.38-1.08-.66-1.59c-.31-.57-1.1-.66-1.56-.2l-.01.01c-.31.31-.38.78-.17 1.16c.2.37.36.76.48 1.16c.12.42.51.7.94.7h.02c.65 0 1.15-.62.96-1.24zM13 18.68v.02c0 .65.62 1.14 1.24.96c.55-.16 1.08-.38 1.59-.66c.57-.31.66-1.1.2-1.56l-.02-.02a.972.972 0 0 0-1.16-.17c-.37.21-.76.37-1.16.49c-.41.12-.69.51-.69.94zm4.44-2.65c.46.46 1.25.37 1.56-.2c.28-.51.5-1.04.67-1.59c.18-.62-.31-1.24-.96-1.24h-.02c-.44 0-.82.28-.94.7c-.12.4-.28.79-.48 1.17c-.21.38-.13.86.17 1.16z" />
-									</svg>
-								</button>
-							</div>
-						</section>
-
-						<!-- reset filters button -->
-						<div class="mx-auto max-w-xs">
-							<button
-								type="reset"
-								id="resetFiltersBtn"
-								class="w-full rounded border border-stormGrey py-2 capitalize text-stormGrey dark:border-slate-400 dark:font-medium dark:text-slate-400 support:hover:bg-stormGrey support:hover:text-white">
-								reset filters
-							</button>
-						</div>
-					</form>
-				</div>
+					<!-- reset filters button -->
+					<button
+						type="reset"
+						id="resetFiltersBtn"
+						class="btn mx-auto w-full max-w-xs font-medium duration-150 active:scale-95 support:hover:bg-stormGrey support:hover:text-gray-100">
+						Reset Filters
+					</button>
+				</fieldset>
 
 				<!-- image preview -->
-				<div class="empty-preview order-1 flex h-52 w-full items-center justify-center overflow-hidden rounded md:order-2 md:h-[378px]">
-					<img id="imagePreview" class="aspect-auto h-full w-full rounded object-contain" height="375" width="300" />
-				</div>
-			</section>
+				<output
+					id="imgDropZone"
+					class="image-placeholder order-1 flex h-52 items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 dark:shadow-slate-900 md:order-2 md:col-span-8 md:h-full">
+					<img id="editedImg" class="md:max-h-[384px] max-h-[205px]" />
+				</output>
 
-			<!-- CTA buttons -->
-			<div class="m-auto flex w-full max-w-[270px] items-center justify-between gap-x-4 md:max-w-none md:justify-end">
-				<button
-					type="button"
-					id="selectImageBtn"
-					class="mt-4 h-10 w-32 rounded bg-[#4b5157] text-center capitalize tracking-wide text-white support:hover:bg-[#393e42]">
-					select image
-					<input type="file" class="hidden" id="imageFileInput" name="imageFileInput" accept="image/*" title="Select an image" />
-				</button>
-				<button
-					type="button"
-					id="downloadImageBtn"
-					disabled
-					aria-disabled="true"
-					class="mt-4 h-10 w-32 rounded bg-warmBlue text-center capitalize tracking-wide text-white enabled:active:scale-95 disabled:opacity-50 dark:disabled:opacity-40 enabled:support:hover:bg-royalBlue">
-					save image
-				</button>
-			</div>
+				<!-- main buttons -->
+				<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
+					<button
+						type="button"
+						id="imgSelectBtn"
+						class="btn btn--main focus-visible:outline-[#4b5157] support:hover:bg-[#393e42] bg-[#4b5157]">
+						Select Image
+						<input
+							hidden
+							type="file"
+							tabindex="-1"
+							accept="image/*"
+							aria-hidden="true"
+							name="'te"
+							id="imgFileInput" />
+					</button>
+					<button
+						type="submit"
+						id="imgSaveBtn"
+						disabled
+						class="btn btn--main bg-royalBlue focus-visible:outline-royalBlue dark:disabled:opacity-40 enabled:support:hover:bg-warmBlue">
+						Save Image
+					</button>
+				</fieldset>
+			</form>
 		</main>
 
-		<!-- copyright -->
-		<p class="w-[225px] pb-3 text-center capitalize dark:text-white">
-			&copy; copyright
-			<time id="copyrightDate"></time>
-			| created by
-			<a
-				href="http://shayan-zamani.me"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="font-semibold text-blue-600 underline visited:text-purple-800 dark:text-blue-900 dark:visited:text-purple-900">
-				shayan zamani
-			</a>
-		</p>
+		<footer class="absolute bottom-3 -space-x-2">
+			<span class="pt-0.5 text-gray-900">©</span>
+			<address class="-ml-1.5 inline-block not-italic">
+				<a
+					href="https://shayan-zamani.me"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="visited:!text-purple-600 dark:visited:!text-purple-500 visited:support:hover:!text-purple-700 dark:support:hover:visited:!text-purple-400 ml-2 rounded-md text-sm font-semibold text-blue-600 underline focus-visible:outline-current dark:text-blue-500 lg:text-base support:hover:text-blue-700 dark:support:hover:text-blue-400">
+					Shayan Zamani
+				</a>
+			</address>
+		</footer>
 	</body>
 </html>
