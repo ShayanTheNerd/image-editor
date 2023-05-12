@@ -3,7 +3,7 @@
 Easily edit your images with Image Editor in the blink of an eye!
 
 <figure>
-  <img src="https://github.com/ShayanTheNerd/image_editor/blob/main/og-img.png" />
+  <img src="https://github.com/ShayanTheNerd/image-editor/blob/main/og-img.png" />
 </figure>
 
 ## Technologies used in this project
