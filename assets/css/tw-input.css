@@ -10,7 +10,7 @@
 	}
 
 	/* prettier-ignore */
-	:where(button:not(:disabled), a, input):focus-visible {
+	:where(button:not(:disabled), a, input, label):focus-visible {
 		@apply outline outline-[2.5px] outline-offset-[3px] outline-stormGrey;
 	}
 

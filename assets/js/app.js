@@ -23,19 +23,18 @@ function initApp() {
 		const imgSaveBtn = document.getElementById('imgSaveBtn');
 		const imgFileInput = document.getElementById('imgFileInput');
 		const imgDropZone = document.getElementById('imgDropZone');
-		const imgSelectBtn = document.getElementById('imgSelectBtn');
 		const editOptionsContainer = document.getElementById('editOptionsContainer');
 
 		// drag & drop or select image, then parse and display it
-		[imgDropZone, imgSelectBtn].forEach(item => item.addEventListener('click', () => imgFileInput.click()));
-		['dragover', 'drop'].forEach(event => imgDropZone.addEventListener(event, e => e.preventDefault()));
+		['dragover', 'drop'].forEach(event =>
+			imgDropZone.addEventListener(event, e => {
+				e.preventDefault();
+				renderImg(e.dataTransfer.files[0], editOptionsContainer, imgSaveBtn, imgDropZone);
+			}),
+		);
 
 		imgFileInput.addEventListener('change', () => {
 			renderImg(imgFileInput.files[0], editOptionsContainer, imgSaveBtn, imgDropZone);
-		});
-
-		imgDropZone.addEventListener('drop', event => {
-			renderImg(event.dataTransfer.files[0], editOptionsContainer, imgSaveBtn, imgDropZone);
 		});
 	}
 

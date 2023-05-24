@@ -136,20 +136,12 @@
 
 				<!-- main buttons -->
 				<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
-					<button
-						type="button"
-						id="imgSelectBtn"
-						class="btn btn--main bg-[#4b5157] focus-visible:outline-[#4b5157] support:hover:bg-[#393e42]">
+					<label
+						tabindex="1"
+						class="btn btn--main cursor-pointer bg-[#4b5157] focus-visible:outline-[#4b5157] support:hover:bg-[#393e42]">
 						Select Image
-						<input
-							hidden
-							type="file"
-							tabindex="-1"
-							accept="image/*"
-							aria-hidden="true"
-							name="'te"
-							id="imgFileInput" />
-					</button>
+						<input id="imgFileInput" type="file" accept="image/*" hidden aria-hidden="true" tabindex="-1" />
+					</label>
 					<button
 						type="submit"
 						id="imgSaveBtn"
