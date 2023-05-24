@@ -44,7 +44,7 @@
 		@apply flex h-9 origin-center items-center justify-center rounded border border-stormGrey tracking-wide text-stormGrey dark:text-slate-400 support:hover:shadow-[inset_0px_0px_0px_1.5px_#6C757D];
 	}
 	.btn--filter-effect {
-		@apply min-w-[95px] snap-start scroll-ml-px capitalize focus-visible:shadow-[inset_0px_0px_0px_1.5px_#6C757D] focus-visible:outline-transparent md:col-span-1;
+		@apply min-w-[95px] capitalize focus-visible:shadow-[inset_0px_0px_0px_1.5px_#6C757D] focus-visible:outline-transparent md:col-span-1;
 	}
 	.btn--filter-effect--active {
 		@apply !border-royalBlue bg-royalBlue !text-slate-100 focus-visible:shadow-none support:hover:!shadow-none;
