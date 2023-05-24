@@ -29,12 +29,12 @@ function initApp() {
 		['dragover', 'drop'].forEach(event =>
 			imgDropZone.addEventListener(event, e => {
 				e.preventDefault();
-				renderImg(e.dataTransfer.files[0], editOptionsContainer, imgSaveBtn, imgDropZone);
+				renderImg(e.dataTransfer.files[0], editOptionsContainer, imgSaveBtn, imgDropZone, filterBtnsContainer);
 			}),
 		);
 
 		imgFileInput.addEventListener('change', () => {
-			renderImg(imgFileInput.files[0], editOptionsContainer, imgSaveBtn, imgDropZone);
+			renderImg(imgFileInput.files[0], editOptionsContainer, imgSaveBtn, imgDropZone, filterBtnsContainer);
 		});
 	}
 

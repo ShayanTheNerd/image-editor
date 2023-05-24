@@ -44,6 +44,7 @@
 			<form id="imgEditForm" class="flex select-none flex-col gap-3 md:grid md:grid-cols-12 md:gap-y-5">
 				<!-- filters -->
 				<fieldset
+					disabled
 					id="editOptionsContainer"
 					class="filter-options--disabled order-2 flex min-w-full flex-col space-y-5 overflow-hidden rounded border-2 border-gray-400 p-3 dark:border-stormGrey dark:shadow-none md:order-1 md:col-span-4 md:min-w-0 md:max-w-xs"
 					aria-disabled="true">
@@ -137,11 +138,12 @@
 				<!-- main buttons -->
 				<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
 					<label
-						tabindex="1"
-						class="btn btn--main cursor-pointer bg-[#4b5157] focus-visible:outline-[#4b5157] support:hover:bg-[#393e42]">
+						tabindex="0"
+						class="btn btn--main relative cursor-pointer overflow-visible bg-[#4b5157] focus-visible:outline-[#4b5157] support:hover:bg-[#393e42]">
 						Select Image
-						<input id="imgFileInput" type="file" accept="image/*" hidden aria-hidden="true" tabindex="-1" />
+						<input id="imgFileInput" type="file" accept="image/*" hidden aria-hidden="true" />
 					</label>
+
 					<button
 						type="submit"
 						id="imgSaveBtn"

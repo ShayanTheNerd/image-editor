@@ -5,13 +5,13 @@ let imgFileExtension = undefined;
 
 export { imgFileName, imgFileExtension };
 
-export default function renderImg(newImg, filtersContainer, imgSaveBtn, imgDropZone) {
+export default function renderImg(newImg, filtersContainer, imgSaveBtn, imgDropZone, filterBtnsContainer) {
 	if (!newImg) return;
 
 	const imgElem = imgDropZone.querySelector('img');
 
 	// reset filters if there is already an image
-	if (imgElem.src) resetFilters(filtersContainer);
+	if (imgElem.src) resetFilters(filterBtnsContainer);
 
 	// load and display the selected image
 	imgElem.src = URL.createObjectURL(newImg);
@@ -27,8 +27,7 @@ export default function renderImg(newImg, filtersContainer, imgSaveBtn, imgDropZ
 		imgFileExtension = newImg.name.substring(lastDotIndex(newImg.name) + 1).toLowerCase();
 
 		// enable edit and save options
-		imgSaveBtn.removeAttribute('disabled');
+		[imgSaveBtn, filtersContainer].forEach(item => item.removeAttribute('disabled'));
 		filtersContainer.classList.remove('filter-options--disabled');
-		filtersContainer.setAttribute('aria-disabled', 'false');
 	});
 }
