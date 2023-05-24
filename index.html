@@ -34,7 +34,7 @@
 	</head>
 
 	<body
-		class="md:min-h-[100dvh] relative flex flex-col items-center bg-platinum p-3 pb-11 dark:bg-gradient-to-br dark:from-stormGrey dark:to-slate-600 md:justify-center">
+		class="relative flex flex-col items-center bg-platinum p-3 pb-11 dark:bg-gradient-to-br dark:from-stormGrey dark:to-slate-600 md:min-h-[100dvh] md:justify-center">
 		<main
 			class="w-full max-w-[900px] space-y-2 overflow-hidden rounded-lg bg-slate-100 p-3 text-stormGrey shadow-md dark:bg-gray-900 dark:text-gray-100">
 			<h1 class="mb-5 text-2xl font-semibold tracking-wide text-warmBlue dark:text-gray-100 md:text-3xl">
@@ -52,16 +52,14 @@
 					<!-- filter effects' buttons container -->
 					<section
 						id="filterBtnsContainer"
-						class="md:custom-scrollbar md:gap-x-[102px] md:pe-[100px] md:ps-1.5 flex snap-x snap-proximity gap-2 overflow-auto scroll-smooth rounded px-1 py-0.5 md:grid md:grid-cols-4 md:py-1 md:pb-2"></section>
+						class="md:custom-scrollbar flex snap-x snap-proximity gap-2 overflow-auto scroll-smooth rounded px-1 py-0.5 md:grid md:grid-cols-4 md:gap-x-[102px] md:py-1 md:pb-2 md:pe-[100px] md:ps-1.5"></section>
 
 					<!-- filter percentage -->
-					<label for="filterRangeInput" class="mx-auto flex w-full max-w-xs flex-col gap-2">
-						<output
-							for="filterRangeInput"
-							class="flex items-baseline justify-between text-gray-800 dark:text-inherit">
+					<label class="mx-auto flex w-full max-w-xs flex-col gap-2">
+						<p class="flex items-baseline justify-between text-gray-800 dark:text-inherit">
 							<span id="filterName" class="capitalize">Brightness</span>
 							<span id="filterValue" class="text-sm">100%</span>
-						</output>
+						</p>
 
 						<input
 							type="range"
@@ -70,7 +68,7 @@
 							value="100"
 							max="200"
 							step="1"
-							class="focus-visible:outline-offset-[6.5px] h-1.5 w-full rounded accent-warmBlue support:hover:accent-royalBlue" />
+							class="h-1.5 w-full rounded accent-warmBlue focus-visible:outline-offset-[6.5px] support:hover:accent-royalBlue" />
 					</label>
 
 					<!-- rotate & flip (spin) buttons -->
@@ -130,18 +128,18 @@
 				</fieldset>
 
 				<!-- image preview -->
-				<output
+				<figure
 					id="imgDropZone"
 					class="image-placeholder order-1 flex h-52 items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 dark:shadow-slate-900 md:order-2 md:col-span-8 md:h-full">
-					<img id="editedImg" class="md:max-h-[384px] max-h-[205px]" />
-				</output>
+					<img id="editedImg" class="max-h-[205px] md:max-h-[384px]" />
+				</figure>
 
 				<!-- main buttons -->
 				<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
 					<button
 						type="button"
 						id="imgSelectBtn"
-						class="btn btn--main focus-visible:outline-[#4b5157] support:hover:bg-[#393e42] bg-[#4b5157]">
+						class="btn btn--main bg-[#4b5157] focus-visible:outline-[#4b5157] support:hover:bg-[#393e42]">
 						Select Image
 						<input
 							hidden
@@ -170,7 +168,7 @@
 					href="https://shayan-zamani.me"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="visited:!text-purple-600 dark:visited:!text-purple-500 visited:support:hover:!text-purple-700 dark:support:hover:visited:!text-purple-400 ml-2 rounded-md text-sm font-semibold text-blue-600 underline focus-visible:outline-current dark:text-blue-500 lg:text-base support:hover:text-blue-700 dark:support:hover:text-blue-400">
+					class="ml-2 rounded-md text-sm font-semibold text-blue-600 underline visited:!text-purple-600 focus-visible:outline-current dark:text-blue-500 dark:visited:!text-purple-500 lg:text-base support:hover:text-blue-700 visited:support:hover:!text-purple-700 dark:support:hover:text-blue-400 dark:support:hover:visited:!text-purple-400">
 					Shayan Zamani
 				</a>
 			</address>
