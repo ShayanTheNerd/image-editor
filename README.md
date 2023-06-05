@@ -19,6 +19,7 @@ Easily edit your images with Image Editor in the blink of an eye!
 ## Features
 
 <ul>
+  <li>Modular Monolithic architecture</li>
   <li>Semantic, clean, and extendable code</li>
   <li>Dark Mode</li>
   <li>Drag and drop image preview support</li>
