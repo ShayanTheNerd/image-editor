@@ -19,7 +19,7 @@ Easily edit your images with Image Editor in the blink of an eye!
 ## Features
 
 <ul>
-  <li>Modular Monolithic architecture</li>
+  <li>Modular Monolithic architecture (see <a href="https://github.com/ShayanTheNerd/image-editor/tree/image-editor-MVC">MVC architecture</a>)</li>
   <li>Semantic, clean, and extendable code</li>
   <li>Dark Mode</li>
   <li>Drag and drop image preview support</li>
