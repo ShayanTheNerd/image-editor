@@ -1,4 +1,4 @@
-<h1>Virtual Keyboard PWA</h1>
+<h1>Image Editor</h1>
 
 <p>
    Intuitive and beautiful image editor.
