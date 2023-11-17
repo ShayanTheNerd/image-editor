@@ -15,6 +15,7 @@ export default function renderImg(newImg, filtersContainer, imgSaveBtn, imgDropZ
 
 	// load and display the selected image
 	imgElem.src = URL.createObjectURL(newImg);
+	URL.revokeObjectURL(newImg); // performance optimization
 
 	imgElem.addEventListener('load', () => {
 		imgDropZone.classList.remove('image-placeholder');
