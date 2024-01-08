@@ -2,7 +2,6 @@ import initFilters from './modules/init-filters.mjs';
 import renderImg from './modules/render-img.mjs';
 import resetFilters from './modules/reset-filters.mjs';
 import drawAndDownloadImg from './modules/draw-and-download-img.mjs';
-import determineAndApplyTheme from './modules/theme-handler.mjs';
 
 export const IMG_TRANSITION_DURATION = 400;
 export const editedImg = document.getElementById('edited_img');
@@ -15,8 +14,6 @@ function initApp() {
 	const filterBtnsContainer = document.getElementById('filter_btns_container');
 
 	initFilters(filterBtnsContainer, spinBtnsContainer);
-	determineAndApplyTheme();
-	matchMedia('(prefers-color-scheme: dark)').addEventListener('change', determineAndApplyTheme);
 
 	// process and display new image
 	{

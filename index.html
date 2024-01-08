@@ -1,14 +1,14 @@
 <!-- prettier-ignore -->
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
+<html lang="en" dir="ltr">
 	<!-- prettier-ignore -->
 	<head>
 		<meta charset="UTF-8" />
 		<title>Online Image Editor - Edit Images in Just a Few Clicks!</title>
 
 		<meta name="author" content="Shayan Zamani, sh.zamani384@gmail.com" />
-		<meta name="color-scheme" content="light dark" />
-		<meta name="theme-color" content="#e2e1e0" id="theme_color_meta_tag" />
+		<meta name="color-scheme" content="light" />
+		<meta name="theme-color" content="#e2e1e0" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 		<meta name="keywords" content="online free image editor, image filter effects, rotate and flip image, download edited image" />
 
@@ -34,21 +34,18 @@
 	</head>
 
 	<body
-		class="relative flex flex-col items-center overflow-hidden bg-platinum p-3 pb-11 antialiased dark:bg-gradient-to-br dark:from-stormGrey dark:to-slate-600 md:min-h-screen md:justify-center supports-[min-height:100dvh]:md:min-h-dvh">
-		<main
-			class="w-full max-w-[900px] space-y-2 overflow-hidden rounded-lg bg-slate-100 p-3 text-stormGrey shadow-md dark:bg-gray-900 dark:text-gray-100">
-			<h1 class="mb-5 text-2xl font-semibold tracking-wide text-warmBlue dark:text-gray-100 md:text-3xl">
-				Online Image Editor
-			</h1>
+		class="relative flex flex-col items-center overflow-hidden bg-platinum p-3 pb-11 antialiased md:min-h-screen md:justify-center supports-[min-height:100dvh]:md:min-h-dvh">
+		<main class="w-full max-w-[900px] space-y-2 overflow-hidden rounded-lg bg-slate-100 p-3 text-stormGrey shadow-md">
+			<h1 class="mb-5 text-2xl font-semibold tracking-wide text-warmBlue md:text-3xl">Online Image Editor</h1>
 
 			<form id="img_edit_form" class="flex select-none flex-col gap-3 md:grid md:grid-cols-12 md:gap-y-5">
 				<!-- Filters -->
 				<fieldset
 					disabled
 					id="edit_options_container"
-					class="filter-options--disabled order-2 flex min-w-full flex-col space-y-5 overflow-hidden rounded border-2 border-gray-400 p-3 dark:border-stormGrey dark:shadow-none md:order-1 md:col-span-4 md:min-w-0 md:max-w-xs"
+					class="filter-options--disabled order-2 flex min-w-full flex-col space-y-5 overflow-hidden rounded border-2 border-gray-400 p-3 md:order-1 md:col-span-4 md:min-w-0 md:max-w-xs"
 					aria-disabled="true">
-					<h2 class="text-2xl text-gray-800 dark:text-inherit">Filters</h2>
+					<h2 class="text-2xl text-gray-800">Filters</h2>
 
 					<!-- Filter effects' buttons container -->
 					<section
@@ -57,7 +54,7 @@
 
 					<!-- Filter percentage -->
 					<label class="mx-auto flex w-full max-w-xs flex-col gap-2">
-						<p class="flex items-baseline justify-between text-gray-800 dark:text-inherit">
+						<p class="flex items-baseline justify-between text-gray-800">
 							<span id="filter_name" class="capitalize">Brightness</span>
 							<span id="filter_value" class="text-sm">100%</span>
 						</p>
@@ -74,7 +71,7 @@
 
 					<!-- Rotate & flip (spin) buttons -->
 					<section class="mx-auto flex w-full max-w-xs flex-col gap-1.5 text-lg">
-						<p class="text-gray-800 dark:text-inherit">Rotate & Flip</p>
+						<p class="text-gray-800">Rotate & Flip</p>
 
 						<div id="spin_btns_container" class="flex items-center justify-evenly space-x-2">
 							<!-- Vertical flip -->
@@ -123,7 +120,7 @@
 				<!-- Image preview -->
 				<figure
 					id="img_drop_zone"
-					class="image-placeholder order-1 flex h-52 items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 dark:shadow-slate-900 md:order-2 md:col-span-8 md:h-full">
+					class="image-placeholder order-1 flex h-52 items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 md:order-2 md:col-span-8 md:h-full">
 					<img id="edited_img" class="max-h-[205px] md:max-h-[384px]" />
 				</figure>
 
@@ -140,7 +137,7 @@
 						type="submit"
 						id="img_save_btn"
 						disabled
-						class="btn btn--main bg-royalBlue focus-visible:outline-royalBlue enabled:hover:bg-warmBlue dark:disabled:opacity-40">
+						class="btn btn--main bg-royalBlue focus-visible:outline-royalBlue enabled:hover:bg-warmBlue">
 						Save Image
 					</button>
 				</fieldset>
@@ -154,7 +151,7 @@
 					href="https://shayan-zamani.me"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="ml-2 rounded-md text-sm font-semibold text-blue-600 underline visited:text-purple-600 hover:text-blue-700 visited:hover:text-purple-700 focus-visible:outline-current dark:text-blue-500 dark:visited:text-purple-500 dark:hover:text-blue-400 dark:hover:visited:text-purple-400 lg:text-base">
+					class="ml-2 rounded-md text-sm font-semibold text-blue-600 underline visited:text-purple-600 hover:text-blue-700 visited:hover:text-purple-700 focus-visible:outline-current lg:text-base">
 					Shayan Zamani
 				</a>
 			</address>
