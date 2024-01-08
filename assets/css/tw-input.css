@@ -41,19 +41,19 @@
 
 	/* buttons */
 	.btn {
-		@apply flex h-9 origin-center items-center justify-center rounded border border-stormGrey tracking-wide text-stormGrey dark:text-slate-400 support:hover:shadow-[inset_0px_0px_0px_1.5px_#6C757D];
+		@apply flex h-9 origin-center items-center justify-center rounded border border-stormGrey tracking-wide text-stormGrey dark:text-slate-400 hover:shadow-[inset_0px_0px_0px_1.5px_#6C757D];
 	}
 	.btn--filter-effect {
 		@apply min-w-[95px] capitalize focus-visible:shadow-[inset_0px_0px_0px_1.5px_#6C757D] focus-visible:outline-transparent md:col-span-1;
 	}
 	.btn--filter-effect--active {
-		@apply !border-royalBlue bg-royalBlue !text-slate-100 focus-visible:shadow-none support:hover:!shadow-none;
+		@apply !border-royalBlue bg-royalBlue !text-slate-100 focus-visible:shadow-none hover:!shadow-none;
 	}
 	.btn--rotate-flip {
 		@apply flex-auto px-3;
 	}
 	.btn--main {
-		@apply h-10 w-[130px] border-none !text-gray-100 shadow duration-100 enabled:active:scale-95 disabled:opacity-50 disabled:focus-visible:outline-none support:hover:shadow-none;
+		@apply h-10 w-[130px] border-none !text-gray-100 shadow duration-100 enabled:active:scale-95 disabled:opacity-50 disabled:focus-visible:outline-none hover:shadow-none;
 	}
 
 	/* image placeholder */

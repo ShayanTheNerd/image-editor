@@ -1,3 +1,4 @@
+<!-- prettier-ignore -->
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr" data-theme="light">
 	<!-- prettier-ignore -->
@@ -34,7 +35,7 @@
 	</head>
 
 	<body
-		class="relative flex flex-col items-center bg-platinum p-3 pb-11 dark:bg-gradient-to-br dark:from-stormGrey dark:to-slate-600 md:min-h-[100dvh] md:justify-center">
+		class="relative flex flex-col items-center antialiased bg-platinum p-3 pb-11 dark:bg-gradient-to-br dark:from-stormGrey dark:to-slate-600 overflow-hidden supports-[min-height:100dvh]:md:min-h-dvh md:min-h-screen md:justify-center">
 		<main
 			class="w-full max-w-[900px] space-y-2 overflow-hidden rounded-lg bg-slate-100 p-3 text-stormGrey shadow-md dark:bg-gray-900 dark:text-gray-100">
 			<h1 class="mb-5 text-2xl font-semibold tracking-wide text-warmBlue dark:text-gray-100 md:text-3xl">
@@ -69,7 +70,7 @@
 							value="100"
 							max="200"
 							step="1"
-							class="h-1.5 w-full rounded accent-warmBlue focus-visible:outline-offset-[6.5px] support:hover:accent-royalBlue" />
+							class="h-1.5 w-full rounded accent-warmBlue focus-visible:outline-offset-[6.5px] hover:accent-royalBlue" />
 					</label>
 
 					<!-- rotate & flip (spin) buttons -->
@@ -123,7 +124,7 @@
 					<button
 						type="reset"
 						id="resetFiltersBtn"
-						class="btn mx-auto w-full max-w-xs font-medium duration-150 active:scale-95 support:hover:bg-stormGrey support:hover:text-gray-100">
+						class="btn mx-auto w-full max-w-xs font-medium duration-150 active:scale-95 hover:bg-stormGrey hover:text-gray-100">
 						Reset Filters
 					</button>
 				</fieldset>
@@ -139,7 +140,7 @@
 				<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
 					<label
 						tabindex="0"
-						class="btn btn--main relative cursor-pointer overflow-visible bg-[#4b5157] focus-visible:outline-[#4b5157] support:hover:bg-[#393e42]">
+						class="btn btn--main relative cursor-pointer overflow-visible bg-[#4b5157] focus-visible:outline-[#4b5157] hover:bg-[#393e42]">
 						Select Image
 						<input id="imgFileInput" type="file" accept="image/*" hidden aria-hidden="true" />
 					</label>
@@ -148,7 +149,7 @@
 						type="submit"
 						id="imgSaveBtn"
 						disabled
-						class="btn btn--main bg-royalBlue focus-visible:outline-royalBlue dark:disabled:opacity-40 enabled:support:hover:bg-warmBlue">
+						class="btn btn--main bg-royalBlue focus-visible:outline-royalBlue dark:disabled:opacity-40 enabled:hover:bg-warmBlue">
 						Save Image
 					</button>
 				</fieldset>
@@ -162,7 +163,7 @@
 					href="https://shayan-zamani.me"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="ml-2 rounded-md text-sm font-semibold text-blue-600 underline visited:!text-purple-600 focus-visible:outline-current dark:text-blue-500 dark:visited:!text-purple-500 lg:text-base support:hover:text-blue-700 visited:support:hover:!text-purple-700 dark:support:hover:text-blue-400 dark:support:hover:visited:!text-purple-400">
+					class="ml-2 rounded-md text-sm font-semibold text-blue-600 underline visited:text-purple-600 focus-visible:outline-current dark:text-blue-500 dark:visited:text-purple-500 lg:text-base hover:text-blue-700 visited:hover:!text-purple-700 dark:hover:text-blue-400 dark:hover:visited:!text-purple-400">
 					Shayan Zamani
 				</a>
 			</address>
