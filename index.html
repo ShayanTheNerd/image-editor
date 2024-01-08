@@ -35,7 +35,7 @@
 	</head>
 
 	<body
-		class="relative flex flex-col items-center antialiased bg-platinum p-3 pb-11 dark:bg-gradient-to-br dark:from-stormGrey dark:to-slate-600 overflow-hidden supports-[min-height:100dvh]:md:min-h-dvh md:min-h-screen md:justify-center">
+		class="relative flex flex-col items-center overflow-hidden bg-platinum p-3 pb-11 antialiased dark:bg-gradient-to-br dark:from-stormGrey dark:to-slate-600 md:min-h-screen md:justify-center supports-[min-height:100dvh]:md:min-h-dvh">
 		<main
 			class="w-full max-w-[900px] space-y-2 overflow-hidden rounded-lg bg-slate-100 p-3 text-stormGrey shadow-md dark:bg-gray-900 dark:text-gray-100">
 			<h1 class="mb-5 text-2xl font-semibold tracking-wide text-warmBlue dark:text-gray-100 md:text-3xl">
@@ -70,7 +70,7 @@
 							value="100"
 							max="200"
 							step="1"
-							class="h-1.5 w-full rounded accent-warmBlue focus-visible:outline-offset-[6.5px] hover:accent-royalBlue" />
+							class="h-1.5 w-full rounded accent-warmBlue hover:accent-royalBlue focus-visible:outline-offset-[6.5px]" />
 					</label>
 
 					<!-- rotate & flip (spin) buttons -->
@@ -79,11 +79,7 @@
 
 						<div id="spinBtnsContainer" class="flex items-center justify-evenly space-x-2">
 							<!-- vertical flip -->
-							<button
-								type="button"
-								data-spin-type="verticalFlip"
-								title="vertical flip"
-								class="btn btn--rotate-flip">
+							<button type="button" data-spin-type="verticalFlip" title="vertical flip" class="btn btn--rotate-flip">
 								<svg class="m-auto h-5 w-5 fill-none stroke-current">
 									<use href="assets/icons.svg#vertical-flip"></use>
 								</svg>
@@ -101,11 +97,7 @@
 							</button>
 
 							<!-- rotate left -->
-							<button
-								type="button"
-								data-spin-type="rotateRight"
-								title="rotate right"
-								class="btn btn--rotate-flip">
+							<button type="button" data-spin-type="rotateRight" title="rotate right" class="btn btn--rotate-flip">
 								<svg class="m-auto h-5 w-5 fill-current stroke-none">
 									<use href="assets/icons.svg#rotate-right"></use>
 								</svg>
@@ -124,7 +116,7 @@
 					<button
 						type="reset"
 						id="resetFiltersBtn"
-						class="btn mx-auto w-full max-w-xs font-medium duration-150 active:scale-95 hover:bg-stormGrey hover:text-gray-100">
+						class="btn mx-auto w-full max-w-xs font-medium duration-150 hover:bg-stormGrey hover:text-gray-100 active:scale-95">
 						Reset Filters
 					</button>
 				</fieldset>
@@ -140,7 +132,7 @@
 				<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
 					<label
 						tabindex="0"
-						class="btn btn--main relative cursor-pointer overflow-visible bg-[#4b5157] focus-visible:outline-[#4b5157] hover:bg-[#393e42]">
+						class="btn btn--main relative cursor-pointer overflow-visible bg-[#4b5157] hover:bg-[#393e42] focus-visible:outline-[#4b5157]">
 						Select Image
 						<input id="imgFileInput" type="file" accept="image/*" hidden aria-hidden="true" />
 					</label>
@@ -149,7 +141,7 @@
 						type="submit"
 						id="imgSaveBtn"
 						disabled
-						class="btn btn--main bg-royalBlue focus-visible:outline-royalBlue dark:disabled:opacity-40 enabled:hover:bg-warmBlue">
+						class="btn btn--main bg-royalBlue focus-visible:outline-royalBlue enabled:hover:bg-warmBlue dark:disabled:opacity-40">
 						Save Image
 					</button>
 				</fieldset>
@@ -163,7 +155,7 @@
 					href="https://shayan-zamani.me"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="ml-2 rounded-md text-sm font-semibold text-blue-600 underline visited:text-purple-600 focus-visible:outline-current dark:text-blue-500 dark:visited:text-purple-500 lg:text-base hover:text-blue-700 visited:hover:!text-purple-700 dark:hover:text-blue-400 dark:hover:visited:!text-purple-400">
+					class="ml-2 rounded-md text-sm font-semibold text-blue-600 underline visited:text-purple-600 hover:text-blue-700 visited:hover:!text-purple-700 focus-visible:outline-current dark:text-blue-500 dark:visited:text-purple-500 dark:hover:text-blue-400 dark:hover:visited:!text-purple-400 lg:text-base">
 					Shayan Zamani
 				</a>
 			</address>
