@@ -1,6 +1,6 @@
-import { IMG_TRANSITION_DURATION, editedImg } from '../app.js';
 import { applyFilter, spin } from './apply-filters.mjs';
 import { filters, clonedUnchangedFilters } from './filters.mjs';
+import { IMG_TRANSITION_DURATION, editedImg } from '../app.js';
 
 export default function resetFilters(filterBtnsContainer) {
 	document.querySelector('.btn--filter-effect--active').classList.remove('btn--filter-effect--active');

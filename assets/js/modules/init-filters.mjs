@@ -1,6 +1,6 @@
 import { filters } from './filters.mjs';
-import { applyFilter, spin } from './apply-filters.mjs';
 import { filterRange } from '../app.js';
+import { applyFilter, spin } from './apply-filters.mjs';
 
 export default function initFilters(filtersContainer, spinBtnsContainer) {
 	// generate filter buttons

@@ -2,14 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* overriding some base styles */
 @layer base {
 	/* prettier-ignore */
-	button input:not(input[type='range'], img), a {
+	button, input:not(input[type='range'], img), a {
 		@apply transition-all duration-100;
 	}
 
-	/* prettier-ignore */
 	:where(button:not(:disabled), a, input, label):focus-visible {
 		@apply outline outline-[2.5px] outline-offset-[3px] outline-stormGrey;
 	}
@@ -23,7 +21,6 @@
 }
 
 @layer components {
-	/* custom scrollbar */
 	.custom-scrollbar::-webkit-scrollbar {
 		@apply h-3;
 	}
@@ -34,12 +31,10 @@
 		@apply rounded bg-platinum;
 	}
 
-	/* disabled edit options */
 	.filter-options--disabled {
 		@apply pointer-events-none opacity-50 dark:opacity-40;
 	}
 
-	/* buttons */
 	.btn {
 		@apply flex h-9 origin-center items-center justify-center rounded border border-stormGrey tracking-wide text-stormGrey hover:shadow-[inset_0px_0px_0px_1.5px_#6C757D] dark:text-slate-400;
 	}
@@ -56,8 +51,7 @@
 		@apply h-10 w-[130px] border-none !text-gray-100 shadow duration-100 hover:shadow-none enabled:active:scale-95 disabled:opacity-50 disabled:focus-visible:outline-none;
 	}
 
-	/* image placeholder */
 	.image-placeholder {
-		@apply border-none !bg-[url('../image-placeholder.webp')] bg-cover bg-center bg-no-repeat;
+		@apply border-none !bg-[url('../images/img-placeholder.webp')] bg-cover bg-center bg-no-repeat;
 	}
 }

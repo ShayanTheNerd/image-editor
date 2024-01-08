@@ -1,37 +1,36 @@
 <!-- prettier-ignore -->
 <!DOCTYPE html>
-<html lang="en-US" dir="ltr" data-theme="light">
+<html lang="en" dir="ltr" data-theme="light">
 	<!-- prettier-ignore -->
 	<head>
 		<meta charset="UTF-8" />
-		<title>Image Editor | Edit Images In Just A Few Clicks!</title>
+		<title>Online Image Editor - Edit Images in Just a Few Clicks!</title>
 
-		<meta name="author" content="Shayan Zamani" />
+		<meta name="author" content="Shayan Zamani, sh.zamani384@gmail.com" />
 		<meta name="color-scheme" content="light dark" />
-		<meta name="theme-color" content="#e2e1e0" id="themeColorMetaTag" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-		<meta name="keywords" content="image editor, online free image editor, image filter effects, rotate flip image, download edited image" />
+		<meta name="theme-color" content="#e2e1e0" id="theme_color_meta_tag" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="keywords" content="online free image editor, image filter effects, rotate and flip image, download edited image" />
 
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="shayan-zamani.me" />
 		<meta property="og:title" name="title" content="Image Editor" />
-		<meta property="og:url" content="https://shayanthenerd.github.io/image-editor/" />
-		<meta property="og:image" content="https://shayanthenerd.github.io/image-editor/og-img.webp" />
-		<meta property="og:image:alt" content="image editor" />
+		<meta property="og:url" content="https://shayanthenerd.github.io/image-editor" />
+		<meta property="og:image" content="./og-img.webp" />
+		<meta property="og:image:alt" content="Image Editor" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:description" name="description" content="Easily edit your images in just a few clicks! There are a lot of cool filters and effects such as flip, rotate, grayscale, hue-rotation, blur, contrast, etc." />
+		<meta property="og:description" name="description" content="ّIntuitive, free, online image editor. Apply filters such as brightness, grayscale, hue-rotation, blur, contrast, etc. to your image and download it when you're done." />
 
 		<meta name="twitter:site" content="@shayan-zamani.me" />
 		<meta name="twitter:title" content="Image Editor" />
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:image" content="https://shayanthenerd.github.io/image-editor/og-img.webp" />
-		<meta property="twitter:image:alt" content="image editor" />
-		<meta name="twitter:description" content="Easily edit your images in just a few clicks! There are a lot of cool filters and effects such as flip, rotate, grayscale, hue-rotation, blur, contrast, etc." />
+		<meta name="twitter:image" content="./og-img.webp" />
+		<meta property="twitter:image:alt" content="Image Editor" />
 
-		<link rel="shortcut icon" href="favicon.ico" />
-		<link rel="stylesheet" href="assets/css/styles.css" />
-		<script type="module" src="assets/js/app.js"></script>
+		<link rel="icon" href="./favicon.ico" />
+		<link rel="stylesheet" href="./assets/css/styles.css" />
+		<script type="module" src="./assets/js/app.js"></script>
 	</head>
 
 	<body
@@ -39,33 +38,33 @@
 		<main
 			class="w-full max-w-[900px] space-y-2 overflow-hidden rounded-lg bg-slate-100 p-3 text-stormGrey shadow-md dark:bg-gray-900 dark:text-gray-100">
 			<h1 class="mb-5 text-2xl font-semibold tracking-wide text-warmBlue dark:text-gray-100 md:text-3xl">
-				Image Editor
+				Online Image Editor
 			</h1>
 
-			<form id="imgEditForm" class="flex select-none flex-col gap-3 md:grid md:grid-cols-12 md:gap-y-5">
-				<!-- filters -->
+			<form id="img_edit_form" class="flex select-none flex-col gap-3 md:grid md:grid-cols-12 md:gap-y-5">
+				<!-- Filters -->
 				<fieldset
 					disabled
-					id="editOptionsContainer"
+					id="edit_options_container"
 					class="filter-options--disabled order-2 flex min-w-full flex-col space-y-5 overflow-hidden rounded border-2 border-gray-400 p-3 dark:border-stormGrey dark:shadow-none md:order-1 md:col-span-4 md:min-w-0 md:max-w-xs"
 					aria-disabled="true">
 					<h2 class="text-2xl text-gray-800 dark:text-inherit">Filters</h2>
 
-					<!-- filter effects' buttons container -->
+					<!-- Filter effects' buttons container -->
 					<section
-						id="filterBtnsContainer"
+						id="filter_btns_container"
 						class="md:custom-scrollbar flex gap-2 overflow-auto scroll-smooth rounded px-1 py-0.5 md:grid md:grid-cols-4 md:gap-x-[102px] md:py-1 md:pb-2 md:pe-[100px] md:ps-1.5"></section>
 
-					<!-- filter percentage -->
+					<!-- Filter percentage -->
 					<label class="mx-auto flex w-full max-w-xs flex-col gap-2">
 						<p class="flex items-baseline justify-between text-gray-800 dark:text-inherit">
-							<span id="filterName" class="capitalize">Brightness</span>
-							<span id="filterValue" class="text-sm">100%</span>
+							<span id="filter_name" class="capitalize">Brightness</span>
+							<span id="filter_value" class="text-sm">100%</span>
 						</p>
 
 						<input
 							type="range"
-							id="filterRangeInput"
+							id="filter_range_input"
 							min="0"
 							value="100"
 							max="200"
@@ -73,73 +72,73 @@
 							class="h-1.5 w-full rounded accent-warmBlue hover:accent-royalBlue focus-visible:outline-offset-[6.5px]" />
 					</label>
 
-					<!-- rotate & flip (spin) buttons -->
+					<!-- Rotate & flip (spin) buttons -->
 					<section class="mx-auto flex w-full max-w-xs flex-col gap-1.5 text-lg">
 						<p class="text-gray-800 dark:text-inherit">Rotate & Flip</p>
 
-						<div id="spinBtnsContainer" class="flex items-center justify-evenly space-x-2">
-							<!-- vertical flip -->
+						<div id="spin_btns_container" class="flex items-center justify-evenly space-x-2">
+							<!-- Vertical flip -->
 							<button type="button" data-spin-type="verticalFlip" title="vertical flip" class="btn btn--rotate-flip">
-								<svg class="m-auto h-5 w-5 fill-none stroke-current">
-									<use href="assets/icons.svg#vertical-flip"></use>
+								<svg class="m-auto size-5 fill-none stroke-current">
+									<use href="./assets/icons.svg#vertical_flip"></use>
 								</svg>
 							</button>
 
-							<!-- horizontal flip -->
+							<!-- Horizontal flip -->
 							<button
 								type="button"
 								data-spin-type="horizontalFlip"
 								title="horizontal flip"
 								class="btn btn--rotate-flip">
-								<svg class="m-auto h-5 w-5 fill-none stroke-current">
-									<use href="assets/icons.svg#horizontal-flip"></use>
+								<svg class="m-auto size-5 fill-none stroke-current">
+									<use href="./assets/icons.svg#horizontal_flip"></use>
 								</svg>
 							</button>
 
-							<!-- rotate left -->
+							<!-- Rotate left -->
 							<button type="button" data-spin-type="rotateRight" title="rotate right" class="btn btn--rotate-flip">
-								<svg class="m-auto h-5 w-5 fill-current stroke-none">
-									<use href="assets/icons.svg#rotate-right"></use>
+								<svg class="m-auto size-5 fill-current stroke-none">
+									<use href="./assets/icons.svg#rotate_right"></use>
 								</svg>
 							</button>
 
-							<!-- rotate right -->
+							<!-- Rotate right -->
 							<button type="button" data-spin-type="rotateLeft" title="rotate left" class="btn btn--rotate-flip">
-								<svg class="m-auto h-5 w-5 fill-current stroke-none">
-									<use href="assets/icons.svg#rotate-left"></use>
+								<svg class="m-auto size-5 fill-current stroke-none">
+									<use href="./assets/icons.svg#rotate_left"></use>
 								</svg>
 							</button>
 						</div>
 					</section>
 
-					<!-- reset filters button -->
+					<!-- Reset filters button -->
 					<button
 						type="reset"
-						id="resetFiltersBtn"
+						id="reset_filters_btn"
 						class="btn mx-auto w-full max-w-xs font-medium duration-150 hover:bg-stormGrey hover:text-gray-100 active:scale-95">
 						Reset Filters
 					</button>
 				</fieldset>
 
-				<!-- image preview -->
+				<!-- Image preview -->
 				<figure
-					id="imgDropZone"
+					id="img_drop_zone"
 					class="image-placeholder order-1 flex h-52 items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 dark:shadow-slate-900 md:order-2 md:col-span-8 md:h-full">
-					<img id="editedImg" class="max-h-[205px] md:max-h-[384px]" />
+					<img id="edited_img" class="max-h-[205px] md:max-h-[384px]" />
 				</figure>
 
-				<!-- main buttons -->
+				<!-- Main buttons -->
 				<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
 					<label
 						tabindex="0"
 						class="btn btn--main relative cursor-pointer overflow-visible bg-[#4b5157] hover:bg-[#393e42] focus-visible:outline-[#4b5157]">
 						Select Image
-						<input id="imgFileInput" type="file" accept="image/*" hidden aria-hidden="true" />
+						<input id="img_file_input" type="file" accept="image/*" hidden aria-hidden="true" />
 					</label>
 
 					<button
 						type="submit"
-						id="imgSaveBtn"
+						id="img_save_btn"
 						disabled
 						class="btn btn--main bg-royalBlue focus-visible:outline-royalBlue enabled:hover:bg-warmBlue dark:disabled:opacity-40">
 						Save Image
@@ -149,13 +148,13 @@
 		</main>
 
 		<footer class="absolute bottom-3 -space-x-2">
-			<span class="pt-0.5 text-gray-900">©</span>
+			<small class="pt-0.5 text-gray-900">©</small>
 			<address class="-ml-1.5 inline-block not-italic">
 				<a
 					href="https://shayan-zamani.me"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="ml-2 rounded-md text-sm font-semibold text-blue-600 underline visited:text-purple-600 hover:text-blue-700 visited:hover:!text-purple-700 focus-visible:outline-current dark:text-blue-500 dark:visited:text-purple-500 dark:hover:text-blue-400 dark:hover:visited:!text-purple-400 lg:text-base">
+					class="ml-2 rounded-md text-sm font-semibold text-blue-600 underline visited:text-purple-600 hover:text-blue-700 visited:hover:text-purple-700 focus-visible:outline-current dark:text-blue-500 dark:visited:text-purple-500 dark:hover:text-blue-400 dark:hover:visited:text-purple-400 lg:text-base">
 					Shayan Zamani
 				</a>
 			</address>

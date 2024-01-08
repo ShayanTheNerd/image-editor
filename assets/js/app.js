@@ -1,18 +1,18 @@
 import initFilters from './modules/init-filters.mjs';
 import renderImg from './modules/render-img.mjs';
 import resetFilters from './modules/reset-filters.mjs';
-import determineAndApplyTheme from './modules/theme-handler.mjs';
 import drawAndDownloadImg from './modules/draw-and-download-img.mjs';
+import determineAndApplyTheme from './modules/theme-handler.mjs';
 
 export const IMG_TRANSITION_DURATION = 400;
-export const editedImg = document.getElementById('editedImg');
-export const filterName = document.getElementById('filterName');
-export const filterValue = document.getElementById('filterValue');
-export const filterRange = document.getElementById('filterRangeInput');
+export const editedImg = document.getElementById('edited_img');
+export const filterName = document.getElementById('filter_name');
+export const filterValue = document.getElementById('filter_value');
+export const filterRange = document.getElementById('filter_range_input');
 
 function initApp() {
-	const spinBtnsContainer = document.getElementById('spinBtnsContainer');
-	const filterBtnsContainer = document.getElementById('filterBtnsContainer');
+	const spinBtnsContainer = document.getElementById('spin_btns_container');
+	const filterBtnsContainer = document.getElementById('filter_btns_container');
 
 	initFilters(filterBtnsContainer, spinBtnsContainer);
 	determineAndApplyTheme();
@@ -20,10 +20,10 @@ function initApp() {
 
 	// process and display new image
 	{
-		const imgSaveBtn = document.getElementById('imgSaveBtn');
-		const imgFileInput = document.getElementById('imgFileInput');
-		const imgDropZone = document.getElementById('imgDropZone');
-		const editOptionsContainer = document.getElementById('editOptionsContainer');
+		const imgSaveBtn = document.getElementById('img_save_btn');
+		const imgFileInput = document.getElementById('img_file_input');
+		const imgDropZone = document.getElementById('img_drop_zone');
+		const editOptionsContainer = document.getElementById('edit_options_container');
 
 		// drag & drop or select image, then parse and display it
 		['dragover', 'drop'].forEach(event =>
@@ -39,10 +39,10 @@ function initApp() {
 	}
 
 	// reset all filters
-	document.getElementById('resetFiltersBtn').addEventListener('click', () => resetFilters(filterBtnsContainer));
+	document.getElementById('reset_filters_btn').addEventListener('click', () => resetFilters(filterBtnsContainer));
 
 	// save image
-	document.getElementById('imgEditForm').addEventListener('submit', event => {
+	document.getElementById('img_edit_form').addEventListener('submit', event => {
 		event.preventDefault();
 		drawAndDownloadImg(editedImg);
 	});
