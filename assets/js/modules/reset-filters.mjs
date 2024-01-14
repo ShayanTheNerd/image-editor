@@ -3,8 +3,8 @@ import { filters, clonedUnchangedFilters } from './filters.mjs';
 import { IMG_TRANSITION_DURATION, editedImg } from '../app.js';
 
 export default function resetFilters(filterBtnsContainer) {
-	document.querySelector('.btn--filter-effect--active').classList.remove('btn--filter-effect--active');
-	document.querySelector('.btn--filter-effect').classList.add('btn--filter-effect--active');
+	document.querySelector('.btn--filter--active').classList.remove('btn--filter--active');
+	document.querySelector('.btn--filter').classList.add('btn--filter--active');
 
 	filterBtnsContainer.scrollTo({ left: 0, behavior: 'smooth' });
 

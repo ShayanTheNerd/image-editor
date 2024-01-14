@@ -18,7 +18,7 @@ export default function renderImg(newImg, filtersContainer, imgSaveBtn, imgDropZ
 	URL.revokeObjectURL(newImg); // performance optimization
 
 	imgElem.addEventListener('load', () => {
-		imgDropZone.classList.remove('image-placeholder');
+		imgDropZone.classList.remove('img-placeholder');
 
 		imgElem.title = imgElem.alt = newImg.name;
 
@@ -29,6 +29,5 @@ export default function renderImg(newImg, filtersContainer, imgSaveBtn, imgDropZ
 
 		// enable edit and save options
 		[imgSaveBtn, filtersContainer].forEach(item => item.removeAttribute('disabled'));
-		filtersContainer.classList.remove('filter-options--disabled');
 	});
 }

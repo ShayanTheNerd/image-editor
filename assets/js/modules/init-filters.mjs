@@ -7,7 +7,7 @@ export default function initFilters(filtersContainer, spinBtnsContainer) {
 	filters.forEach((filter, index) => {
 		/* prettier-ignore */
 		const filterButtonHTML = /* html */ `
-         <button type="button" class="btn btn--filter-effect ${index === 0 && 'btn--filter-effect--active'}">${filter.name}</button>
+         <button type="button" class="btn btn--filter ${index === 0 && 'btn--filter--active'}">${filter.name}</button>
       `;
 
 		filtersContainer.insertAdjacentHTML('beforeend', filterButtonHTML);
@@ -17,8 +17,8 @@ export default function initFilters(filtersContainer, spinBtnsContainer) {
 	filtersContainer.addEventListener('click', event => {
 		if (event.target === event.currentTarget) return;
 
-		document.querySelector('.btn--filter-effect--active').classList.remove('btn--filter-effect--active');
-		event.target.classList.add('btn--filter-effect--active');
+		document.querySelector('.btn--filter--active').classList.remove('btn--filter--active');
+		event.target.classList.add('btn--filter--active');
 
 		applyFilter();
 	});

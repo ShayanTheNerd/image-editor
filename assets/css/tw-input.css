@@ -3,55 +3,42 @@
 @tailwind utilities;
 
 @layer base {
-	/* prettier-ignore */
-	button, input:not(input[type='range'], img), a {
-		@apply transition-all duration-100;
+	:where(button, input, a, label) {
+		@apply transition-all duration-150;
 	}
-
-	:where(button:not(:disabled), a, input, label):focus-visible {
-		@apply outline outline-[2.5px] outline-offset-[3px] outline-stormGrey;
-	}
-
-	img {
-		@apply scale-0 duration-[400ms];
-	}
-	img[src] {
-		@apply scale-100;
+	:where(button, input, a, label):focus-visible {
+		@apply outline outline-2.5px outline-offset-3px outline-davyGrey;
 	}
 }
 
 @layer components {
+	.img-placeholder {
+		@apply border-none !bg-[url('../images/img-placeholder.webp')] bg-cover bg-center bg-no-repeat;
+	}
+
 	.custom-scrollbar::-webkit-scrollbar {
 		@apply h-3;
 	}
 	.custom-scrollbar::-webkit-scrollbar-thumb {
-		@apply md:rounded md:bg-[#c4c4c4] md:hover:bg-[#aaaaaa];
+		@apply rounded bg-cloud hover:bg-hitGrey;
 	}
 	.custom-scrollbar::-webkit-scrollbar-track-piece {
 		@apply rounded bg-platinum;
 	}
 
-	.filter-options--disabled {
-		@apply pointer-events-none opacity-50;
-	}
-
 	.btn {
-		@apply flex h-9 origin-center items-center justify-center rounded border border-stormGrey tracking-wide text-stormGrey hover:shadow-[inset_0px_0px_0px_1.5px_#6C757D];
+		@apply flex h-9 items-center justify-center rounded border border-davyGrey tracking-wide text-davyGrey hover:shadow-inset;
 	}
-	.btn--filter-effect {
-		@apply min-w-[95px] capitalize focus-visible:shadow-[inset_0px_0px_0px_1.5px_#6C757D] focus-visible:outline-transparent md:col-span-1;
+	.btn--tab-focus {
+		@apply focus-visible:shadow-inset focus-visible:transition-shadow;
 	}
-	.btn--filter-effect--active {
-		@apply !border-royalBlue bg-royalBlue !text-slate-100 hover:!shadow-none focus-visible:shadow-none;
+	.btn--filter {
+		@apply focus-visible:btn--tab-focus min-w-24 capitalize outline-none md:col-span-1;
 	}
-	.btn--rotate-flip {
-		@apply flex-auto px-3;
+	.btn--filter--active {
+		@apply border-royalBlue bg-royalBlue text-slate-100 !shadow-none hover:bg-toryBlue focus-visible:bg-toryBlue;
 	}
 	.btn--main {
-		@apply h-10 w-[130px] border-none !text-gray-100 shadow duration-100 hover:shadow-none enabled:active:scale-95 disabled:opacity-50 disabled:focus-visible:outline-none;
-	}
-
-	.image-placeholder {
-		@apply border-none !bg-[url('../images/img-placeholder.webp')] bg-cover bg-center bg-no-repeat;
+		@apply h-10 w-full border-none text-gray-100 !shadow-none disabled:opacity-60 md:max-w-32;
 	}
 }

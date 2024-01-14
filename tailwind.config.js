@@ -2,13 +2,37 @@
 
 export default {
 	content: ['./index.html', './assets/js/app.js', './assets/js/modules/*.mjs'],
+	future: { hoverOnlyWhenSupported: true },
 	theme: {
 		extend: {
 			colors: {
+				tuna: '#393e42',
+				cloud: '#c4c4c4',
+				hitGrey: '#aaaaaa',
 				platinum: '#e2e1e0',
+				toryBlue: '#284ad5',
+				davyGrey: '#4b5157',
 				royalBlue: '#2C52ED',
-				stormGrey: '#6C757D',
 				warmBlue: '#2C52EDCC',
+			},
+			outlineOffset: {
+				'3px': '3px',
+				'7px': '7px',
+			},
+			outlineWidth: {
+				'2.5px': '2.5px',
+			},
+			borderRadius: {
+				inherit: 'inherit',
+			},
+			transitionDuration: {
+				400: '400ms',
+			},
+			fontSize: {
+				md: '1.063rem' /* 17px */,
+			},
+			boxShadow: {
+				inset: 'inset 0 0 0 1.5px #4b5157',
 			},
 		},
 	},

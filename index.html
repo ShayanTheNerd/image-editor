@@ -34,118 +34,144 @@
 	</head>
 
 	<body
-		class="relative flex flex-col items-center overflow-hidden bg-platinum p-3 pb-11 antialiased md:min-h-screen md:justify-center supports-[min-height:100dvh]:md:min-h-dvh">
-		<main class="w-full max-w-[900px] space-y-2 overflow-hidden rounded-lg bg-slate-100 p-3 text-stormGrey shadow-md">
-			<h1 class="mb-5 text-2xl font-semibold tracking-wide text-warmBlue md:text-3xl">Online Image Editor</h1>
+		class="flex min-h-screen flex-col space-y-4 bg-platinum p-4 antialiased selection:bg-warmBlue selection:text-gray-100 supports-[min-height:100svh]:min-h-svh landscape:px-10">
+		<div class="flex grow items-center">
+			<main
+				class="mx-auto max-w-sm space-y-2 overflow-hidden rounded-lg bg-slate-100 p-3 shadow-md sm:max-w-sm sm:p-4 md:max-w-4xl xl:scale-110">
+				<h1 class="mb-6 text-center text-2xl font-semibold tracking-wide text-royalBlue md:text-start md:text-3xl">
+					Online Image Editor
+				</h1>
 
-			<form id="img_edit_form" class="flex select-none flex-col gap-3 md:grid md:grid-cols-12 md:gap-y-5">
-				<!-- Filters -->
-				<fieldset
-					disabled
-					id="edit_options_container"
-					class="filter-options--disabled order-2 flex min-w-full flex-col space-y-5 overflow-hidden rounded border-2 border-gray-400 p-3 md:order-1 md:col-span-4 md:min-w-0 md:max-w-xs"
-					aria-disabled="true">
-					<h2 class="text-2xl text-gray-800">Filters</h2>
-
-					<!-- Filter effects' buttons container -->
-					<section
-						id="filter_btns_container"
-						class="md:custom-scrollbar flex gap-2 overflow-auto scroll-smooth rounded px-1 py-0.5 md:grid md:grid-cols-4 md:gap-x-[102px] md:py-1 md:pb-2 md:pe-[100px] md:ps-1.5"></section>
-
-					<!-- Filter percentage -->
-					<label class="mx-auto flex w-full max-w-xs flex-col gap-2">
-						<p class="flex items-baseline justify-between text-gray-800">
-							<span id="filter_name" class="capitalize">Brightness</span>
-							<span id="filter_value" class="text-sm">100%</span>
-						</p>
-
-						<input
-							type="range"
-							id="filter_range_input"
-							min="0"
-							value="100"
-							max="200"
-							step="1"
-							class="h-1.5 w-full rounded accent-warmBlue hover:accent-royalBlue focus-visible:outline-offset-[6.5px]" />
-					</label>
-
-					<!-- Rotate & flip (spin) buttons -->
-					<section class="mx-auto flex w-full max-w-xs flex-col gap-1.5 text-lg">
-						<p class="text-gray-800">Rotate & Flip</p>
-
-						<div id="spin_btns_container" class="flex items-center justify-evenly space-x-2">
-							<!-- Vertical flip -->
-							<button type="button" data-spin-type="verticalFlip" title="vertical flip" class="btn btn--rotate-flip">
-								<svg class="m-auto size-5 fill-none stroke-current">
-									<use href="./assets/icons.svg#vertical_flip"></use>
-								</svg>
-							</button>
-
-							<!-- Horizontal flip -->
-							<button
-								type="button"
-								data-spin-type="horizontalFlip"
-								title="horizontal flip"
-								class="btn btn--rotate-flip">
-								<svg class="m-auto size-5 fill-none stroke-current">
-									<use href="./assets/icons.svg#horizontal_flip"></use>
-								</svg>
-							</button>
-
-							<!-- Rotate left -->
-							<button type="button" data-spin-type="rotateRight" title="rotate right" class="btn btn--rotate-flip">
-								<svg class="m-auto size-5 fill-current stroke-none">
-									<use href="./assets/icons.svg#rotate_right"></use>
-								</svg>
-							</button>
-
-							<!-- Rotate right -->
-							<button type="button" data-spin-type="rotateLeft" title="rotate left" class="btn btn--rotate-flip">
-								<svg class="m-auto size-5 fill-current stroke-none">
-									<use href="./assets/icons.svg#rotate_left"></use>
-								</svg>
-							</button>
-						</div>
-					</section>
-
-					<!-- Reset filters button -->
-					<button
-						type="reset"
-						id="reset_filters_btn"
-						class="btn mx-auto w-full max-w-xs font-medium duration-150 hover:bg-stormGrey hover:text-gray-100 active:scale-95">
-						Reset Filters
-					</button>
-				</fieldset>
-
-				<!-- Image preview -->
-				<figure
-					id="img_drop_zone"
-					class="image-placeholder order-1 flex h-52 items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 md:order-2 md:col-span-8 md:h-full">
-					<img id="edited_img" class="max-h-[205px] md:max-h-[384px]" />
-				</figure>
-
-				<!-- Main buttons -->
-				<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
-					<label
-						tabindex="0"
-						class="btn btn--main relative cursor-pointer overflow-visible bg-[#4b5157] hover:bg-[#393e42] focus-visible:outline-[#4b5157]">
-						Select Image
-						<input id="img_file_input" type="file" accept="image/*" hidden aria-hidden="true" />
-					</label>
-
-					<button
-						type="submit"
-						id="img_save_btn"
+				<form id="img_edit_form" class="flex select-none flex-col gap-3 md:grid md:grid-cols-12 md:gap-y-5">
+					<!-- Filters -->
+					<fieldset
 						disabled
-						class="btn btn--main bg-royalBlue focus-visible:outline-royalBlue enabled:hover:bg-warmBlue">
-						Save Image
-					</button>
-				</fieldset>
-			</form>
-		</main>
+						id="edit_options_container"
+						class="order-2 min-w-full space-y-5 rounded border-2 border-gray-400 p-3 disabled:pointer-events-none disabled:opacity-60 sm:p-4 md:order-1 md:col-span-4 md:max-w-xs md:p-2 lg:p-4">
+						<legend class="sr-only">Edit Options</legend>
 
-		<footer class="absolute bottom-3 -space-x-2">
-			<small class="pt-0.5 text-gray-900">©</small>
+						<!-- Filter buttons container -->
+						<fieldset class="!mt-0 min-w-full space-y-1">
+							<legend class="text-gray-800 lg:text-[19px]">Filters</legend>
+
+							<div
+								id="filter_btns_container"
+								style="grid-template-columns: repeat(4, max-content)"
+								class="lg:custom-scrollbar flex w-full gap-2.5 overflow-x-auto scroll-smooth rounded md:grid lg:pb-2.5"></div>
+						</fieldset>
+
+						<!-- Filter percentage -->
+						<label class="mx-auto block w-full space-y-2">
+							<p class="flex items-baseline justify-between text-gray-800">
+								<span id="filter_name" class="capitalize lg:text-lg">Brightness</span>
+								<span id="filter_value" class="text-sm lg:text-base">100%</span>
+							</p>
+
+							<input
+								type="range"
+								step="1"
+								min="0"
+								value="100"
+								max="200"
+								id="filter_range_input"
+								class="block h-2 w-full rounded accent-warmBlue hover:accent-royalBlue focus-visible:outline-offset-7px" />
+						</label>
+
+						<!-- Rotate & flip (spin) buttons -->
+						<fieldset class="mx-auto flex w-full flex-col gap-1.5 space-y-1">
+							<legend class="text-gray-800 lg:text-lg">Rotate & Flip</legend>
+
+							<div id="spin_btns_container" class="flex items-center justify-evenly space-x-2">
+								<!-- Vertical flip -->
+								<button
+									type="button"
+									title="vertical flip"
+									data-spin-type="verticalFlip"
+									class="btn focus-visible:btn--tab-focus flex-auto px-3 outline-none md:px-2.5 lg:px-3">
+									<svg class="m-auto size-5 fill-none stroke-current">
+										<use href="./assets/icons.svg#vertical_flip"></use>
+									</svg>
+								</button>
+
+								<!-- Horizontal flip -->
+								<button
+									type="button"
+									title="horizontal flip"
+									data-spin-type="horizontalFlip"
+									class="btn focus-visible:btn--tab-focus flex-auto px-3 outline-none md:px-2.5 lg:px-3">
+									<svg class="m-auto size-5 fill-none stroke-current">
+										<use href="./assets/icons.svg#horizontal_flip"></use>
+									</svg>
+								</button>
+
+								<!-- Rotate left -->
+								<button
+									type="button"
+									title="rotate right"
+									data-spin-type="rotateRight"
+									class="btn focus-visible:btn--tab-focus flex-auto px-3 outline-none md:px-2.5 lg:px-3">
+									<svg class="m-auto size-5 fill-current stroke-none">
+										<use href="./assets/icons.svg#rotate_right"></use>
+									</svg>
+								</button>
+
+								<!-- Rotate right -->
+								<button
+									type="button"
+									title="rotate left"
+									data-spin-type="rotateLeft"
+									class="btn focus-visible:btn--tab-focus flex-auto px-3 outline-none md:px-2.5 lg:px-3">
+									<svg class="m-auto size-5 fill-current stroke-none">
+										<use href="./assets/icons.svg#rotate_left"></use>
+									</svg>
+								</button>
+							</div>
+						</fieldset>
+
+						<!-- Reset filters button -->
+						<button
+							type="reset"
+							id="reset_filters_btn"
+							class="btn focus-visible:btn--tab-focus mx-auto w-full font-medium outline-none">
+							Reset Filters
+						</button>
+					</fieldset>
+
+					<!-- Image preview -->
+					<figure
+						id="img_drop_zone"
+						class="img-placeholder order-1 flex h-52 items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 md:order-2 md:col-span-8 md:h-[344.4px] lg:h-[379.7px]">
+						<img
+							alt=""
+							width=""
+							height=""
+							id="edited_img"
+							class="h-full max-h-52 scale-0 rounded-inherit object-contain duration-400 md:max-h-96 [&[src]]:scale-100" />
+					</figure>
+
+					<!-- CTAs -->
+					<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
+						<label
+							tabindex="0"
+							class="btn btn--main relative cursor-pointer overflow-visible bg-davyGrey outline-davyGrey hover:bg-tuna">
+							Select Image
+							<input hidden type="file" accept="image/*" id="img_file_input" />
+						</label>
+
+						<button
+							disabled
+							type="submit"
+							id="img_save_btn"
+							class="btn btn--main bg-royalBlue outline-royalBlue enabled:hover:bg-toryBlue">
+							Save Image
+						</button>
+					</fieldset>
+				</form>
+			</main>
+		</div>
+
+		<footer class="-space-x-2 text-center">
+			<small class="-translate-y-1 text-gray-900 lg:translate-y-0 lg:pt-0.5 lg:text-base">©</small>
 			<address class="-ml-1.5 inline-block not-italic">
 				<a
 					href="https://shayan-zamani.me"

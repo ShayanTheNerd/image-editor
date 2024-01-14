@@ -9,7 +9,7 @@ let horizontalFlip = 1;
 export { cssFilterProperties, rotationDeg, verticalFlip, horizontalFlip };
 
 export function applyFilter(updateFilterValue = false) {
-	const selectedFilterName = document.querySelector('.btn--filter-effect--active').textContent.toLocaleLowerCase();
+	const selectedFilterName = document.querySelector('.btn--filter--active').textContent.toLocaleLowerCase();
 	const activeFilter = filters.find(filter => filter.name === selectedFilterName);
 	const { name, unit, max } = activeFilter;
 	const value = (activeFilter.value = updateFilterValue === true ? +filterRange.value : activeFilter.value); // match original and filter range input value if 'updateFilterValue' is 'true'
