@@ -7,16 +7,6 @@
 		"url": "https://shayan-zamani.me/",
 		"email": "sh.zamani384@gmail.com"
 	},
-	"keywords": [
-		"html css js",
-		"light/dark mode",
-		"responsive design",
-		"online image editor",
-		"tailwindcss CLI template",
-		"supports image drag & drop",
-		"Modular Monolithic architecture"
-	],
-	"description": "Easily edit your images in just a few clicks!",
 	"repository": {
 		"type": "git",
 		"directory": "main",
