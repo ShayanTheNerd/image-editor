@@ -15,11 +15,11 @@ export default {
 				royalBlue: '#2C52ED',
 				warmBlue: '#2C52EDCC',
 			},
-			outlineOffset: {
-				'3px': '3px',
+			ringOffsetWidth: {
 				'7px': '7px',
+				'2.5px': '2.5px',
 			},
-			outlineWidth: {
+			ringWidth: {
 				'2.5px': '2.5px',
 			},
 			borderRadius: {

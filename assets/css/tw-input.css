@@ -4,10 +4,10 @@
 
 @layer base {
 	:where(button, input, a, label) {
-		@apply transition-all duration-150;
+		@apply outline-0 transition-all duration-150;
 	}
 	:where(button, input, a, label):focus-visible {
-		@apply outline outline-2.5px outline-offset-3px outline-davyGrey;
+		@apply ring-2.5px ring-davyGrey ring-offset-2.5px;
 	}
 }
 
@@ -33,7 +33,7 @@
 		@apply focus-visible:shadow-inset focus-visible:transition-shadow;
 	}
 	.btn--filter {
-		@apply focus-visible:btn--tab-focus min-w-24 capitalize outline-none md:col-span-1;
+		@apply focus-visible:btn--tab-focus min-w-24 capitalize ring-0 ring-offset-0 md:col-span-1;
 	}
 	.btn--filter--active {
 		@apply border-royalBlue bg-royalBlue text-slate-100 !shadow-none hover:bg-toryBlue focus-visible:bg-toryBlue;

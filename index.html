@@ -55,6 +55,7 @@
 							<legend class="text-gray-800 lg:text-[19px]">Filters</legend>
 
 							<div
+								tabindex="-1"
 								id="filter_btns_container"
 								style="grid-template-columns: repeat(4, max-content)"
 								class="lg:custom-scrollbar flex w-full gap-2.5 overflow-x-auto scroll-smooth rounded md:grid lg:pb-2.5"></div>
@@ -74,7 +75,7 @@
 								value="100"
 								max="200"
 								id="filter_range_input"
-								class="block h-2 w-full rounded accent-warmBlue hover:accent-royalBlue focus-visible:outline-offset-7px" />
+								class="block h-2 w-full rounded accent-warmBlue hover:accent-royalBlue focus-visible:ring-offset-7px" />
 						</label>
 
 						<!-- Rotate & flip (spin) buttons -->
@@ -87,7 +88,7 @@
 									type="button"
 									title="vertical flip"
 									data-spin-type="verticalFlip"
-									class="btn focus-visible:btn--tab-focus flex-auto px-3 outline-none md:px-2.5 lg:px-3">
+									class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
 									<svg class="m-auto size-5 fill-none stroke-current">
 										<use href="./assets/icons.svg#vertical_flip"></use>
 									</svg>
@@ -98,7 +99,7 @@
 									type="button"
 									title="horizontal flip"
 									data-spin-type="horizontalFlip"
-									class="btn focus-visible:btn--tab-focus flex-auto px-3 outline-none md:px-2.5 lg:px-3">
+									class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
 									<svg class="m-auto size-5 fill-none stroke-current">
 										<use href="./assets/icons.svg#horizontal_flip"></use>
 									</svg>
@@ -109,7 +110,7 @@
 									type="button"
 									title="rotate right"
 									data-spin-type="rotateRight"
-									class="btn focus-visible:btn--tab-focus flex-auto px-3 outline-none md:px-2.5 lg:px-3">
+									class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
 									<svg class="m-auto size-5 fill-current stroke-none">
 										<use href="./assets/icons.svg#rotate_right"></use>
 									</svg>
@@ -120,7 +121,7 @@
 									type="button"
 									title="rotate left"
 									data-spin-type="rotateLeft"
-									class="btn focus-visible:btn--tab-focus flex-auto px-3 outline-none md:px-2.5 lg:px-3">
+									class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
 									<svg class="m-auto size-5 fill-current stroke-none">
 										<use href="./assets/icons.svg#rotate_left"></use>
 									</svg>
@@ -132,7 +133,7 @@
 						<button
 							type="reset"
 							id="reset_filters_btn"
-							class="btn focus-visible:btn--tab-focus mx-auto w-full font-medium outline-none">
+							class="btn focus-visible:btn--tab-focus mx-auto w-full font-medium ring-0 ring-offset-0">
 							Reset Filters
 						</button>
 					</fieldset>
@@ -153,7 +154,7 @@
 					<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
 						<label
 							tabindex="0"
-							class="btn btn--main relative cursor-pointer overflow-visible bg-davyGrey outline-davyGrey hover:bg-tuna">
+							class="btn btn--main relative cursor-pointer overflow-visible bg-davyGrey ring-davyGrey hover:bg-tuna">
 							Select Image
 							<input hidden type="file" accept="image/*" id="img_file_input" />
 						</label>
@@ -162,7 +163,7 @@
 							disabled
 							type="submit"
 							id="img_save_btn"
-							class="btn btn--main bg-royalBlue outline-royalBlue enabled:hover:bg-toryBlue">
+							class="btn btn--main bg-royalBlue ring-royalBlue enabled:hover:bg-toryBlue">
 							Save Image
 						</button>
 					</fieldset>
@@ -177,7 +178,7 @@
 					href="https://shayan-zamani.me"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="ml-2 rounded-md text-sm font-semibold text-blue-600 underline visited:text-purple-600 hover:text-blue-700 visited:hover:text-purple-700 focus-visible:outline-current lg:text-base">
+					class="ml-2 rounded text-sm font-semibold text-blue-600 underline ring-current ring-offset-platinum visited:text-purple-600 visited:!ring-purple-600 hover:text-blue-700 visited:hover:text-purple-700 lg:text-base">
 					Shayan Zamani
 				</a>
 			</address>
