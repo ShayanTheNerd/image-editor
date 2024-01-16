@@ -19,6 +19,7 @@ export function applyFilter(updateFilterValue = false) {
 	filterValue.textContent = `${value}${unit}`;
 	filterRange.value = value;
 	filterRange.setAttribute('value', value);
+	filterRange.style.setProperty('--value', `${(value / max) * 100}%`);
 
 	if (name === 'hue-rotate') {
 		const huerotationDeg = `${Math.round((value * 360) / 100)}${unit}`;

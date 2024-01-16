@@ -3,11 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+	/* Tab-navigation ring */
 	:where(button, input, a, label) {
-		@apply outline-0 transition-all duration-150;
+		outline: none !important;
+		@apply transition-all;
 	}
 	:where(button, input, a, label):focus-visible {
-		@apply ring-2.5px ring-davyGrey ring-offset-2.5px;
+		@apply ring-2.5px ring-davyGray ring-offset-2.5px;
+	}
+
+	/* Thin scrollbar in Firefox */
+	@-moz-document url-prefix() {
+		:where(html, .custom-scrollbar) {
+			scrollbar-width: thin;
+		}
 	}
 }
 
@@ -16,18 +25,37 @@
 		@apply border-none !bg-[url('../images/img-placeholder.webp')] bg-cover bg-center bg-no-repeat;
 	}
 
+	/* Custom srollbar */
 	.custom-scrollbar::-webkit-scrollbar {
 		@apply h-3;
 	}
 	.custom-scrollbar::-webkit-scrollbar-thumb {
-		@apply rounded bg-cloud hover:bg-hitGrey;
+		@apply rounded bg-cloud hover:bg-hitGray active:bg-davyGray;
 	}
 	.custom-scrollbar::-webkit-scrollbar-track-piece {
 		@apply rounded bg-platinum;
 	}
 
+	/* Filter range */
+	.filter-range::-webkit-slider-runnable-track {
+		@apply size-2 rounded-full transition-all;
+	}
+	.filter-range::-webkit-slider-thumb {
+		@apply size-5 -translate-y-1.5 cursor-ew-resize appearance-none rounded-full bg-davyGray transition-all hover:bg-tuna lg:size-4 lg:-translate-y-1;
+	}
+	.filter-range::-moz-range-thumb {
+		@apply size-5 cursor-ew-resize appearance-none rounded-full border-none bg-davyGray transition-all hover:bg-tuna lg:size-4 lg:translate-y-0;
+	}
+	.filter-range:focus-visible::-webkit-slider-thumb {
+		@apply ring-2.5px ring-davyGray ring-offset-2.5px ring-offset-slate-100;
+	}
+	.filter-range:focus-visible::-moz-range-thumb {
+		@apply ring-2.5px ring-davyGray ring-offset-2.5px ring-offset-slate-100;
+	}
+
+	/* Buttons */
 	.btn {
-		@apply flex h-9 items-center justify-center rounded border border-davyGrey tracking-wide text-davyGrey hover:shadow-inset;
+		@apply flex h-9 items-center justify-center rounded border border-davyGray tracking-wide text-davyGray hover:shadow-inset;
 	}
 	.btn--tab-focus {
 		@apply focus-visible:shadow-inset focus-visible:transition-shadow;

@@ -15,6 +15,10 @@ function initApp() {
 
 	initFilters(filterBtnsContainer, spinBtnsContainer);
 
+	filterRange.addEventListener('input', function () {
+		this.style.setProperty('--value', `${(this.value / this.max) * 100}%`);
+	});
+
 	// process and display new image
 	{
 		const imgSaveBtn = document.getElementById('img_save_btn');

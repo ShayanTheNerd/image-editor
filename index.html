@@ -61,7 +61,7 @@
 								class="lg:custom-scrollbar flex w-full gap-2.5 overflow-x-auto scroll-smooth rounded md:grid lg:pb-2.5"></div>
 						</fieldset>
 
-						<!-- Filter percentage -->
+						<!-- Filter range -->
 						<label class="mx-auto block w-full space-y-2">
 							<p class="flex items-baseline justify-between text-gray-800">
 								<span id="filter_name" class="capitalize lg:text-lg">Brightness</span>
@@ -74,8 +74,10 @@
 								min="0"
 								value="100"
 								max="200"
+								autocomplete="off"
 								id="filter_range_input"
-								class="block h-2 w-full rounded accent-warmBlue hover:accent-royalBlue focus-visible:ring-offset-7px" />
+								style="--value: 50%; transition: background 0s"
+								class="filter-range block h-2.5 w-full appearance-none rounded-full border border-cloud bg-gradient-to-r from-warmBlue to-toryBlue bg-[size:--value] bg-left bg-no-repeat focus-visible:[box-shadow:none]" />
 						</label>
 
 						<!-- Rotate & flip (spin) buttons -->
@@ -141,20 +143,20 @@
 					<!-- Image preview -->
 					<figure
 						id="img_drop_zone"
-						class="img-placeholder order-1 flex h-52 items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 md:order-2 md:col-span-8 md:h-[344.4px] lg:h-[379.7px]">
+						class="img-placeholder order-1 flex h-52 min-h-full items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 md:order-2 md:col-span-8">
 						<img
 							alt=""
 							width=""
 							height=""
 							id="edited_img"
-							class="h-full max-h-52 scale-0 rounded-inherit object-contain duration-400 md:max-h-96 [&[src]]:scale-100" />
+							class="h-full max-h-52 scale-0 object-contain duration-400 md:max-h-96 [&[src]]:scale-100" />
 					</figure>
 
 					<!-- CTAs -->
 					<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
 						<label
 							tabindex="0"
-							class="btn btn--main relative cursor-pointer overflow-visible bg-davyGrey ring-davyGrey hover:bg-tuna">
+							class="btn btn--main relative cursor-pointer overflow-visible bg-davyGray ring-davyGray hover:bg-tuna">
 							Select Image
 							<input hidden type="file" accept="image/*" id="img_file_input" />
 						</label>
@@ -178,7 +180,7 @@
 					href="https://shayan-zamani.me"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="ml-2 rounded text-sm font-semibold text-blue-600 underline ring-current ring-offset-platinum visited:text-purple-600 visited:!ring-purple-600 hover:text-blue-700 visited:hover:text-purple-700 lg:text-base">
+					class="ml-2 rounded text-sm font-semibold text-blue-600 underline ring-current ring-offset-platinum hover:text-blue-700 lg:text-base">
 					Shayan Zamani
 				</a>
 			</address>

@@ -8,10 +8,10 @@ export default {
 			colors: {
 				tuna: '#393e42',
 				cloud: '#c4c4c4',
-				hitGrey: '#aaaaaa',
+				hitGray: '#aaaaaa',
 				platinum: '#e2e1e0',
 				toryBlue: '#284ad5',
-				davyGrey: '#4b5157',
+				davyGray: '#4b5157',
 				royalBlue: '#2C52ED',
 				warmBlue: '#2C52EDCC',
 			},
@@ -21,9 +21,6 @@ export default {
 			},
 			ringWidth: {
 				'2.5px': '2.5px',
-			},
-			borderRadius: {
-				inherit: 'inherit',
 			},
 			transitionDuration: {
 				400: '400ms',
