@@ -28,6 +28,7 @@ export default function renderImg(newImg, filtersContainer, imgSaveBtn, imgDropZ
 		imgFileExtension = newImg.name.substring(lastDotIndex(newImg.name) + 1).toLowerCase();
 
 		// enable edit and save options
-		[imgSaveBtn, filtersContainer].forEach(item => item.removeAttribute('disabled'));
+		filtersContainer.removeAttribute('disabled');
+		imgSaveBtn.setAttribute('aria-disabled', 'false');
 	});
 }

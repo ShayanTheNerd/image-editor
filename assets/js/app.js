@@ -43,10 +43,7 @@ function initApp() {
 	document.getElementById('reset_filters_btn').addEventListener('click', () => resetFilters(filterBtnsContainer));
 
 	// save image
-	document.getElementById('img_edit_form').addEventListener('submit', event => {
-		event.preventDefault();
-		drawAndDownloadImg(editedImg);
-	});
+	document.getElementById('img_save_btn').addEventListener('click', () => drawAndDownloadImg(editedImg));
 }
 
 initApp();

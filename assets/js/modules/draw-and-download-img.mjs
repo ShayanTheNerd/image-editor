@@ -42,9 +42,7 @@ function drawCanvas(img, filters, rotationDeg, verticalFlip, horizontalFlip) {
 
 // create a link and download the canvas image
 function downloadCanvasImg(canvas) {
-	const link = document.createElement('a');
-
+	const link = document.getElementById('img_save_btn');
 	link.download = `${imgFileName} (edited).${imgFileExtension}`;
 	link.href = canvas.toDataURL();
-	link.dispatchEvent(new MouseEvent('click'));
 }
