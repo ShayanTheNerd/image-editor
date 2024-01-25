@@ -22,9 +22,6 @@ export default {
 			ringWidth: {
 				'2.5px': '2.5px',
 			},
-			transitionDuration: {
-				400: '400ms',
-			},
 			fontSize: {
 				md: '1.063rem' /* 17px */,
 			},
