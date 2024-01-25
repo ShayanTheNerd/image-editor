@@ -42,8 +42,8 @@ function drawCanvas(img, filters) {
 }
 
 // create a link and download the canvas image
-const link = document.getElementById('img_save_btn');
 function downloadCanvasImg(canvas) {
+	const link = document.getElementById('img_save_btn');
 	link.download = `${imgFileName} (edited).${imgFileExtension}`;
 	link.href = canvas.toDataURL();
 }

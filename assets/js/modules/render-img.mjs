@@ -1,37 +1,34 @@
 import resetFilters from './reset-filters.mjs';
 
-export let imgFileName = undefined;
-export let imgFileExtension = undefined;
-const imgElement = document.getElementById('edited_img');
-const loadingSpinner = document.getElementById('loading_spinner');
+let imgFileName = undefined;
+let imgFileExtension = undefined;
 
-export default function renderImg(newImg, filtersContainer, imgDropZone, filterBtnsContainer) {
+export { imgFileName, imgFileExtension };
+
+export default function renderImg(newImg, filtersContainer, imgSaveBtn, imgDropZone, filterBtnsContainer) {
 	if (!newImg) return;
 
-	loadingSpinner.setAttribute('aria-hidden', 'false');
-	imgElement.removeAttribute('src');
-	imgDropZone.classList.remove('img-placeholder');
-	resetFilters(filterBtnsContainer); // reset filters in case there was already an image
+	const imgElem = imgDropZone.querySelector('img');
+
+	// reset filters if there is already an image
+	if (imgElem.src) resetFilters(filterBtnsContainer);
 
 	// load and display the selected image
-	imgElement.src = URL.createObjectURL(newImg);
+	imgElem.src = URL.createObjectURL(newImg);
 	URL.revokeObjectURL(newImg); // performance optimization
-	imgElement.addEventListener('load', () => loadImg(newImg, filtersContainer, filterBtnsContainer), {
-		once: true,
+
+	imgElem.addEventListener('load', () => {
+		imgDropZone.classList.remove('img-placeholder');
+
+		imgElem.title = imgElem.alt = newImg.name;
+
+		// extract filename and file extension of the selected image
+		const lastDotIndex = string => string.lastIndexOf('.');
+		imgFileName = newImg.name.substring(0, lastDotIndex(newImg.name));
+		imgFileExtension = newImg.name.substring(lastDotIndex(newImg.name) + 1).toLowerCase();
+
+		// enable edit and save options
+		filtersContainer.removeAttribute('disabled');
+		filterBtnsContainer.focus();
 	});
-}
-
-function loadImg(newImg, filtersContainer, filterBtnsContainer) {
-	imgElement.title = imgElement.alt = newImg.name;
-
-	// extract filename and file extension of the selected image
-	const lastDotIndex = string => string.lastIndexOf('.');
-	imgFileName = newImg.name.substring(0, lastDotIndex(newImg.name));
-	imgFileExtension = newImg.name.substring(lastDotIndex(newImg.name) + 1).toLowerCase();
-
-	// enable edit and save options
-	filtersContainer.removeAttribute('disabled');
-	filterBtnsContainer.focus();
-
-	loadingSpinner.setAttribute('aria-hidden', 'true');
 }
