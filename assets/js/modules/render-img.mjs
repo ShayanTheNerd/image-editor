@@ -29,6 +29,6 @@ export default function renderImg(newImg, filtersContainer, imgSaveBtn, imgDropZ
 
 		// enable edit and save options
 		filtersContainer.removeAttribute('disabled');
-		imgSaveBtn.setAttribute('aria-disabled', 'false');
+		filterBtnsContainer.focus();
 	});
 }

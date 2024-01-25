@@ -1,14 +1,15 @@
+import { img as image } from '../imgFilters.js';
 import { imgFileName, imgFileExtension } from './render-img.mjs';
-import { cssFilterProperties, rotationDeg, verticalFlip, horizontalFlip } from './apply-filters.mjs';
+import { cssFilterProperties } from './apply-filters.mjs';
 
 export default function drawAndDownloadImg(editedImg) {
-	const canvas = drawCanvas(editedImg, cssFilterProperties, rotationDeg, verticalFlip, horizontalFlip);
+	const canvas = drawCanvas(editedImg, cssFilterProperties);
 
 	downloadCanvasImg(canvas);
 }
 
 // draw a canvas image based on filters and spins applied to the image
-function drawCanvas(img, filters, rotationDeg, verticalFlip, horizontalFlip) {
+function drawCanvas(img, filters) {
 	const canvas = document.createElement('canvas');
 	const ctx2d = canvas.getContext('2d');
 
@@ -18,16 +19,16 @@ function drawCanvas(img, filters, rotationDeg, verticalFlip, horizontalFlip) {
 
 	const cx = canvas.width / 2;
 	const cy = canvas.height / 2;
-	const radians = (rotationDeg * Math.PI) / 180;
+	const radians = (image.rotationDeg * Math.PI) / 180;
 
 	// flip vertically
-	if (verticalFlip === -1) {
+	if (image.verticalFlip === -1) {
 		ctx2d.translate(canvas.width, 0);
 		ctx2d.scale(-1, 1);
 	}
 
 	// flip horizontally
-	if (horizontalFlip === -1) {
+	if (image.horizontalFlip === -1) {
 		ctx2d.translate(0, canvas.height);
 		ctx2d.scale(1, -1);
 	}

@@ -84,51 +84,7 @@
 						<fieldset class="mx-auto flex w-full flex-col gap-1.5 space-y-1">
 							<legend class="text-gray-800 lg:text-lg">Rotate & Flip</legend>
 
-							<div id="spin_btns_container" class="flex items-center justify-evenly space-x-2">
-								<!-- Vertical flip -->
-								<button
-									type="button"
-									title="vertical flip"
-									data-spin-type="verticalFlip"
-									class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
-									<svg class="m-auto size-5 fill-none stroke-current">
-										<use href="./assets/icons.svg#vertical_flip"></use>
-									</svg>
-								</button>
-
-								<!-- Horizontal flip -->
-								<button
-									type="button"
-									title="horizontal flip"
-									data-spin-type="horizontalFlip"
-									class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
-									<svg class="m-auto size-5 fill-none stroke-current">
-										<use href="./assets/icons.svg#horizontal_flip"></use>
-									</svg>
-								</button>
-
-								<!-- Rotate left -->
-								<button
-									type="button"
-									title="rotate right"
-									data-spin-type="rotateRight"
-									class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
-									<svg class="m-auto size-5 fill-current stroke-none">
-										<use href="./assets/icons.svg#rotate_right"></use>
-									</svg>
-								</button>
-
-								<!-- Rotate right -->
-								<button
-									type="button"
-									title="rotate left"
-									data-spin-type="rotateLeft"
-									class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
-									<svg class="m-auto size-5 fill-current stroke-none">
-										<use href="./assets/icons.svg#rotate_left"></use>
-									</svg>
-								</button>
-							</div>
+							<div id="spin_btns_container" class="flex items-center justify-evenly space-x-2"></div>
 						</fieldset>
 
 						<!-- Reset filters button -->
@@ -146,8 +102,7 @@
 						class="img-placeholder order-1 flex h-52 min-h-full items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 md:order-2 md:col-span-8">
 						<img
 							alt=""
-							width=""
-							height=""
+							height="384"
 							id="edited_img"
 							class="h-full max-h-52 scale-0 object-contain transition-all duration-400 md:max-h-96 [&[src]]:scale-100" />
 					</figure>
@@ -164,6 +119,7 @@
 						<a
 							download
 							href=""
+							tabindex="-1"
 							aria-disabled="true"
 							id="img_save_btn"
 							class="btn btn--main bg-royalBlue ring-royalBlue hover:bg-toryBlue aria-disabled:pointer-events-none aria-disabled:opacity-60">

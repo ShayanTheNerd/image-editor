@@ -1,16 +1,35 @@
-import { filters } from './filters.mjs';
+import { img } from '../imgFilters.js';
 import { filterRange } from '../app.js';
 import { applyFilter, spin } from './apply-filters.mjs';
 
+const rotateFlipItems = ['rotate right', 'rotate left', 'vertical flip', 'horizontal flip'];
+
 export default function initFilters(filtersContainer, spinBtnsContainer) {
 	// generate filter buttons
-	filters.forEach((filter, index) => {
+	img.filters.forEach((filter, index) => {
 		/* prettier-ignore */
 		const filterButtonHTML = /* html */ `
          <button type="button" class="btn btn--filter ${index === 0 && 'btn--filter--active'}">${filter.name}</button>
       `;
 
 		filtersContainer.insertAdjacentHTML('beforeend', filterButtonHTML);
+	});
+
+	// generate rotate and flip buttons
+	rotateFlipItems.forEach(item => {
+		/* prettier-ignore */
+		const rotateFlipButtonHTML = `
+         <button
+            type="button"
+            title="${item}"
+            class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
+            <svg class="m-auto size-5 ${item.startsWith('rotate') ? 'fill-current stroke-none' : 'fill-none stroke-current'}">
+               <use href="./assets/icons.svg#${item.replace(' ', '_')}"></use>
+            </svg>
+         </button>
+      `;
+
+		spinBtnsContainer.insertAdjacentHTML('beforeend', rotateFlipButtonHTML);
 	});
 
 	// activate selected filter
@@ -30,6 +49,6 @@ export default function initFilters(filtersContainer, spinBtnsContainer) {
 	spinBtnsContainer.addEventListener('click', event => {
 		if (event.target === event.currentTarget) return;
 
-		spin(event.target.closest('button[type="button"]').dataset.spinType);
+		spin(event.target.closest('button[type="button"]').title);
 	});
 }

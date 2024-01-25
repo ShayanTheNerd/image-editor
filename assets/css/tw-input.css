@@ -47,10 +47,10 @@
 		@apply size-5 cursor-ew-resize appearance-none rounded-full border-none bg-royalBlue transition-all hover:bg-toryBlue lg:size-4 lg:translate-y-0;
 	}
 	.filter-range:focus-visible::-webkit-slider-thumb {
-		@apply ring-2.5px ring-davyGray ring-offset-2.5px ring-offset-slate-100;
+		@apply ring-2.5px ring-royalBlue ring-offset-2.5px ring-offset-slate-100;
 	}
 	.filter-range:focus-visible::-moz-range-thumb {
-		@apply ring-2.5px ring-davyGray ring-offset-2.5px ring-offset-slate-100;
+		@apply ring-2.5px ring-royalBlue ring-offset-2.5px ring-offset-slate-100;
 	}
 
 	/* Buttons */
