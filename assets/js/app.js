@@ -34,7 +34,7 @@ const {
 
 generateButtons();
 
-new MutationObserver(toggleImgSaveAnchor).observe(selectedImg, { attributeFilter: ['style'] });
+new MutationObserver(toggleImgEditControls).observe(selectedImg, { attributeFilter: ['style'] });
 
 filtersContainer.addEventListener('click', activateSelectedFilter);
 filterRangeInput.addEventListener('input', applyFilter);
@@ -44,11 +44,12 @@ imgSelectInput.addEventListener('change', () => renderImg(imgSelectInput.files[0
 imgSaveAnchor.addEventListener('click', downloadImg);
 ['dragover', 'drop'].forEach(event => imgDropZone.addEventListener(event, catchAndRenderImg));
 
-function toggleImgSaveAnchor() {
-	imgSaveAnchor.setAttribute('aria-disabled', !imgStore.isEdited);
-	imgSaveAnchor.setAttribute('tabindex', imgStore.isEdited ? 0 : -1);
+function toggleImgEditControls() {
+	const { isEdited: imgIsEdited } = imgStore;
+	resetFiltersBtn.disabled = !imgIsEdited;
+	imgSaveAnchor.setAttribute('aria-disabled', !imgIsEdited);
+	imgSaveAnchor.setAttribute('tabindex', imgIsEdited ? 0 : -1);
 }
-
 function activateSelectedFilter({ target, currentTarget }) {
 	if (target === currentTarget) return;
 
@@ -59,12 +60,10 @@ function activateSelectedFilter({ target, currentTarget }) {
 	DOMElements.activeFilterBtn.scrollIntoView({ inline: 'center', behavior: 'smooth' });
 	applyFilter({ newFilter: true });
 }
-
 function catchAndRenderImg(event) {
 	event.preventDefault();
 	renderImg(event.dataTransfer.files[0]);
 }
-
 function downloadImg() {
 	const { name, extension } = imgStore.state;
 	imgSaveAnchor.href = createImgCanvas().toDataURL();
