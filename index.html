@@ -42,7 +42,7 @@
 					Online Image Editor
 				</h1>
 
-				<form id="img_edit_form" class="flex select-none flex-col gap-3 md:grid md:grid-cols-12 md:gap-y-5">
+				<form class="flex select-none flex-col gap-3 md:grid md:grid-cols-12 md:gap-y-5">
 					<!-- Filters -->
 					<fieldset
 						disabled
@@ -56,7 +56,7 @@
 
 							<div
 								tabindex="-1"
-								id="filter_btns_container"
+								id="filters_container"
 								style="grid-template-columns: repeat(4, max-content)"
 								class="lg:custom-scrollbar flex w-full gap-2.5 overflow-x-auto scroll-smooth rounded md:grid lg:pb-2.5"></div>
 						</fieldset>
@@ -84,7 +84,7 @@
 						<fieldset class="mx-auto flex w-full flex-col gap-1.5 space-y-1">
 							<legend class="text-gray-800 lg:text-lg">Rotate & Flip</legend>
 
-							<div id="spin_btns_container" class="flex items-center justify-evenly space-x-2"></div>
+							<div id="spins_container" class="flex items-center justify-evenly space-x-2"></div>
 						</fieldset>
 
 						<!-- Reset filters button -->
@@ -103,7 +103,7 @@
 						<img
 							alt=""
 							height="384"
-							id="edited_img"
+							id="selected_img"
 							class="h-full max-h-52 object-contain transition-transform duration-300 md:max-h-96" />
 					</figure>
 
@@ -113,15 +113,15 @@
 							tabindex="0"
 							class="btn btn--main relative cursor-pointer overflow-visible bg-davyGray ring-davyGray hover:bg-tuna">
 							Select Image
-							<input hidden type="file" accept="image/*" id="img_file_input" />
+							<input hidden type="file" accept="image/*" id="img_select_input" />
 						</label>
 
 						<a
-							download
 							href=""
+							download=""
 							tabindex="-1"
 							aria-disabled="true"
-							id="img_save_btn"
+							id="save_img_anchor"
 							class="btn btn--main bg-royalBlue ring-royalBlue hover:bg-toryBlue aria-disabled:pointer-events-none aria-disabled:opacity-60">
 							Save Image
 						</a>

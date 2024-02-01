@@ -1,64 +1,72 @@
-import initFilters from './modules/init-filters.mjs';
-import renderImg from './modules/render-img.mjs';
-import { img, imgBaseFilters } from './imgFilters.js';
-import resetFilters from './modules/reset-filters.mjs';
-import drawAndDownloadImg from './modules/draw-and-download-img.mjs';
+import imgStore from './imgStore.js';
+import spinImg from './modules/spinImg.mjs';
+import renderImg from './modules/renderImg.mjs';
+import applyFilter from './modules/applyFilter.mjs';
+import resetFilters from './modules/resetFilters.mjs';
+import generateButtons from './modules/generateButtons.mjs';
+import createImgCanvas from './modules/createImgCanvas.mjs';
 
-export const editedImg = document.getElementById('edited_img');
-export const filterName = document.getElementById('filter_name');
-export const filterValue = document.getElementById('filter_value');
-export const filterRange = document.getElementById('filter_range_input');
+export const ACTIVE_FILTER_CLASS = 'btn--filter--active';
+export const DOMElements = {
+	editOptionsContainer: document.getElementById('edit_options_container'),
+	filtersContainer: document.getElementById('filters_container'),
+	activeFilterBtn: null,
+	filterName: document.getElementById('filter_name'),
+	filterValue: document.getElementById('filter_value'),
+	filterRangeInput: document.getElementById('filter_range_input'),
+	selectedImg: document.getElementById('selected_img'),
+	spinsContainer: document.getElementById('spins_container'),
+	resetFiltersBtn: document.getElementById('reset_filters_btn'),
+	imgDropZone: document.getElementById('img_drop_zone'),
+	imgSelectInput: document.getElementById('img_select_input'),
+	imgSaveAnchor: document.getElementById('save_img_anchor'),
+};
+const {
+	filtersContainer,
+	filterRangeInput,
+	selectedImg,
+	spinsContainer,
+	resetFiltersBtn,
+	imgDropZone,
+	imgSelectInput,
+	imgSaveAnchor,
+} = DOMElements;
 
-function initApp() {
-	const imgSaveBtn = document.getElementById('img_save_btn');
-	const spinBtnsContainer = document.getElementById('spin_btns_container');
-	const filterBtnsContainer = document.getElementById('filter_btns_container');
+generateButtons();
 
-	initFilters(filterBtnsContainer, spinBtnsContainer);
+new MutationObserver(toggleImgSaveAnchor).observe(selectedImg, { attributeFilter: ['style'] });
 
-	filterRange.addEventListener('input', function () {
-		this.style.setProperty('--value', `${(this.value / this.max) * 100}%`);
-	});
+filtersContainer.addEventListener('click', activateSelectedFilter);
+filterRangeInput.addEventListener('input', applyFilter);
+spinsContainer.addEventListener('click', spinImg);
+resetFiltersBtn.addEventListener('click', resetFilters);
+imgSelectInput.addEventListener('change', () => renderImg(imgSelectInput.files[0]));
+imgSaveAnchor.addEventListener('click', downloadImg);
+['dragover', 'drop'].forEach(event => imgDropZone.addEventListener(event, catchAndRenderImg));
 
-	// process and display new image
-	{
-		const imgFileInput = document.getElementById('img_file_input');
-		const imgDropZone = document.getElementById('img_drop_zone');
-		const editOptionsContainer = document.getElementById('edit_options_container');
-
-		// drag & drop or select image, then parse and display it
-		['dragover', 'drop'].forEach(event =>
-			imgDropZone.addEventListener(event, e => {
-				e.preventDefault();
-				renderImg(e.dataTransfer.files[0], editOptionsContainer, imgDropZone, filterBtnsContainer);
-			}),
-		);
-
-		imgFileInput.addEventListener('change', () => {
-			renderImg(imgFileInput.files[0], editOptionsContainer, imgDropZone, filterBtnsContainer);
-		});
-	}
-
-	// reset all filters
-	document.getElementById('reset_filters_btn').addEventListener('click', () => resetFilters(filterBtnsContainer));
-
-	// toggle "Save Image" button
-	const observer = new MutationObserver(() => {
-		if (!editedImg.getAttribute('style')) return;
-
-		const imageIsEdited =
-			img.verticalFlip !== 1 ||
-			img.horizontalFlip !== 1 ||
-			img.rotationDeg % 360 !== 0 ||
-			img.filters.some((filter, index) => filter.value !== imgBaseFilters.filters[index].value);
-
-		imgSaveBtn.setAttribute('aria-disabled', !imageIsEdited);
-		imgSaveBtn.setAttribute('tabindex', imageIsEdited ? 0 : -1);
-	});
-	observer.observe(editedImg, { attributeFilter: ['style'] });
-
-	// save image
-	document.getElementById('img_save_btn').addEventListener('click', () => drawAndDownloadImg(editedImg));
+function toggleImgSaveAnchor() {
+	imgSaveAnchor.setAttribute('aria-disabled', !imgStore.isEdited);
+	imgSaveAnchor.setAttribute('tabindex', imgStore.isEdited ? 0 : -1);
 }
 
-initApp();
+function activateSelectedFilter({ target, currentTarget }) {
+	if (target === currentTarget) return;
+
+	imgStore.activeFilterIndex = target.textContent.toLocaleLowerCase();
+	DOMElements.activeFilterBtn.classList.remove(ACTIVE_FILTER_CLASS);
+	DOMElements.activeFilterBtn = target;
+	DOMElements.activeFilterBtn.classList.add(ACTIVE_FILTER_CLASS);
+	DOMElements.activeFilterBtn.scrollIntoView({ inline: 'center', behavior: 'smooth' });
+	applyFilter({ newFilter: true });
+}
+
+function catchAndRenderImg(event) {
+	event.preventDefault();
+	renderImg(event.dataTransfer.files[0]);
+}
+
+function downloadImg() {
+	const { name, extension } = imgStore.state;
+	imgSaveAnchor.href = createImgCanvas().toDataURL();
+	imgSaveAnchor.download = `${name} (edited).${extension}`;
+}
