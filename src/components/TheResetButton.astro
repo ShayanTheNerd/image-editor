@@ -1,0 +1,14 @@
+<button
+	disabled
+	type="reset"
+	id="reset_filters_btn"
+	class="btn focus-visible:btn--tab-focus mx-auto w-full font-medium ring-0 ring-offset-0 disabled:opacity-60">
+	Reset Filters
+</button>
+
+<script>
+	import { DOMElements } from '@ts/app.ts';
+	import resetFilters from '@ts/modules/resetFilters.mts';
+
+	DOMElements.resetFiltersBtn.addEventListener('click', resetFilters);
+</script>

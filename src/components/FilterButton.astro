@@ -1,0 +1,16 @@
+---
+const { name, index } = Astro.props;
+---
+
+<button
+	type="button"
+	class:list={index === 0 && 'btn--filter--active'}
+	class="btn focus-visible:btn--tab-focus min-w-[106px] capitalize ring-0 ring-offset-0 md:col-span-1">
+	{name}
+</button>
+
+<style>
+	.btn--filter--active {
+		@apply border-royalBlue bg-royalBlue text-slate-100 !shadow-none hover:bg-toryBlue focus-visible:bg-toryBlue;
+	}
+</style>

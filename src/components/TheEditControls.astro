@@ -1,0 +1,21 @@
+---
+import TheSpins from '@components/TheSpins.astro';
+import TheFilters from '@components/TheFilters.astro';
+import TheFilterRange from '@components/TheFilterRange.astro';
+import TheResetButton from '@components/TheResetButton.astro';
+---
+
+<fieldset
+	disabled
+	id="edit_options_container"
+	class="order-2 min-w-full space-y-5 rounded border-2 border-gray-400 p-3 disabled:pointer-events-none disabled:opacity-60 sm:p-4 md:order-1 md:col-span-4 md:max-w-xs md:p-2 lg:p-4">
+	<legend class="sr-only">Edit Options</legend>
+
+	<TheFilters />
+
+	<TheFilterRange />
+
+	<TheSpins />
+
+	<TheResetButton />
+</fieldset>

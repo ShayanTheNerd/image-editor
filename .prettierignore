@@ -1,1 +1,4 @@
-styles.css
+.astro
+dist
+public
+ngrok.exe

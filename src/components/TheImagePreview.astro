@@ -1,0 +1,40 @@
+<figure
+	id="img_drop_zone"
+	class="img-placeholder order-1 flex h-52 min-h-full items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 md:order-2 md:col-span-8">
+	<img
+		alt=""
+		title=""
+		height="384"
+		id="selected_img"
+		class="h-full max-h-52 object-contain transition-transform duration-300 md:max-h-96"
+	/>
+</figure>
+
+<style>
+	.img-placeholder {
+		@apply border-none !bg-[url('/images/img-placeholder.webp')] bg-cover bg-center bg-no-repeat;
+	}
+</style>
+
+<script>
+	import imgStore from '@ts/imgStore.ts';
+	import { DOMElements } from '@ts/app.ts';
+	import renderImg from '@ts/modules/renderImg.mts';
+
+	const { imgDropZone, imgSaveAnchor, resetFiltersBtn, selectedImg } = DOMElements;
+
+	['dragover', 'drop'].forEach(event => imgDropZone.addEventListener(event, catchAndRenderImg));
+
+	new MutationObserver(toggleImgControls).observe(selectedImg, { attributeFilter: ['style'] });
+
+	function catchAndRenderImg(event: DragEvent) {
+		event.preventDefault();
+		renderImg(event.dataTransfer.files[0]);
+	}
+	function toggleImgControls() {
+		const imgIsEdited: boolean = imgStore.isEdited;
+		resetFiltersBtn.disabled = !imgIsEdited;
+		imgSaveAnchor.setAttribute('aria-disabled', String(!imgIsEdited));
+		imgSaveAnchor.setAttribute('tabindex', imgIsEdited ? '0' : '-1');
+	}
+</script>

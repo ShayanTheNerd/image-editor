@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	/* Tab-navigation ring */
+	:where(button, input, a, label) {
+		outline: none !important;
+		@apply transition-all;
+
+		&:focus-visible {
+			@apply ring-2.5px ring-davyGray ring-offset-2.5px;
+		}
+	}
+
+	/* Thin scrollbar in Firefox */
+	@-moz-document url-prefix() {
+		:where(html, .custom-scrollbar) {
+			scrollbar-width: thin;
+		}
+	}
+}
+
+@layer components {
+	.btn {
+		@apply flex h-9 items-center justify-center rounded border border-davyGray tracking-wide text-davyGray enabled:hover:shadow-inset;
+	}
+	.btn--tab-focus {
+		@apply focus-visible:shadow-inset focus-visible:transition-shadow;
+	}
+}

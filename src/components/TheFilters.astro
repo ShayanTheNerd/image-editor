@@ -1,0 +1,52 @@
+---
+import imgStore from '@ts/imgStore.ts';
+import FilterButton from '@components/FilterButton.astro';
+---
+
+<fieldset class="!mt-0 min-w-full space-y-1">
+	<legend class="text-gray-800 lg:text-[19px]">Filters</legend>
+
+	<div
+		tabindex="-1"
+		id="filters_container"
+		style="grid-template-columns: repeat(4, max-content)"
+		class="custom-scrollbar flex w-full gap-2.5 overflow-x-auto scroll-smooth rounded md:grid lg:pb-2.5">
+		{imgStore.state.filters.map((filter, index: number) => <FilterButton name={filter.name} {index} />)}
+	</div>
+</fieldset>
+
+<style>
+	@screen lg {
+		.custom-scrollbar {
+			&::-webkit-scrollbar {
+				@apply h-3;
+			}
+			&::-webkit-scrollbar-thumb {
+				@apply rounded bg-cloud hover:bg-hitGray active:bg-davyGray;
+			}
+			&::-webkit-scrollbar-track-piece {
+				@apply rounded bg-platinum;
+			}
+		}
+	}
+</style>
+
+<script>
+	import imgStore from '@ts/imgStore.ts';
+	import applyFilter from '@ts/modules/applyFilter.mts';
+	import { DOMElements, ACTIVE_FILTER_CLASS } from '@ts/app.ts';
+
+	DOMElements.filtersContainer.addEventListener('click', activateSelectedFilter);
+
+	function activateSelectedFilter(event: Event) {
+		if (event.target === event.currentTarget) return;
+
+		const target = event.target as HTMLButtonElement;
+		imgStore.activeFilterIndex = target.textContent.toLowerCase().trim();
+		DOMElements.activeFilterBtn.classList.remove(ACTIVE_FILTER_CLASS);
+		DOMElements.activeFilterBtn = target;
+		DOMElements.activeFilterBtn.classList.add(ACTIVE_FILTER_CLASS);
+		DOMElements.activeFilterBtn.scrollIntoView({ inline: 'center', behavior: 'smooth' });
+		applyFilter({ newFilter: true });
+	}
+</script>

@@ -1,0 +1,39 @@
+<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
+	<label tabindex="0" class="relative cursor-pointer overflow-visible bg-davyGray ring-davyGray hover:bg-tuna">
+		Select Image
+		<input hidden type="file" accept="image/*" id="img_select_input" />
+	</label>
+
+	<a
+		href=""
+		download=""
+		tabindex="-1"
+		aria-disabled="true"
+		id="img_save_anchor"
+		class="bg-royalBlue ring-royalBlue hover:bg-toryBlue aria-disabled:pointer-events-none aria-disabled:opacity-60">
+		Save Image
+	</a>
+</fieldset>
+
+<style>
+	:where(label, a) {
+		@apply btn h-10 w-full border-none text-gray-100 !shadow-none md:max-w-32;
+	}
+</style>
+
+<script>
+	import imgStore from '@ts/imgStore.ts';
+	import { DOMElements } from '@ts/app.ts';
+	import renderImg from '@ts/modules/renderImg.mts';
+	import createImgCanvas from '@ts/modules/createImgCanvas.mts';
+
+	const { imgSelectInput, imgSaveAnchor } = DOMElements;
+	imgSelectInput.addEventListener('change', () => renderImg(imgSelectInput.files[0]));
+	imgSaveAnchor.addEventListener('click', downloadImg);
+
+	function downloadImg() {
+		const { name, extension } = imgStore.state;
+		imgSaveAnchor.href = createImgCanvas().toDataURL();
+		imgSaveAnchor.download = `${name} (edited).${extension}`;
+	}
+</script>

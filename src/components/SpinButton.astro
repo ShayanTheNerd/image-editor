@@ -1,0 +1,15 @@
+---
+const { spinType } = Astro.props;
+const icon: string = spinType.replace(' ', '_').toLocaleLowerCase();
+---
+
+<button
+	type="button"
+	title={spinType}
+	class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
+	<svg
+		class:list={spinType.startsWith('Rotate') ? 'fill-current stroke-none' : 'fill-none stroke-current'}
+		class="m-auto size-5">
+		<use href={`/icons.svg#${icon}`}></use>
+	</svg>
+</button>

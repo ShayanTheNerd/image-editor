@@ -1,10 +1,10 @@
-import spinImg from './spinImg.mjs';
-import imgStore from '../imgStore.js';
-import applyFilter from './applyFilter.mjs';
-import { ACTIVE_FILTER_CLASS, DOMElements } from '../app.js';
+import imgStore from '@ts/imgStore.ts';
+import spinImg from '@ts/modules/spinImg.mts';
+import applyFilter from '@ts/modules/applyFilter.mts';
+import { ACTIVE_FILTER_CLASS, DOMElements } from '../app.ts';
 
 export default function resetFilters() {
-	const firstFilterBtn = DOMElements.filtersContainer.children[0];
+	const firstFilterBtn = DOMElements.filtersContainer.children[0] as HTMLButtonElement;
 	DOMElements.activeFilterBtn.classList.remove(ACTIVE_FILTER_CLASS);
 	DOMElements.activeFilterBtn = firstFilterBtn;
 	DOMElements.activeFilterBtn.classList.add(ACTIVE_FILTER_CLASS);

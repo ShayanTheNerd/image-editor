@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
-	content: ['./index.html', './assets/js/app.js', './assets/js/modules/*.mjs'],
+	content: ['./src/pages/index.astro', './src/components/*.astro', './src/assets/ts/**/*.{ts, mts}'],
 	future: { hoverOnlyWhenSupported: true },
 	theme: {
 		extend: {

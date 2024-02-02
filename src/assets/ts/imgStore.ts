@@ -1,4 +1,4 @@
-const deepCopy = obj => structuredClone(obj) || JSON.parse(JSON.stringify(obj));
+const deepCopy: Function = (obj: object) => structuredClone(obj) || JSON.parse(JSON.stringify(obj));
 
 const imgStore = {
 	state: {
@@ -67,7 +67,7 @@ const imgStore = {
 		this._defaultState = deepCopy(this.state);
 	},
 	updateCSSFilters() {
-		this.state.CSSFilters = this.state.filters.reduce((acc, { name, value, unit }) => {
+		this.state.CSSFilters = this.state.filters.reduce((acc: string, { name, value, unit }) => {
 			if (name === 'saturation') name = 'saturate';
 			if (name === 'hue-rotation') name = 'hue-rotate';
 			return `${acc}${name}(${value}${unit}) `;
@@ -75,7 +75,7 @@ const imgStore = {
 	},
 	reset() {
 		const { name, extension, rotationDeg } = this.state;
-		const normalizedRotationDeg = this._isRotated ? Math.round(rotationDeg / 360) * 360 : rotationDeg;
+		const normalizedRotationDeg: number = this._isRotated ? Math.round(rotationDeg / 360) * 360 : rotationDeg;
 		this.state = { ...deepCopy(this._defaultState), name, extension, rotationDeg: normalizedRotationDeg };
 	},
 
@@ -89,7 +89,7 @@ const imgStore = {
 		return filters[activeFilterIndex];
 	},
 	get _hasFilter() {
-		return this.state.filters.some((filter, index) => filter.value !== this._defaultState.filters[index].value);
+		return this.state.filters.some((filter, index: number) => filter.value !== this._defaultState.filters[index].value);
 	},
 	get _isRotated() {
 		return this.state.rotationDeg % 360 !== 0;
@@ -104,16 +104,17 @@ const imgStore = {
 	},
 
 	/* Setters */
-	set activeFilterIndex(filterName) {
+	set activeFilterIndex(filterName: string) {
 		this.state.activeFilterIndex = this.state.filters.findIndex(filter => filter.name === filterName);
 	},
-	set updateFilterValue(newValue) {
+	set updateFilterValue(newValue: number) {
+		/* @ts-ignore */
 		return (this.activeFilter.value = newValue);
 	},
 	set newNameAndExtension({ name, extension }) {
 		Object.assign(this.state, { name, extension });
 	},
-	set spin(spinType) {
+	set spin(spinType: string) {
 		switch (spinType) {
 			case 'rotate left':
 			case 'rotate right': {

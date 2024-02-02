@@ -1,0 +1,39 @@
+---
+import TheHead from '@components/TheHead.astro';
+import TheFooter from '@components/TheFooter.astro';
+import TheMainButtons from '@components/TheMainButtons.astro';
+import TheEditControls from '@components/TheEditControls.astro';
+import TheImagePreview from '@components/TheImagePreview.astro';
+---
+
+<html lang="en" dir="ltr">
+	<TheHead />
+
+	<body
+		class="flex min-h-screen flex-col space-y-4 bg-platinum p-4 antialiased selection:bg-warmBlue selection:text-gray-100 supports-[min-height:100svh]:min-h-svh landscape:px-10">
+		<div class="flex grow items-center">
+			<main
+				class="mx-auto max-w-sm space-y-2 overflow-hidden rounded-lg bg-slate-100 p-3 shadow-md sm:max-w-sm sm:p-4 md:max-w-4xl xl:scale-110">
+				<h1 class="mb-6 text-center text-2xl font-semibold tracking-wide text-royalBlue md:text-start md:text-3xl">
+					Online Image Editor
+				</h1>
+
+				<form class="flex select-none flex-col gap-3 md:grid md:grid-cols-12 md:gap-y-5">
+					<TheEditControls />
+
+					<TheImagePreview />
+
+					<TheMainButtons />
+				</form>
+			</main>
+		</div>
+
+		<TheFooter />
+
+		<style is:global>
+			@import '@styles/global.css';
+		</style>
+
+		<script src="@ts/app.ts"></script>
+	</body>
+</html>

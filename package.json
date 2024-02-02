@@ -17,13 +17,18 @@
 		"url": "https://github.com/ShayanTheNerd/image-editor/issues"
 	},
 	"devDependencies": {
-		"prettier": "^2.8.8",
-		"prettier-plugin-tailwindcss": "^0.2.8",
+		"@astrojs/tailwind": "^5.1.0",
+		"astro": "^4.3.0",
+		"postcss-nesting": "^12.0.2",
+		"prettier": "^3.2.4",
+		"prettier-plugin-astro": "^0.13.0",
+		"prettier-plugin-tailwindcss": "^0.5.11",
 		"tailwindcss": "^3.4.1"
 	},
 	"scripts": {
 		"format": "npx prettier --write .",
-		"dev": "npx tailwindcss -i ./assets/css/tw-input.css -o ./assets/css/styles.css --watch",
-		"build": "npx tailwindcss -i ./assets/css/tw-input.css -o ./assets/css/styles.css --minify"
+		"dev": "astro dev --open --port=3000",
+		"build": "astro build",
+		"preview": "astro preview --open --port=8080"
 	}
 }
