@@ -10,6 +10,6 @@ const icon: string = spinType.replace(' ', '_').toLocaleLowerCase();
 	<svg
 		class:list={spinType.startsWith('Rotate') ? 'fill-current stroke-none' : 'fill-none stroke-current'}
 		class="m-auto size-5">
-		<use href={`/icons.svg#${icon}`}></use>
+		<use href={`${import.meta.env.BASE_URL}/icons.svg#${icon}`}></use>
 	</svg>
 </button>
