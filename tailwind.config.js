@@ -22,7 +22,11 @@ export default {
 			ringWidth: {
 				'2.5px': '2.5px',
 			},
+			size: {
+				'19px': '1.188rem',
+			},
 			fontSize: {
+				'19px': '1.188rem',
 				md: '1.063rem' /* 17px */,
 			},
 			boxShadow: {

@@ -1,18 +1,18 @@
+---
+const { DEV, BASE_URL: baseURL } = import.meta.env;
+const imgPlaceholderURL = `url('${DEV ? baseURL.slice(1) : baseURL}/images/img-placeholder.webp')`;
+---
+
 <figure
 	id="img_drop_zone"
 	class="img-placeholder order-1 flex h-52 min-h-full items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 md:order-2 md:col-span-8">
-	<img
-		alt=""
-		title=""
-		height="384"
-		id="selected_img"
-		class="h-full max-h-52 object-contain transition-transform duration-300 md:max-h-96"
-	/>
+	<img alt="" title="" height="384" id="selected_img" class="h-full object-contain transition-transform duration-300" />
 </figure>
 
-<style>
+<style define:vars={{ 'img-placeholder-URL': imgPlaceholderURL }}>
 	.img-placeholder {
-		@apply border-none !bg-[url('/images/img-placeholder.webp')] bg-cover bg-center bg-no-repeat;
+		background-image: var(--img-placeholder-URL);
+		@apply border-none bg-cover bg-center bg-no-repeat;
 	}
 </style>
 

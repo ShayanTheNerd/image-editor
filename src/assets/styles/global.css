@@ -23,7 +23,7 @@
 
 @layer components {
 	.btn {
-		@apply flex h-9 items-center justify-center rounded border border-davyGray tracking-wide text-davyGray enabled:hover:shadow-inset;
+		@apply flex h-9 items-center justify-center rounded border border-davyGray tracking-wide text-davyGray enabled:hover:shadow-inset lg:h-10;
 	}
 	.btn--tab-focus {
 		@apply focus-visible:shadow-inset focus-visible:transition-shadow;

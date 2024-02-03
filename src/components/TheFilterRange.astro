@@ -1,7 +1,7 @@
 <label class="mx-auto block w-full space-y-2">
 	<p class="flex items-baseline justify-between text-gray-800">
-		<span id="filter_name" class="capitalize lg:text-lg">Brightness</span>
-		<span id="filter_value" class="text-sm lg:text-base">100%</span>
+		<span id="filter_name" class="capitalize lg:text-19px">Brightness</span>
+		<span id="filter_value" class="text-sm lg:text-md">100%</span>
 	</p>
 
 	<input
@@ -13,7 +13,7 @@
 		autocomplete="off"
 		id="filter_range_input"
 		style="--value: 50%; transition: background 0s"
-		class="filter-range block h-2.5 w-full appearance-none rounded-full border border-cloud bg-gradient-to-r from-warmBlue to-toryBlue bg-[size:--value] bg-left bg-no-repeat focus-visible:[box-shadow:none]"
+		class="block h-2.5 w-full appearance-none rounded-full border border-cloud bg-gradient-to-r from-warmBlue to-toryBlue bg-[size:--value] bg-left bg-no-repeat focus-visible:[box-shadow:none] lg:h-[11px]"
 	/>
 </label>
 
@@ -21,13 +21,13 @@
 	/* Do not merge selectors as it breakes the consistency between browsers. */
 	input {
 		&::-webkit-slider-runnable-track {
-			@apply size-2 rounded-full transition-all;
+			@apply rounded-full transition-all;
 		}
 		&::-webkit-slider-thumb {
-			@apply size-5 -translate-y-1.5 cursor-ew-resize appearance-none rounded-full bg-royalBlue transition-all hover:bg-toryBlue lg:size-4 lg:-translate-y-1;
+			@apply size-5 cursor-ew-resize appearance-none rounded-full bg-royalBlue transition-all hover:bg-toryBlue lg:size-19px;
 		}
 		&::-moz-range-thumb {
-			@apply size-5 cursor-ew-resize appearance-none rounded-full border-none bg-royalBlue transition-all hover:bg-toryBlue lg:size-4 lg:translate-y-0;
+			@apply size-5 cursor-ew-resize appearance-none rounded-full border-none bg-royalBlue transition-all hover:bg-toryBlue lg:size-19px lg:translate-y-0;
 		}
 		&:focus-visible::-webkit-slider-thumb {
 			@apply ring-2.5px ring-royalBlue ring-offset-2.5px ring-offset-slate-100;

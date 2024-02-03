@@ -12,7 +12,7 @@ export default function applyFilter({ newFilter = false }) {
 	filterRangeInput.max = maxValue;
 	filterRangeInput.value = String(value); // Visual value
 	filterRangeInput.setAttribute('value', String(value)); // Actual value
-	filterRangeInput.style.setProperty('--value', `${(value / maxValue) * 100}%`);
+	filterRangeInput.style.setProperty('--value', `${Math.max((value / maxValue) * 100, 5)}%`);
 
 	imgStore.updateCSSFilters();
 	selectedImg.style.filter = imgStore.state.CSSFilters;
