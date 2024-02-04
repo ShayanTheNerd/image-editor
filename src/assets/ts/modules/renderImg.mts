@@ -1,28 +1,34 @@
 import imgStore from '@ts/imgStore.ts';
 import { DOMElements } from '@ts/app.ts';
 import resetFilters from '@ts/modules/resetFilters.mts';
+import extractImgInfo from '@ts/modules/extractImgInfo.mts';
+import observeImgStyles from '@ts/modules/observeImgStyles.mts';
 
-const { imgDropZone, selectedImg, editOptionsContainer, filtersContainer } = DOMElements;
+/* Note: “selectedImg” musn't be destructured from “DOMElements”. */
+const { editOptionsContainer, filtersContainer } = DOMElements;
 
-export default function renderImg(newImg: File | null) {
-	if (!newImg) return;
+export default function renderImg(imgFile: File) {
+	if (!imgFile) return;
 
-	selectedImg.src = URL.createObjectURL(newImg);
-	URL.revokeObjectURL(String(newImg)); // Performance optimization
-	selectedImg.addEventListener('load', () => updateImgDisplay(newImg), { once: true });
+	imgStore.newNameAndExtension = extractImgInfo(imgFile);
+
+	const img = DOMElements.selectedImg.cloneNode() as HTMLImageElement;
+	img.classList.replace('object-cover', 'object-contain');
+	img.removeAttribute('style'); // Remove old filters
+	img.title = img.alt = imgStore.title;
+	img.src = URL.createObjectURL(imgFile);
+	img.addEventListener('load', () => updateImgDisplay(imgFile, img), { once: true });
 }
 
-function updateImgDisplay(img: File) {
-	selectedImg.title.length ? resetFilters() : imgDropZone.classList.remove('img-placeholder');
-	imgStore.newNameAndExtension = extractImgNameAndExtension(img);
-	selectedImg.title = selectedImg.alt = imgStore.title;
+function updateImgDisplay(imgFile: File, imgElement: HTMLImageElement) {
+	URL.revokeObjectURL(String(imgFile)); // Performance optimization
+
+	DOMElements.selectedImg.replaceWith(imgElement);
+	DOMElements.selectedImg = imgElement;
+	observeImgStyles();
+
+	if (DOMElements.selectedImg.title.length) resetFilters(); // Reset filters if there is already another image
+
 	editOptionsContainer.removeAttribute('disabled');
 	filtersContainer.focus();
-}
-
-const lastDotIndex: Function = (string: string) => string.lastIndexOf('.');
-function extractImgNameAndExtension(imgFile: File) {
-	const newImgName: string = imgFile.name.substring(0, lastDotIndex(imgFile.name));
-	const newImgExtension: string = imgFile.name.substring(lastDotIndex(imgFile.name) + 1).toLowerCase();
-	return { name: newImgName, extension: newImgExtension };
 }

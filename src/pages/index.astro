@@ -1,9 +1,10 @@
 ---
 import TheHead from '@components/TheHead.astro';
 import TheFooter from '@components/TheFooter.astro';
-import TheMainButtons from '@components/TheMainButtons.astro';
 import TheEditControls from '@components/TheEditControls.astro';
 import TheImagePreview from '@components/TheImagePreview.astro';
+import TheImageSelectLabel from '@components/TheImageSelectLabel.astro';
+import TheImageSaveAnchor from '@components/TheImageSaveAnchor.astro';
 ---
 
 <html lang="en" dir="ltr">
@@ -23,7 +24,11 @@ import TheImagePreview from '@components/TheImagePreview.astro';
 
 					<TheImagePreview />
 
-					<TheMainButtons />
+					<fieldset class="flex w-full justify-center gap-x-3 md:order-3 md:col-span-full md:justify-end">
+						<TheImageSelectLabel />
+
+						<TheImageSaveAnchor />
+					</fieldset>
 				</form>
 			</main>
 		</div>
@@ -33,7 +38,5 @@ import TheImagePreview from '@components/TheImagePreview.astro';
 		<style is:global>
 			@import '@styles/global.css';
 		</style>
-
-		<script src="@ts/app.ts"></script>
 	</body>
 </html>

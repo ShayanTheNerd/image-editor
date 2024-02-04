@@ -1,0 +1,13 @@
+<label tabindex="0" class="btn--main relative cursor-pointer overflow-visible bg-davyGray ring-davyGray hover:bg-tuna">
+	Select Image
+	<input hidden type="file" accept="image/*" id="img_select_input" />
+</label>
+
+<script>
+	import { DOMElements } from '@ts/app.ts';
+	import renderImg from '@ts/modules/renderImg.mts';
+
+	DOMElements.imgSelectInput.addEventListener('change', function () {
+		renderImg(this.files[0]);
+	});
+</script>

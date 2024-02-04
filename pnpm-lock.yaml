@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  '@formkit/auto-animate':
+    specifier: ^0.8.1
+    version: 0.8.1
+
 devDependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
@@ -611,6 +616,11 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@formkit/auto-animate@0.8.1:
+    resolution:
+      { integrity: sha512-0/Z2cuNXWVVIG/l0SpcHAWFhGdvLJ8DRvEfRWvmojtmRWfEy+LWNwgDazbZqY0qQYtkHcoEK3jBLkhiZaB/4Ig== }
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution:

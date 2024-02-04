@@ -25,6 +25,9 @@
 	.btn {
 		@apply flex h-9 items-center justify-center rounded border border-davyGray tracking-wide text-davyGray enabled:hover:shadow-inset lg:h-10;
 	}
+	.btn--main {
+		@apply btn h-10 w-full border-none text-gray-100 !shadow-none md:max-w-32 lg:h-11 lg:max-w-36 lg:text-md;
+	}
 	.btn--tab-focus {
 		@apply focus-visible:shadow-inset focus-visible:transition-shadow;
 	}

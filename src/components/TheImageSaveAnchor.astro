@@ -1,0 +1,23 @@
+<a
+	href=""
+	download=""
+	tabindex="-1"
+	aria-disabled="true"
+	id="img_save_anchor"
+	class="btn--main bg-royalBlue ring-royalBlue hover:bg-toryBlue aria-disabled:pointer-events-none aria-disabled:opacity-60">
+	Save Image
+</a>
+
+<script>
+	import imgStore from '@ts/imgStore.ts';
+	import { DOMElements } from '@ts/app.ts';
+	import createImgCanvas from '@ts/modules/createImgCanvas.mts';
+
+	DOMElements.imgSaveAnchor.addEventListener('click', downloadImg);
+
+	function downloadImg() {
+		const { name, extension } = imgStore.state;
+		this.href = createImgCanvas().toDataURL();
+		this.download = `${name} (edited).${extension}`;
+	}
+</script>

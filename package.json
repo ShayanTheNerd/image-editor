@@ -17,6 +17,9 @@
 		"email": "sh.zamani384@gmail.com",
 		"url": "https://github.com/ShayanTheNerd/image-editor/issues"
 	},
+	"dependencies": {
+		"@formkit/auto-animate": "^0.8.1"
+	},
 	"devDependencies": {
 		"@astrojs/tailwind": "^5.1.0",
 		"astro": "^4.3.0",
