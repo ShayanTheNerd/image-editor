@@ -1,5 +1,9 @@
 ---
-const { spinType } = Astro.props;
+interface Props {
+	spinType: string;
+}
+
+const { spinType } = Astro.props as Props;
 const icon: string = spinType.replace(' ', '_').toLocaleLowerCase();
 ---
 

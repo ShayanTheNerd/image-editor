@@ -1,5 +1,10 @@
 ---
-const { name, index } = Astro.props;
+interface Props {
+	name: string;
+	index: number;
+}
+
+const { name, index } = Astro.props as Props;
 ---
 
 <button
