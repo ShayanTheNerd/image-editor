@@ -1,6 +1,39 @@
+interface ImgStore {
+	state: {
+		name: null | string;
+		extension: null | string;
+		activeFilterIndex: number;
+		rotationDeg: number;
+		verticalFlip: number;
+		horizontalFlip: number;
+		CSSFilters: string;
+		filters: Filter[];
+	};
+	_defaultState: null | ImgStore;
+	_cloneState: Function;
+	updateCSSFilters: Function;
+	reset: Function;
+	title: string;
+	activeFilter: Filter;
+	_hasFilter: boolean;
+	_isRotated: boolean;
+	_isFlipped: boolean;
+	isEdited: boolean;
+	activeFilterIndex: string;
+	updateFilterValue: number;
+	newNameAndExtension: { name: string; extension: string };
+	spin: string;
+}
+interface Filter {
+	name: string;
+	max: number;
+	value: number;
+	unit: string;
+}
+
 const deepCopy: Function = (obj: object) => structuredClone(obj) || JSON.parse(JSON.stringify(obj));
 
-const imgStore = {
+const imgStore: ImgStore = {
 	state: {
 		name: null,
 		extension: null,
@@ -89,7 +122,9 @@ const imgStore = {
 		return filters[activeFilterIndex];
 	},
 	get _hasFilter() {
-		return this.state.filters.some((filter, index: number) => filter.value !== this._defaultState.filters[index].value);
+		return this.state.filters.some((filter: Filter, index: number) => {
+			filter.value !== this._defaultState.filters[index].value;
+		});
 	},
 	get _isRotated() {
 		return this.state.rotationDeg % 360 !== 0;
@@ -105,7 +140,7 @@ const imgStore = {
 
 	/* Setters */
 	set activeFilterIndex(filterName: string) {
-		this.state.activeFilterIndex = this.state.filters.findIndex(filter => filter.name === filterName);
+		this.state.activeFilterIndex = this.state.filters.findIndex((filter: Filter) => filter.name === filterName);
 	},
 	set updateFilterValue(newValue: number) {
 		/* @ts-ignore */

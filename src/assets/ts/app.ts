@@ -1,4 +1,4 @@
-export const ACTIVE_FILTER_CLASS = 'btn--filter--active';
+export const ACTIVE_FILTER_CLASS: string = 'btn--filter--active';
 
 export const DOMElements = {
 	editOptionsContainer: document.getElementById('edit_options_container') as HTMLFieldSetElement,
