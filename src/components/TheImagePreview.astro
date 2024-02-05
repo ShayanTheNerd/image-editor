@@ -5,14 +5,14 @@ const placeholderImgURL = `${DEV ? baseURL.slice(1) : baseURL}/img-placeholder.w
 
 <figure
 	id="img_drop_zone"
-	class="order-1 flex h-52 min-h-full items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 transition-all duration-300 md:order-2 md:col-span-8">
+	class="order-1 flex h-52 min-h-full items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 md:order-2 md:col-span-8">
 	<img
 		src={placeholderImgURL}
 		alt="Placeholder"
 		height="408"
 		title=""
 		id="selected_img"
-		class="h-full object-cover transition-all duration-300"
+		class="h-full object-cover transition-transform duration-300"
 	/>
 </figure>
 
