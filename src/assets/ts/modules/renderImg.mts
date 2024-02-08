@@ -13,8 +13,7 @@ export default function renderImg(imgFile: File) {
 	imgStore.newNameAndExtension = extractImgInfo(imgFile);
 
 	const img = DOMElements.selectedImg.cloneNode() as HTMLImageElement;
-	img.classList.remove('object-cover');
-	img.classList.add('object-contain');
+	img.classList.replace('object-cover', 'object-contain');
 	img.removeAttribute('style'); // Remove old filters
 	img.title = img.alt = imgStore.title;
 	img.src = URL.createObjectURL(imgFile);

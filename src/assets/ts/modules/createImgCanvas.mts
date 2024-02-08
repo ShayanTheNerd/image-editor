@@ -4,13 +4,14 @@ import { DOMElements } from '@ts/app.ts';
 export default function createImgCanvas() {
 	const { selectedImg } = DOMElements;
 	const { naturalWidth, naturalHeight } = selectedImg;
+	const imgIsLandscape = imgStore.isLandscape;
 	const { rotationDeg, CSSFilters, verticalFlip, horizontalFlip } = imgStore.state;
 	const rotationRadian: number = (rotationDeg * Math.PI) / 180;
-	const imgIsLandscape: boolean = rotationDeg % 180 !== 0;
 
 	const canvas = document.createElement('canvas') as HTMLCanvasElement;
 	canvas.width = imgIsLandscape ? naturalHeight : naturalWidth;
 	canvas.height = imgIsLandscape ? naturalWidth : naturalHeight;
+
 	const centerX: number = canvas.width / 2;
 	const centerY: number = canvas.height / 2;
 	const destinationX: number = -(naturalWidth / 2);

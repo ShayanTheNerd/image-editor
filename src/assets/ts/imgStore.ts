@@ -17,6 +17,7 @@ interface ImgStore {
 	activeFilter: Filter;
 	_hasFilter: boolean;
 	_isRotated: boolean;
+	isLandscape: boolean;
 	_isFlipped: boolean;
 	isEdited: boolean;
 	activeFilterIndex: string;
@@ -122,12 +123,18 @@ const imgStore: ImgStore = {
 		return filters[activeFilterIndex];
 	},
 	get _hasFilter() {
-		return this.state.filters.some((filter: Filter, index: number) => {
-			filter.value !== this._defaultState.filters[index].value;
-		});
+		const isFilterValueChanged = (filter: Filter, index: number) => {
+			const defaultFilterValue = this._defaultState.filters[index].value;
+			return filter.value !== defaultFilterValue;
+		};
+
+		return this.state.filters.some(isFilterValueChanged);
 	},
 	get _isRotated() {
 		return this.state.rotationDeg % 360 !== 0;
+	},
+	get isLandscape() {
+		return this.state.rotationDeg % 180 !== 0;
 	},
 	get _isFlipped() {
 		const { verticalFlip, horizontalFlip } = this.state;

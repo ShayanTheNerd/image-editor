@@ -1,4 +1,4 @@
-const lastDotIndex: Function = (string: string) => string.lastIndexOf('.');
+const lastDotIndex: Function = (str: string) => str.lastIndexOf('.');
 
 export default function extractImgInfo(imgFile: File) {
 	const fileName: string = imgFile.name;
