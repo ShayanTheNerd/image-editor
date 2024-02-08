@@ -1,7 +1,7 @@
 import imgStore from '@ts/imgStore.ts';
 import { DOMElements } from '@ts/app.ts';
 
-const { offsetWidth, offsetHeight } = DOMElements.selectedImg;
+const { width, height } = DOMElements.selectedImg.parentElement.getBoundingClientRect();
 
 export default function spinImg(event: Event = null) {
 	if (event?.target !== event?.currentTarget) {
@@ -13,7 +13,7 @@ export default function spinImg(event: Event = null) {
 
 	const { selectedImg } = DOMElements;
 	const { verticalFlip, horizontalFlip, rotationDeg } = imgStore.state;
-	selectedImg.style.width = imgStore.isLandscape ? `${offsetHeight}px` : '100%';
-	selectedImg.style.height = imgStore.isLandscape ? `${offsetWidth}px` : '100%';
+	selectedImg.style.width = imgStore.isLandscape ? `${height}px` : '100%';
+	selectedImg.style.height = imgStore.isLandscape ? `${width}px` : '100%';
 	selectedImg.style.transform = `scale(${verticalFlip}, ${horizontalFlip}) rotate(${rotationDeg}deg)`;
 }
