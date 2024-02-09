@@ -102,6 +102,7 @@ const imgStore: ImgStore = {
 	},
 	updateCSSFilters() {
 		this.state.CSSFilters = this.state.filters.reduce((acc: string, { name, value, unit }) => {
+			if (name === 'blur') value /= 2.5;
 			if (name === 'saturation') name = 'saturate';
 			if (name === 'hue-rotation') name = 'hue-rotate';
 			return `${acc}${name}(${value}${unit}) `;
