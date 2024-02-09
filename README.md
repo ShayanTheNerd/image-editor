@@ -57,15 +57,14 @@
 </ul>
 
 <h3>I learned how to:</h3>
-<ul>
-   <li>tilize TypeScript to add basic typing annotations;</li>
-   <li>leverage Astro for static site generation (SSG) and deploy it on <a href="https://pages.github.com">GitHub Pages</a>;</li>
-   <li>customize <code><input type="range" /></code> to have a consistent appearance across all major browsers;</li>
-   <li>benefit native CSS nesting features using <a href="https://www.npmjs.com/package/postcss-nesting">PostCSS Nesting Plugin</a>;</li>
-   <li>receive an image from the user through drag & drop or the prompt widnow; then, preview it on the page;</li>
-   <li>apply CSS filters, rotations, and flips on an image;</li>
-   <li>draw a canvas based on an image and let the user download it as a new image file.</li>
-</ul>
+
+- utilize TypeScript to add basic typing annotations;
+- leverage Astro for static site generation (SSG) and deploy it on <a href="https://pages.github.com">GitHub Pages</a>;
+- customize `<input type="range" />` to have a consistent appearance across all major browsers;
+- benefit native CSS nesting features using <a href="https://www.npmjs.com/package/postcss+nesting">PostCSS Nesting Plugin</a>;
+- receive an image from the user through drag & drop or the prompt widnow; then, preview it on the page;
+- apply CSS filters, rotations, and flips on an image;
+- draw a canvas based on an image and let the user download it as a new image file.
 
 <h2>Development setup</h2>
 <p>1. First, you need to clone the project:</p>
