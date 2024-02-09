@@ -12,14 +12,10 @@
 	import { DOMElements } from '@ts/app.ts';
 	import createImgCanvas from '@ts/modules/createImgCanvas.mts';
 
-	const { imgSaveAnchor, resetFiltersBtn } = DOMElements;
-	imgSaveAnchor.addEventListener('click', downloadImg);
+	DOMElements.imgSaveAnchor.addEventListener('click', downloadImg);
 
 	function downloadImg() {
 		this.textContent = 'Saving...';
-		this.setAttribute('tabindex', '-1');
-		this.setAttribute('aria-disabled', 'true');
-		resetFiltersBtn.disabled = true;
 
 		const { name, extension } = imgStore.state;
 		this.href = createImgCanvas().toDataURL();
