@@ -12,14 +12,25 @@
 		max="200"
 		autocomplete="off"
 		id="filter_range_input"
-		style="--value: 50%; transition: background 0s"
-		class="block h-2.5 w-full appearance-none rounded-full border border-cloud bg-gradient-to-r from-warmBlue to-toryBlue bg-[size:--value] bg-left bg-no-repeat focus-visible:[box-shadow:none] lg:h-[11px]"
+		class="block h-2.5 w-full appearance-none rounded-full border border-cloud bg-gradient-to-r from-warmBlue to-toryBlue bg-no-repeat"
 	/>
 </label>
 
 <style>
-	/* Do not merge selectors as it breakes the consistency between browsers. */
 	input {
+		--value: 50%;
+		transition: background 0s;
+		background-size: var(--value) 100%;
+
+		&:focus-visible {
+			box-shadow: none;
+		}
+
+		@screen lg {
+			height: 11px;
+		}
+
+		/* Do not merge selectors as it breakes the consistency between browsers. */
 		&::-webkit-slider-runnable-track {
 			@apply rounded-full transition-all;
 		}

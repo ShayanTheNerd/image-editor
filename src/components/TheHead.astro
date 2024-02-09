@@ -1,4 +1,6 @@
 ---
+const { DEV, BASE_URL } = import.meta.env;
+const baseURL = DEV ? BASE_URL.slice(1) : '';
 const OGImgURL = 'https://raw.githubusercontent.com/ShayanTheNerd/image-editor/main/og-img.webp';
 ---
 
@@ -30,5 +32,5 @@ const OGImgURL = 'https://raw.githubusercontent.com/ShayanTheNerd/image-editor/m
    <meta name="twitter:image" content={OGImgURL} />
    <meta property="twitter:image:alt" content="Image Editor" />
 
-   <link rel="icon" href="/favicon.ico" />
+   <link rel="icon" href={`${baseURL}/favicon.ico`}>
 </head>

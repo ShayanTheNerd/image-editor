@@ -9,13 +9,17 @@ import FilterButton from '@components/FilterButton.astro';
 	<div
 		tabindex="-1"
 		id="filters_container"
-		style="grid-template-columns: repeat(4, max-content)"
 		class="custom-scrollbar flex w-full gap-2.5 overflow-x-auto scroll-smooth rounded outline-none md:grid lg:pb-2.5">
 		{imgStore.state.filters.map((filter, index: number) => <FilterButton name={filter.name} {index} />)}
 	</div>
 </fieldset>
 
 <style>
+	@screen md {
+		div {
+			grid-template-columns: repeat(4, max-content);
+		}
+	}
 	@screen lg {
 		.custom-scrollbar {
 			&::-webkit-scrollbar {
