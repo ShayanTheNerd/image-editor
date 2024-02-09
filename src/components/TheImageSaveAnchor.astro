@@ -15,6 +15,8 @@
 	DOMElements.imgSaveAnchor.addEventListener('click', downloadImg);
 
 	function downloadImg() {
+		this.setAttribute('aria-disabled', 'true');
+		this.setAttribute('tabindex', '-1');
 		this.textContent = 'Saving...';
 
 		const { name, extension } = imgStore.state;
@@ -22,6 +24,8 @@
 		this.download = `${name} (edited).${extension}`;
 
 		setTimeout(() => {
+			this.setAttribute('aria-disabled', 'false');
+			this.setAttribute('tabindex', '0');
 			this.textContent = 'Save Image';
 			this.removeAttribute('download');
 		}, 1000);
