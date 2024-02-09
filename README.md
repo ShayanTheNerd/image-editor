@@ -2,8 +2,8 @@
 
 <blockquote>
    <p>
-   Easily edit your images in just a few clicks.
-</p>
+      Easily edit your images in just a few clicks.
+   </p>
 </blockquote>
 
 <figure>
@@ -14,12 +14,12 @@
 <h3>The challenge</h3>
 <p>Users should be able to:</p>
 <ul>
-   <li>View the optimal layout for the site depending on their device's screen size.</li>
-   <li>Upload images from their device by drag & drop or using the prompt window.</li>
-   <li>Apply various filters such as brightness, grayscale, blur, hue-rotation, opacity, contrast, saturation, and sepia on the image. Each filter has a specific range and value which can be modified using the range slider.</li>
-   <li>Flip or rotate the image.</li>
-   <li>Reset all filters at once.</li>
-   <li>Download and save the final image on their device.</li>
+   <li>view the optimal layout for the site depending on their device's screen size;</li>
+   <li>upload images from their device by drag & drop or using the prompt window;</li>
+   <li>apply various filters such as brightness, grayscale, blur, hue-rotation, opacity, contrast, saturation, and sepia on the image (each filter has a specific range and value which can be modified using the range slider);</li>
+   <li>flip or rotate the image;</li>
+   <li>reset all filters at once;</li>
+   <li>download and save the final image on their device.</li>
 </ul>
 
 <h3>Links</h3>
@@ -58,13 +58,13 @@
 
 <h3>I learned how to:</h3>
 <ul>
-   <li>utilize TypeScript to add basic typing annotations</li>
-   <li>leverage Astro for static site generation (SSG) and deploy it on <a href="https://pages.github.com">GitHub Pages</a></li>
-   <li>customize `<input type="range" />` to have a consistent appearance across all major browsers</li>
-   <li>benefit native CSS nesting features using <a href="https://www.npmjs.com/package/postcss-nesting">PostCSS Nesting Plugin</a></li>
-   <li>receive an image from the user through drag & drop or the prompt widnow; then, preview it on the page</li>
-   <li>apply CSS filters, rotations, and flips on an image</li>
-   <li>draw a canvas based on an image and let the user download it as a new image file</li>
+   <li>tilize TypeScript to add basic typing annotations;</li>
+   <li>leverage Astro for static site generation (SSG) and deploy it on <a href="https://pages.github.com">GitHub Pages</a>;</li>
+   <li>customize <code><input type="range" /></code> to have a consistent appearance across all major browsers;</li>
+   <li>benefit native CSS nesting features using <a href="https://www.npmjs.com/package/postcss-nesting">PostCSS Nesting Plugin</a>;</li>
+   <li>receive an image from the user through drag & drop or the prompt widnow; then, preview it on the page;</li>
+   <li>apply CSS filters, rotations, and flips on an image;</li>
+   <li>draw a canvas based on an image and let the user download it as a new image file.</li>
 </ul>
 
 <h2>Development setup</h2>
@@ -137,4 +137,4 @@ pnpm run build
 
 <br />
 
-<a href="https://github.com/ShayanTheNerd/image-editor#image-editor">back to top ⬆️</a>
+<a href="https://github.com/ShayanTheNerd/image-editor?tab=readme-ov-file#online-image-editor">Back to top ⬆️</a>
