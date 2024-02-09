@@ -19,12 +19,12 @@ export default function createImgCanvas() {
 	const destinationY: number = -(naturalHeight / 2);
 	const context: CanvasRenderingContext2D = canvas.getContext('2d');
 
-	/* Note: Do not change the order of calling “context” methods. */
+	/* Note: Do not change the order of “context” methods and “filter” property. */
 	context.translate(verticalFlip === -1 ? canvas.width : 0, horizontalFlip === -1 ? canvas.height : 0);
+	context.filter = CSSFilters;
 	context.scale(verticalFlip, horizontalFlip);
 	context.translate(centerX, centerY); // translate canvas from the center
 	context.rotate(rotationRadian);
-	context.filter = CSSFilters;
 	context.drawImage(selectedImg, destinationX, destinationY, naturalWidth, naturalHeight);
 
 	return canvas;
