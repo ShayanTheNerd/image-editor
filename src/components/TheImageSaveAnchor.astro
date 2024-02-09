@@ -1,6 +1,5 @@
 <a
 	href=""
-	download=""
 	tabindex="-1"
 	aria-disabled="true"
 	id="img_save_anchor"
@@ -13,11 +12,22 @@
 	import { DOMElements } from '@ts/app.ts';
 	import createImgCanvas from '@ts/modules/createImgCanvas.mts';
 
-	DOMElements.imgSaveAnchor.addEventListener('click', downloadImg);
+	const { imgSaveAnchor, resetFiltersBtn } = DOMElements;
+	imgSaveAnchor.addEventListener('click', downloadImg);
 
 	function downloadImg() {
+		this.textContent = 'Saving...';
+		this.setAttribute('tabindex', '-1');
+		this.setAttribute('aria-disabled', 'true');
+		resetFiltersBtn.disabled = true;
+
 		const { name, extension } = imgStore.state;
 		this.href = createImgCanvas().toDataURL();
 		this.download = `${name} (edited).${extension}`;
+
+		setTimeout(() => {
+			this.textContent = 'Save Image';
+			this.removeAttribute('download');
+		}, 1000);
 	}
 </script>
