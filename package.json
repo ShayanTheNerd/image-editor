@@ -18,7 +18,8 @@
 		"url": "https://github.com/ShayanTheNerd/image-editor/issues"
 	},
 	"dependencies": {
-		"@formkit/auto-animate": "^0.8.1"
+		"@formkit/auto-animate": "^0.8.1",
+		"context-filter-polyfill": "^0.3.13"
 	},
 	"devDependencies": {
 		"@astrojs/tailwind": "^5.1.0",

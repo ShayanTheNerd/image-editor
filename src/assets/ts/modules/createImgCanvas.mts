@@ -1,3 +1,4 @@
+import 'context-filter-polyfill';
 import imgStore from '@ts/imgStore.ts';
 import { DOMElements } from '@ts/app.ts';
 
@@ -17,13 +18,13 @@ export default function createImgCanvas() {
 	const destinationX: number = -(naturalWidth / 2);
 	const destinationY: number = -(naturalHeight / 2);
 	const context: CanvasRenderingContext2D = canvas.getContext('2d');
-	context.filter = CSSFilters;
 
 	/* Note: Do not change the order of calling “context” methods. */
 	context.translate(verticalFlip === -1 ? canvas.width : 0, horizontalFlip === -1 ? canvas.height : 0);
 	context.scale(verticalFlip, horizontalFlip);
 	context.translate(centerX, centerY); // translate canvas from the center
 	context.rotate(rotationRadian);
+	context.filter = CSSFilters;
 	context.drawImage(selectedImg, destinationX, destinationY, naturalWidth, naturalHeight);
 
 	return canvas;
