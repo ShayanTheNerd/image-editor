@@ -1,6 +1,6 @@
 {
 	"packageManager": "pnpm@8.15.1",
-	"license": "MIT",
+	"license": "BSD 3 Clause License",
 	"homepage": "https://github.com/ShayanTheNerd/image-editor",
 	"readme": "https://github.com/ShayanTheNerd/image-editor#readme",
 	"author": {
