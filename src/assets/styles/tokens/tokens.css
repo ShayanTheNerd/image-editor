@@ -1,0 +1,13 @@
+@import './colors.css';
+@import './spacing.css';
+@import './typography.css';
+
+:root {
+	--rounded-full: 9999px;
+
+	--ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+	--all-smooth: all 150ms var(--ease-smooth);
+
+	--focus-ring-offset: 3px;
+	--focus-ring-style: 3px solid;
+}

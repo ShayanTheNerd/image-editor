@@ -1,0 +1,64 @@
+@import '@styles/tokens/media-queries.css';
+
+@layer base {
+	*,
+	*::before,
+	*::after {
+		padding: 0;
+		margin: 0;
+		font: inherit;
+		border: none;
+		box-sizing: border-box;
+	}
+
+	html {
+		line-height: 1.5;
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	body {
+		font-family: system-ui;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		display: flex;
+		flex-direction: column;
+		gap: var(--4);
+		padding: var(--4);
+		min-height: 100vh;
+		min-height: 100svh;
+		background-color: var(--color-platinum);
+
+		@media (--landscape) {
+			padding-inline: var(--10);
+		}
+	}
+
+	::selection {
+		color: var(--color-gray-100);
+		background-color: var(--color-warmBlue);
+	}
+
+	[hidden] {
+		display: none;
+	}
+
+	/* Tab-navigation ring */
+	:where(a, button, label) {
+		transition: var(--all-smooth);
+
+		&:focus-visible {
+			outline: var(--focus-ring-style);
+			outline-offset: var(--focus-ring-offset);
+			outline-color: var(--_focus-ring-color, var(--color-royalBlue));
+		}
+	}
+
+	/* Thin scrollbar in Firefox */
+	@-moz-document url-prefix() {
+		:where(html, .custom-scrollbar) {
+			scrollbar-width: thin;
+		}
+	}
+}

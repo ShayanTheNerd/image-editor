@@ -5,15 +5,40 @@ interface Props {
 
 const { spinType } = Astro.props as Props;
 const icon: string = spinType.replace(' ', '_').toLocaleLowerCase();
+const isRotationIcon: boolean = spinType.startsWith('Rotate');
+const iconFill: string = isRotationIcon ? 'currentColor' : 'none';
+const iconStroke: string = isRotationIcon ? 'none;' : 'currentColor;';
 ---
 
-<button
-	type="button"
-	title={spinType}
-	class="btn focus-visible:btn--tab-focus flex-auto px-3 ring-0 ring-offset-0 md:px-2.5 lg:px-3">
-	<svg
-		class:list={spinType.startsWith('Rotate') ? 'fill-current stroke-none' : 'fill-none stroke-current'}
-		class="m-auto size-5 lg:size-6">
+<button type="button" title={spinType} class="btn">
+	<svg>
 		<use href={`${import.meta.env.BASE_URL}/icons.svg#${icon}`}></use>
 	</svg>
 </button>
+
+<style define:vars={{ iconFill, iconStroke }}>
+	@import '@styles/tokens/media-queries.css';
+
+	button {
+		flex: 1 1 auto;
+		outline: none;
+		padding-inline: var(--3);
+
+		@media (--from-md-to-lg) {
+			padding-inline: var(--2_5);
+		}
+	}
+
+	svg {
+		margin: auto;
+		width: var(--5);
+		height: var(--5);
+		fill: var(--iconFill);
+		stroke: var(--iconStroke);
+
+		@media (--lg) {
+			width: var(--6);
+			height: var(--6);
+		}
+	}
+</style>

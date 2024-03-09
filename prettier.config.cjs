@@ -12,8 +12,8 @@ module.exports = {
 	bracketSameLine: true,
 	quoteProps: 'as-needed',
 	astroAllowShorthand: true,
+	plugins: ['prettier-plugin-astro'],
 	htmlWhitespaceSensitivity: 'css',
 	embeddedLanguageFormatting: 'auto',
 	overrides: [{ files: '*.astro', options: { parser: 'astro' } }],
-	plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
 };
