@@ -1,0 +1,6 @@
+@custom-media --sm (width >= 640px);
+@custom-media --md (width >= 768px);
+@custom-media --from-md-to-lg (768px <= width <= 1024px);
+@custom-media --lg (width >= 1024px);
+@custom-media --landscape (orientation: landscape);
+@custom-media --hover (hover: hover) and (pointer: fine);

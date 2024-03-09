@@ -1,5 +1,5 @@
 import imgStore from '@ts/imgStore.ts';
-import { DOMElements } from '@ts/app.ts';
+import { DOMElements, FILTER_VALUE_CSS_VARIABLE as filterValueCSSVariable } from '@ts/app.ts';
 
 export default function applyFilter({ newFilter = false }) {
 	const { name, unit, max: maxValue } = imgStore.activeFilter;
@@ -12,7 +12,7 @@ export default function applyFilter({ newFilter = false }) {
 	filterRangeInput.max = String(maxValue);
 	filterRangeInput.value = String(value); // Visual value
 	filterRangeInput.setAttribute('value', String(value)); // Actual value
-	filterRangeInput.style.setProperty('--value', `${Math.max((value / maxValue) * 100, 5)}%`);
+	filterRangeInput.style.setProperty(filterValueCSSVariable, `${Math.max((value / maxValue) * 99, 5)}%`);
 
 	imgStore.updateCSSFilters();
 	selectedImg.style.filter = imgStore.state.CSSFilters;

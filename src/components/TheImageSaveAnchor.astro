@@ -1,11 +1,24 @@
-<a
-	href=""
-	tabindex="-1"
-	aria-disabled="true"
-	id="img_save_anchor"
-	class="btn--main bg-royalBlue ring-royalBlue hover:bg-toryBlue aria-disabled:pointer-events-none aria-disabled:opacity-60">
-	Save Image
-</a>
+<a href="" tabindex="-1" aria-disabled="true" id="img_save_anchor" class="btn btn--main">Save Image</a>
+
+<style>
+	@import '@styles/tokens/media-queries.css';
+
+	a {
+		text-decoration: none;
+		background-color: var(--color-royalBlue);
+
+		&[aria-disabled='true'] {
+			opacity: 0.6;
+			pointer-events: none;
+		}
+
+		@media (--hover) {
+			&:hover {
+				background-color: var(--color-toryBlue);
+			}
+		}
+	}
+</style>
 
 <script>
 	import imgStore from '@ts/imgStore.ts';

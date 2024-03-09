@@ -1,0 +1,101 @@
+---
+import TheEditControls from '@components/TheEditControls.astro';
+import TheImagePreview from '@components/TheImagePreview.astro';
+import TheImageSelectLabel from '@components/TheImageSelectLabel.astro';
+import TheImageSaveAnchor from '@components/TheImageSaveAnchor.astro';
+---
+
+<div>
+	<main>
+		<h1>Online Image Editor</h1>
+
+		<form>
+			<TheEditControls />
+
+			<TheImagePreview />
+
+			<fieldset>
+				<TheImageSelectLabel />
+
+				<TheImageSaveAnchor />
+			</fieldset>
+		</form>
+	</main>
+</div>
+
+<style>
+	@import '@styles/tokens/media-queries.css';
+
+	div {
+		display: flex;
+		flex-grow: 1;
+		align-items: center;
+	}
+
+	main {
+		padding: var(--3);
+		margin-inline: auto;
+		overflow-x: hidden;
+		max-width: var(--sm);
+		border-radius: var(--2);
+		background-color: var(--color-whiteSmoke);
+		box-shadow:
+			0 0 #0000,
+			0 0 #0000,
+			0 4px 6px -1px #0000001a,
+			0 2px 4px -2px #0000001a;
+
+		@media (--sm) {
+			padding: var(--4);
+		}
+		@media (--md) {
+			max-width: var(--4xl);
+		}
+		@media (--lg) {
+			padding: var(--5);
+			max-width: var(--5xl);
+		}
+	}
+
+	h1 {
+		text-align: center;
+		font-weight: 500;
+		font-size: var(--font-2xl);
+		line-height: 2rem;
+		letter-spacing: var(--0_1);
+		margin-bottom: var(--6);
+		color: var(--color-royalBlue);
+
+		@media (--md) {
+			text-align: start;
+			line-height: 2.25rem;
+			font-size: var(--font-3xl);
+		}
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		user-select: none;
+		gap: var(--3);
+
+		@media (--md) {
+			display: grid;
+			grid-template-columns: repeat(12, minmax(0, 1fr));
+			row-gap: var(--5);
+		}
+	}
+
+	fieldset {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		column-gap: var(--3);
+
+		@media (--md) {
+			order: 3;
+			grid-column: 1 / -1;
+			justify-content: flex-end;
+		}
+	}
+</style>

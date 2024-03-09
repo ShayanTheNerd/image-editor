@@ -3,34 +3,45 @@ import imgStore from '@ts/imgStore.ts';
 import FilterButton from '@components/FilterButton.astro';
 ---
 
-<fieldset class="!mt-0 min-w-full space-y-1">
-	<legend class="text-gray-800 lg:text-xl">Filters</legend>
+<fieldset>
+	<legend>Filters</legend>
 
-	<div
-		tabindex="-1"
-		id="filters_container"
-		class="custom-scrollbar flex w-full gap-2.5 overflow-x-auto scroll-smooth rounded outline-none md:grid lg:pb-2.5">
+	<div tabindex="-1" id="filters_container" class="custom-scrollbar">
 		{imgStore.state.filters.map((filter, index: number) => <FilterButton name={filter.name} {index} />)}
 	</div>
 </fieldset>
 
 <style>
-	@screen md {
-		div {
-			grid-template-columns: repeat(4, max-content);
+	@import '@styles/tokens/media-queries.css';
+
+	fieldset {
+		min-width: 100%;
+	}
+
+	legend {
+		margin-bottom: var(--1);
+
+		@media (--lg) {
+			line-height: 1.75rem;
+			font-size: var(--font-xl);
 		}
 	}
-	@screen lg {
-		.custom-scrollbar {
-			&::-webkit-scrollbar {
-				@apply h-3;
-			}
-			&::-webkit-scrollbar-thumb {
-				@apply rounded bg-cloud hover:bg-hitGray active:bg-davyGray;
-			}
-			&::-webkit-scrollbar-track-piece {
-				@apply rounded bg-platinum;
-			}
+
+	div {
+		width: 100%;
+		display: flex;
+		gap: var(--2_5);
+		outline: none;
+		overflow-x: auto;
+		border-radius: var(--1);
+		scroll-behavior: smooth;
+
+		@media (--md) {
+			display: grid;
+			grid-template-columns: repeat(4, max-content);
+		}
+		@media (--lg) {
+			padding-bottom: var(--2_5);
 		}
 	}
 </style>

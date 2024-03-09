@@ -4,13 +4,40 @@ import SpinButton from '@components/SpinButton.astro';
 const spinTypes = ['Rotate right', 'Rotate left', 'Vertical flip', 'Horizontal flip'];
 ---
 
-<fieldset class="mx-auto flex w-full flex-col gap-1.5 space-y-1">
-	<legend class="text-gray-800 lg:text-19px">Rotate & Flip</legend>
+<fieldset>
+	<legend>Rotate & Flip</legend>
 
-	<div id="spins_container" class="flex items-center justify-evenly space-x-2">
+	<div id="spins_container">
 		{spinTypes.map((spinType: string) => <SpinButton {spinType} />)}
 	</div>
 </fieldset>
+
+<style>
+	@import '@styles/tokens/media-queries.css';
+
+	fieldset {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: var(--1_5);
+		margin-inline: auto;
+	}
+
+	legend {
+		margin-bottom: var(--1);
+
+		@media (--lg) {
+			font-size: var(--font-lgx);
+		}
+	}
+
+	div {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		gap: var(--2);
+	}
+</style>
 
 <script>
 	import { DOMElements } from '@ts/app.ts';

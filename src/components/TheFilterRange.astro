@@ -1,50 +1,98 @@
-<label class="mx-auto block w-full space-y-2">
-	<p class="flex items-baseline justify-between text-gray-800">
-		<span id="filter_name" class="capitalize lg:text-19px">Brightness</span>
-		<span id="filter_value" class="text-sm lg:text-md">100%</span>
+<label>
+	<p>
+		<span id="filter_name">Brightness</span>
+		<span id="filter_value">100%</span>
 	</p>
 
-	<input
-		type="range"
-		step="1"
-		min="0"
-		value="100"
-		max="200"
-		autocomplete="off"
-		id="filter_range_input"
-		class="block h-2.5 w-full appearance-none rounded-full border border-cloud bg-gradient-to-r from-warmBlue to-toryBlue bg-no-repeat"
-	/>
+	<input type="range" step="1" min="0" value="100" max="200" autocomplete="off" id="filter_range_input" />
 </label>
 
 <style>
+	@import '@styles/tokens/media-queries.css';
+
+	p {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		text-transform: capitalize;
+		margin-bottom: var(--2_5);
+	}
+
+	#filter_name {
+		@media (--lg) {
+			font-size: var(--font-lgx);
+		}
+	}
+
+	#filter_value {
+		font-size: var(--font-sm);
+
+		@media (--lg) {
+			font-size: var(--font-md);
+		}
+	}
+
 	input {
-		--value: 50%;
-		transition: background 0s;
-		background-size: var(--value) 100%;
+		--_value: 50%;
 
-		&:focus-visible {
-			box-shadow: none;
-		}
-
-		@screen lg {
-			height: 11px;
-		}
+		display: block;
+		width: 100%;
+		height: var(--2_5);
+		appearance: none;
+		outline: none !important;
+		border-radius: var(--rounded-full);
+		border: 1px solid var(--color-cloud);
+		transition: background 0ms;
+		background-repeat: no-repeat;
+		background-size: var(--_value) 100%;
+		background-image: linear-gradient(to right, var(--color-warmBlue), var(--color-toryBlue));
 
 		/* Do not merge selectors as it breakes the consistency between browsers. */
-		&::-webkit-slider-runnable-track {
-			@apply rounded-full transition-all;
-		}
 		&::-webkit-slider-thumb {
-			@apply size-5 cursor-ew-resize appearance-none rounded-full bg-royalBlue transition-all hover:bg-toryBlue lg:size-19px;
+			width: var(--5);
+			height: var(--5);
+			appearance: none;
+			cursor: ew-resize;
+			border: none;
+			transition: var(--all-smooth);
+			border-radius: var(--rounded-full);
+			background-color: var(--color-royalBlue);
+
+			@media (--hover) {
+				&:hover {
+					background-color: var(--color-toryBlue);
+				}
+			}
 		}
 		&::-moz-range-thumb {
-			@apply size-5 cursor-ew-resize appearance-none rounded-full border-none bg-royalBlue transition-all hover:bg-toryBlue lg:size-19px lg:translate-y-0;
-		}
-		&:focus-visible::-webkit-slider-thumb {
-			@apply ring-2.5px ring-royalBlue ring-offset-2.5px ring-offset-slate-100;
+			width: var(--5);
+			height: var(--5);
+			appearance: none;
+			cursor: ew-resize;
+			border: none;
+			transition: var(--all-smooth);
+			border-radius: var(--rounded-full);
+			background-color: var(--color-royalBlue);
+
+			@media (--hover) {
+				&:hover {
+					background-color: var(--color-toryBlue);
+				}
+			}
 		}
 		&:focus-visible::-moz-range-thumb {
-			@apply ring-2.5px ring-royalBlue ring-offset-2.5px ring-offset-slate-100;
+			outline: var(--focus-ring-style);
+			outline-color: var(--color-royalBlue);
+			outline-offset: var(--focus-ring-offset);
+		}
+		&:focus-visible::-webkit-slider-thumb {
+			outline: var(--focus-ring-style);
+			outline-color: var(--color-royalBlue);
+			outline-offset: var(--focus-ring-offset);
+		}
+
+		@media (--lg) {
+			height: 11px;
 		}
 	}
 </style>

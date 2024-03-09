@@ -1,13 +1,50 @@
-<footer class="-space-x-2 text-center">
-	<small class="-translate-y-1 text-gray-900 lg:translate-y-0 lg:pt-0.5 lg:text-base">©</small>
+<footer>
+	<small>©</small>
 
-	<address class="-ml-1.5 inline-block not-italic">
-		<a
-			href="https://shayan-zamani.me"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="ml-2 rounded text-sm font-semibold text-blue-600 underline ring-current ring-offset-platinum hover:text-blue-700 lg:text-base">
-			Shayan Zamani
-		</a>
+	<address>
+		<a href="https://shayan-zamani.me" target="_blank" rel="noopener noreferrer">Shayan Zamani</a>
 	</address>
 </footer>
+
+<style>
+	@import '@styles/tokens/media-queries.css';
+
+	footer {
+		text-align: center;
+	}
+
+	small {
+		font-size: var(--font-sm);
+		color: var(--color-gray-900);
+		margin-right: calc(-1 * var(--2));
+
+		@media (--lg) {
+			padding-top: var(--1_5);
+			font-size: var(--font-base);
+		}
+	}
+
+	address {
+		font-style: normal;
+		display: inline-block;
+	}
+
+	a {
+		--_focus-ring-color: var(--color-warmBlue);
+
+		font-weight: 500;
+		font-size: var(--font-sm);
+		margin-left: var(--2);
+		border-radius: var(--1);
+		color: var(--color-warmBlue);
+
+		@media (--hover) {
+			&:hover {
+				color: var(--color-royalBlue);
+			}
+		}
+		@media (--lg) {
+			font-size: var(--font-base);
+		}
+	}
+</style>

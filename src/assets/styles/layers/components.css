@@ -1,0 +1,97 @@
+@import '@styles/tokens/media-queries.css';
+
+@layer components {
+	.sr-only {
+		padding: 0;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		border-width: 0;
+		overflow: hidden;
+		position: absolute;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+	}
+
+	.custom-scrollbar {
+		@media (--lg) {
+			&::-webkit-scrollbar {
+				width: var(--3);
+				height: var(--3);
+			}
+			&::-webkit-scrollbar-track-piece {
+				border-radius: var(--1);
+				background-color: var(--color-platinum);
+			}
+			&::-webkit-scrollbar-thumb {
+				border-radius: var(--1);
+				background-color: var(--color-cloud);
+
+				@media (--hover) {
+					&:hover {
+						background-color: var(--color-hitGray);
+					}
+				}
+				&:active {
+					background-color: var(--color-davyGray);
+				}
+			}
+		}
+	}
+
+	.btn {
+		height: var(--9);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		letter-spacing: var(--0_1);
+		color: var(--color-davyGray);
+		background-color: transparent;
+		border-radius: var(--1);
+		border: 1px solid var(--color-davyGray);
+
+		&:not(:disabled) {
+			cursor: pointer;
+
+			@media (--hover) {
+				&:where(:hover, :focus-visible) {
+					box-shadow: inset 0 0 0 1.5px var(--color-davyGray);
+				}
+			}
+		}
+
+		@media (--lg) {
+			height: var(--10);
+		}
+	}
+
+	.btn--main {
+		width: 100%;
+		border: none;
+		height: var(--10);
+		color: var(--color-gray-100);
+		box-shadow: none !important;
+
+		@media (--md) {
+			max-width: var(--32);
+		}
+		@media (--lg) {
+			height: var(--11);
+			max-width: var(--36);
+			font-size: var(--font-md);
+		}
+	}
+
+	.btn--filter--active {
+		box-shadow: none !important;
+		color: var(--color-whiteSmoke);
+		border-color: var(--color-royalBlue);
+		background-color: var(--color-royalBlue);
+
+		@media (--hover) {
+			&:where(:hover, :focus-visible) {
+				background-color: var(--color-toryBlue);
+			}
+		}
+	}
+}

@@ -1,7 +1,23 @@
-<label tabindex="0" class="btn--main relative cursor-pointer overflow-visible bg-davyGray ring-davyGray hover:bg-tuna">
+<label tabindex="0" class="btn btn--main">
 	Select Image
 	<input hidden type="file" accept="image/*" id="img_select_input" />
 </label>
+
+<style>
+	@import '@styles/tokens/media-queries.css';
+
+	label {
+		--_focus-ring-color: var(--color-davyGray);
+
+		background-color: var(--color-davyGray);
+
+		@media (--hover) {
+			&:hover {
+				background-color: var(--color-tuna);
+			}
+		}
+	}
+</style>
 
 <script>
 	import { DOMElements } from '@ts/app.ts';

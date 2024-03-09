@@ -1,5 +1,5 @@
+export const FILTER_VALUE_CSS_VARIABLE: string = '--_value';
 export const ACTIVE_FILTER_CLASS: string = 'btn--filter--active';
-
 export const DOMElements = {
 	editOptionsContainer: document.getElementById('edit_options_container') as HTMLFieldSetElement,
 	filtersContainer: document.getElementById('filters_container') as HTMLDivElement,

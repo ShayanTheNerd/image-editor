@@ -5,17 +5,26 @@ interface Props {
 }
 
 const { name, index } = Astro.props as Props;
+const fontSize: string = `var(--font-${name === 'hue-rotation' ? 'base' : 'md'})`;
 ---
 
-<button
-	type="button"
-	class:list={[index === 0 && 'btn--filter--active', name === 'hue-rotation' && 'lg:!text-base']}
-	class="btn focus-visible:btn--tab-focus min-w-28 capitalize ring-0 ring-offset-0 md:col-span-1 lg:text-md">
+<button type="button" class:list={index === 0 && 'btn--filter--active'} class="btn">
 	{name}
 </button>
 
-<style>
-	.btn--filter--active {
-		@apply border-royalBlue bg-royalBlue text-slate-100 !shadow-none hover:bg-toryBlue focus-visible:bg-toryBlue;
+<style define:vars={{ fontSize }}>
+	@import '@styles/tokens/media-queries.css';
+
+	button {
+		outline: none;
+		min-width: var(--28);
+		text-transform: capitalize;
+
+		@media (--md) {
+			grid-column: span 1 / span 1;
+		}
+		@media (--lg) {
+			font-size: var(--fontSize);
+		}
 	}
 </style>

@@ -3,16 +3,40 @@ const { DEV, BASE_URL: baseURL } = import.meta.env;
 const placeholderImgURL = `${DEV ? baseURL.slice(1) : baseURL}/img-placeholder.webp`;
 ---
 
-<figure
-	id="img_drop_zone"
-	class="order-1 flex h-52 min-h-full items-center justify-center overflow-hidden rounded border-2 border-gray-400 bg-none shadow-inner shadow-gray-400 md:order-2 md:col-span-8">
-	<img src={placeholderImgURL} alt="Placeholder" height="408" title="" id="selected_img" class="h-full object-cover" />
+<figure id="img_drop_zone">
+	<img src={placeholderImgURL} alt="Placeholder" height="408" title="" id="selected_img" />
 </figure>
 
 <style>
+	@import '@styles/tokens/media-queries.css';
+
+	figure {
+		order: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: var(--52);
+		min-height: 100%;
+		overflow: hidden;
+		border-radius: var(--1);
+		border: 2px solid var(--color-gray-400);
+		box-shadow:
+			0 0 #0000,
+			0 0 #0000,
+			inset 0 2px 4px 0 #9ca3af;
+
+		@media (--md) {
+			order: 2;
+			grid-column: span 8 / span 8;
+		}
+	}
+
 	img {
 		/* prettier-ignore */
-		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0s;
+		transition: all 300ms var(--ease-smooth), filter 0ms;
+		object-fit: cover;
+		height: 100%;
+		max-width: 100%;
 	}
 </style>
 

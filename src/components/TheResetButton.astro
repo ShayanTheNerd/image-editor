@@ -1,10 +1,23 @@
-<button
-	disabled
-	type="reset"
-	id="reset_filters_btn"
-	class="btn focus-visible:btn--tab-focus mx-auto w-full font-medium ring-0 ring-offset-0 disabled:opacity-60 lg:text-md">
-	Reset Filters
-</button>
+<button disabled type="reset" id="reset_filters_btn" class="btn">Reset Filters</button>
+
+<style>
+	@import '@styles/tokens/media-queries.css';
+
+	button {
+		width: 100%;
+		font-weight: 500;
+		margin-inline: auto;
+		outline: none;
+
+		&:disabled {
+			opacity: 0.6;
+		}
+
+		@media (--lg) {
+			font-size: var(--font-md);
+		}
+	}
+</style>
 
 <script>
 	import { DOMElements } from '@ts/app.ts';
