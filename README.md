@@ -45,14 +45,12 @@
 <h3>Built with:</h3>
 <ul>
    <li>Semantic HTML</li>
+   <li>Modern Vanilla CSS</li>
    <li>
-      <a href="https://tailwindcss.com">Tailwind CSS</a> - Styling
+      <a href="https://www.typescriptlang.org">TypeScript</a>
    </li>
    <li>
       <a href="https://astro.build">Astro</a> - JavaScript Framework
-   </li>
-   <li>
-      <a href="https://www.typescriptlang.org">TypeScript</a>
    </li>
 </ul>
 
@@ -61,7 +59,7 @@
 - utilize TypeScript to add basic typing annotations;
 - leverage Astro for static site generation (SSG) and deploy it on <a href="https://pages.github.com">GitHub Pages</a>;
 - customize `<input type="range" />` to have a consistent appearance across all major browsers;
-- benefit native CSS nesting features using <a href="https://www.npmjs.com/package/postcss+nesting">PostCSS Nesting Plugin</a>;
+- benefit modern Vanilla CSS features such as nesting, custom media queries, media query ranges, and cascade layers using <a href="https://lightningcss.dev">Lightning CSS</a>;
 - receive an image from the user through drag & drop or the prompt widnow; then, preview it on the page;
 - apply CSS filters, rotations, and flips on an image;
 - draw a canvas based on an image and let the user download it as a new image file.
@@ -109,9 +107,7 @@ pnpm run build
 <ul>
    <li>Follow the current architecture, coding paradigm, and project folder structure.</li>
    <li>Follow the current character case principals for ids, classes, variables, file and folder names, etc.</li>
-   <li>Code based on the current libraries, frameworks, and packages included in the project.</li>
-   <li>For styling, utilize Tailwind's features as much as possible, but also make sure to use <a href="https://getbem.com">BEM</a> methodology for naming custom CSS classes.</li>
-   <li>In case you need to access an HTML element in JavaScript by a class name, prefix the class name with <code>js-</code>. For example, <code>js-submit-btn</code>.</li>
+   <li>Code based on the current tools, frameworks, and packages included in the project.</li>
    <li>Add Git commit messages considering <a href="https://conventional-emoji-commits.site/quick-summary/summary">Conventional Commits</a>.</li>
 </ul>
 
@@ -131,7 +127,7 @@ pnpm run build
 
 <h2>License</h2>
 <p>
-   This project is licensed under <a href="https://github.com/ShayanTheNerd/image-editor/blob/main/LICENSE.md">MIT license</a>. You're free to use it, but a link to this page and mentioning the author's name is mandatory. Created by <a href="https://shayan-zamani.me">Shayan Zamani</a>.
+   This project is licensed under <a href="https://github.com/ShayanTheNerd/image-editor/blob/main/LICENSE.md">BSD 3 Clause License</a>. Created by <a href="https://shayan-zamani.me">Shayan Zamani</a>.
 </p>
 
 <br />
