@@ -1,10 +1,10 @@
 <label>
 	<p>
-		<span id="filter_name">Brightness</span>
-		<span id="filter_value">100%</span>
+		<span id="active_filter_name">Brightness</span>
+		<span id="active_filter_value">100%</span>
 	</p>
 
-	<input type="range" step="1" min="0" value="100" max="200" autocomplete="off" id="filter_range_input" />
+	<input type="range" step="1" min="0" value="100" max="200" autocomplete="off" id="active_filter_range_input" />
 </label>
 
 <style>
@@ -18,13 +18,13 @@
 		margin-bottom: var(--2_5);
 	}
 
-	#filter_name {
+	#active_filter_name {
 		@media (--lg) {
 			font-size: var(--font-lgx);
 		}
 	}
 
-	#filter_value {
+	#active_filter_value {
 		font-size: var(--font-sm);
 
 		@media (--lg) {
@@ -98,8 +98,8 @@
 </style>
 
 <script>
-	import { DOMElements } from '@ts/app.ts';
-	import applyFilter from '@ts/modules/applyFilter.mts';
+	import { DOMElements } from '@ts/domElements.ts';
+	import { applyFilter } from '@ts/modules/applyFilter.mts';
 
-	DOMElements.filterRangeInput.addEventListener('input', () => applyFilter({ newFilter: false }));
+	DOMElements.activeFilterRangeInput.addEventListener('input', () => applyFilter({ newFilter: false }));
 </script>

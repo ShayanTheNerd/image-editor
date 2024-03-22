@@ -20,10 +20,11 @@
 </style>
 
 <script>
-	import { DOMElements } from '@ts/app.ts';
-	import renderImg from '@ts/modules/renderImg.mts';
+	import { DOMElements } from '@ts/domElements.ts';
+	import { renderImg } from '@ts/modules/renderImg.mts';
 
 	DOMElements.imgSelectInput.addEventListener('change', function () {
-		renderImg(this.files[0]);
+		const file = this.files?.[0];
+		if (file) renderImg(file);
 	});
 </script>

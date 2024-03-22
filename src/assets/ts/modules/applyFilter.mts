@@ -1,19 +1,23 @@
-import imgStore from '@ts/imgStore.ts';
-import { DOMElements, FILTER_VALUE_CSS_VARIABLE as filterValueCSSVariable } from '@ts/app.ts';
+import { imgStore } from '@ts/imgStore.ts';
+import { activeFilterValueCSSVar } from '@ts/constants.ts';
+import { DOMElements, getImgElement } from '@ts/domElements.ts';
 
-export default function applyFilter({ newFilter = false }) {
-	const { name, unit, max: maxValue } = imgStore.activeFilter;
-	const { filterName, filterValue, filterRangeInput, selectedImg } = DOMElements;
-	const value = newFilter ? imgStore.activeFilter.value : (imgStore.updateFilterValue = Number(filterRangeInput.value));
-	const newValue = name === 'hue-rotation' ? Math.round((value * 360) / 100) : value;
+export function applyFilter({ newFilter = false }) {
+	const imgElement = getImgElement();
+	const { name, unit, maxValue } = imgStore.activeFilter;
+	const { activeFilterName, activeFilterValue, activeFilterRangeInput } = DOMElements;
 
-	filterName.textContent = name;
-	filterValue.textContent = `${newValue}${unit}`;
-	filterRangeInput.max = String(maxValue);
-	filterRangeInput.value = String(value); // Visual value
-	filterRangeInput.setAttribute('value', String(value)); // Actual value
-	filterRangeInput.style.setProperty(filterValueCSSVariable, `${Math.max((value / maxValue) * 99, 5)}%`);
+	if (!newFilter) imgStore.activeFilter.value = Number(activeFilterRangeInput.value);
+	const { value } = imgStore.activeFilter;
+	const newValue = name === 'hue-rotate' ? Math.round((value * 360) / 100) : value;
+
+	activeFilterName.textContent = name;
+	activeFilterValue.textContent = `${newValue}${unit}`;
+	activeFilterRangeInput.max = String(maxValue);
+	activeFilterRangeInput.value = String(value); // Visual value
+	activeFilterRangeInput.setAttribute('value', String(value)); // Actual value
+	activeFilterRangeInput.style.setProperty(activeFilterValueCSSVar, `${Math.max((value / maxValue) * 99, 5)}%`);
 
 	imgStore.updateCSSFilters();
-	selectedImg.style.filter = imgStore.state.CSSFilters;
+	imgElement.style.filter = imgStore.state.CSSFilters;
 }

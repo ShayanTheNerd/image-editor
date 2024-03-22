@@ -20,8 +20,8 @@
 </style>
 
 <script>
-	import { DOMElements } from '@ts/app.ts';
-	import resetFilters from '@ts/modules/resetFilters.mts';
+	import { DOMElements } from '@ts/domElements.ts';
+	import { resetFilters } from '@ts/modules/resetFilters.mts';
 
 	DOMElements.resetFiltersBtn.addEventListener('click', resetFilters);
 </script>

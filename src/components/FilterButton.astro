@@ -1,14 +1,17 @@
 ---
-interface Props {
-	name: string;
-	index: number;
-}
+import type { FilterName } from '@ts/imgStore.ts';
+import { activeFilterClass } from '@ts/constants.ts';
 
-const { name, index } = Astro.props as Props;
-const fontSize: string = `var(--font-${name === 'hue-rotation' ? 'base' : 'md'})`;
+type Props = {
+	index: number;
+	name: FilterName;
+};
+
+const { index, name } = Astro.props as Props;
+const fontSize = `var(--font-${name === 'hue-rotate' ? 'base' : 'md'})`;
 ---
 
-<button type="button" class:list={index === 0 && 'btn--filter--active'} class="btn">
+<button type="button" class:list={index === 0 ? activeFilterClass : ''} class="btn">
 	{name}
 </button>
 

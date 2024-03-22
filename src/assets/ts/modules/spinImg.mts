@@ -1,19 +1,20 @@
-import imgStore from '@ts/imgStore.ts';
-import { DOMElements } from '@ts/app.ts';
+import type { SpinMode } from '@ts/types.d.ts';
+import { imgStore } from '@ts/imgStore.ts';
+import { DOMElements, getImgElement } from '@ts/domElements.ts';
 
-const { width, height } = DOMElements.selectedImg.parentElement.getBoundingClientRect();
+const { width: imgContainerWidth, height: imgContainerHeight } = DOMElements.imgDropZone.getBoundingClientRect();
 
-export default function spinImg(event: Event = null) {
-	if (event?.target !== event?.currentTarget) {
-		const target = event.target as HTMLButtonElement;
+export function spinImg(event?: Event) {
+	if (event && event.target !== event.currentTarget) {
+		const target = event.target as HTMLElement;
 		const spinBtn = target.closest('button') as HTMLButtonElement;
-		const spinType: string = spinBtn.title.toLowerCase().trim();
-		imgStore.spin = spinType;
+		const spinMode = spinBtn.title.trim() as SpinMode;
+		imgStore.spin = spinMode;
 	}
 
-	const { selectedImg } = DOMElements;
+	const imgElement = getImgElement();
 	const { verticalFlip, horizontalFlip, rotationDeg } = imgStore.state;
-	selectedImg.style.width = imgStore.isLandscape ? `${height}px` : '100%';
-	selectedImg.style.height = imgStore.isLandscape ? `${width}px` : '100%';
-	selectedImg.style.transform = `scale(${verticalFlip}, ${horizontalFlip}) rotate(${rotationDeg}deg)`;
+	imgElement.style.width = imgStore.isLandscape ? `${imgContainerHeight}px` : '100%';
+	imgElement.style.height = imgStore.isLandscape ? `${imgContainerWidth}px` : '100%';
+	imgElement.style.transform = `scale(${verticalFlip}, ${horizontalFlip}) rotate(${rotationDeg}deg)`;
 }

@@ -1,14 +1,13 @@
 ---
 import SpinButton from '@components/SpinButton.astro';
-
-const spinTypes = ['Rotate right', 'Rotate left', 'Vertical flip', 'Horizontal flip'];
+import { spinModes } from '@ts/constants.ts';
 ---
 
 <fieldset>
 	<legend>Rotate & Flip</legend>
 
 	<div id="spins_container">
-		{spinTypes.map((spinType: string) => <SpinButton {spinType} />)}
+		{spinModes.map(spinMode => <SpinButton {spinMode} />)}
 	</div>
 </fieldset>
 
@@ -40,8 +39,8 @@ const spinTypes = ['Rotate right', 'Rotate left', 'Vertical flip', 'Horizontal f
 </style>
 
 <script>
-	import { DOMElements } from '@ts/app.ts';
-	import spinImg from '@ts/modules/spinImg.mts';
+	import { spinImg } from '@ts/modules/spinImg.mts';
+	import { DOMElements } from '@ts/domElements.ts';
 
 	DOMElements.spinsContainer.addEventListener('click', spinImg);
 </script>

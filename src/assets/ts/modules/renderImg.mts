@@ -1,34 +1,38 @@
-import imgStore from '@ts/imgStore.ts';
-import { DOMElements } from '@ts/app.ts';
-import resetFilters from '@ts/modules/resetFilters.mts';
-import extractImgInfo from '@ts/modules/extractImgInfo.mts';
-import observeImgStyles from '@ts/modules/observeImgStyles.mts';
+import { imgStore } from '@ts/imgStore.ts';
+import { resetFilters } from '@ts/modules/resetFilters.mts';
+import { DOMElements, getImgElement } from '@ts/domElements.ts';
+import { observeImgStyles } from '@ts/modules/observeImgStyles.mts';
 
-/* Note: “selectedImg” musn't be destructured from “DOMElements”. */
-const { editOptionsContainer, filtersContainer } = DOMElements;
+export function renderImg(imgFile: File) {
+	imgStore.title = imgFile.name;
 
-export default function renderImg(imgFile: File) {
-	if (!imgFile) return;
+	const imgElement = getImgElement();
+	const newImgElement = generateNewImgElement(imgFile, imgElement);
 
-	imgStore.newNameAndExtension = extractImgInfo(imgFile);
-
-	const img = DOMElements.selectedImg.cloneNode() as HTMLImageElement;
-	img.removeAttribute('style'); // Remove old filters
-	img.style.objectFit = 'contain';
-	img.title = img.alt = imgStore.title;
-	img.src = URL.createObjectURL(imgFile);
-	img.addEventListener('load', () => updateImgDisplay(imgFile, img), { once: true });
+	/* prettier-ignore */
+	newImgElement.addEventListener('load', () => {
+      URL.revokeObjectURL(String(imgFile)); // Performance optimization
+		updateImgPreview(imgElement, newImgElement);
+	}, { once: true });
 }
 
-function updateImgDisplay(imgFile: File, imgElement: HTMLImageElement) {
-	URL.revokeObjectURL(String(imgFile)); // Performance optimization
+function generateNewImgElement(imgFile: File, baseImgElement: HTMLImageElement) {
+	const newImgElement = baseImgElement.cloneNode() as HTMLImageElement;
+	newImgElement.removeAttribute('style'); // Remove old filters
+	newImgElement.style.objectFit = 'contain';
+	newImgElement.title = imgStore.title;
+	newImgElement.src = URL.createObjectURL(imgFile);
 
-	DOMElements.selectedImg.replaceWith(imgElement);
-	DOMElements.selectedImg = imgElement;
-	observeImgStyles();
+	return newImgElement;
+}
 
-	if (DOMElements.selectedImg.title.length) resetFilters(); // Reset filters if there is already another image
+function updateImgPreview(oldImgElement: HTMLImageElement, newImgElement: HTMLImageElement) {
+	oldImgElement.replaceWith(newImgElement);
+	observeImgStyles(newImgElement);
 
+	if (newImgElement.title.length) resetFilters(); // Reset filters if there is already another image
+
+	const { editOptionsContainer, filtersContainer } = DOMElements;
 	editOptionsContainer.removeAttribute('disabled');
 	filtersContainer.focus();
 }

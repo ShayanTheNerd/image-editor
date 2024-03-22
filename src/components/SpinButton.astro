@@ -1,28 +1,32 @@
 ---
-interface Props {
-	spinType: string;
-}
+import type { SpinMode } from '@ts/types.d.ts';
 
-const { spinType } = Astro.props as Props;
-const icon: string = spinType.replace(' ', '_').toLocaleLowerCase();
-const isRotationIcon: boolean = spinType.startsWith('Rotate');
-const iconFill: string = isRotationIcon ? 'currentColor' : 'none';
-const iconStroke: string = isRotationIcon ? 'none;' : 'currentColor;';
+type Props = {
+	spinMode: SpinMode;
+};
+
+const { spinMode } = Astro.props as Props;
+const icon = spinMode.replace(' ', '_').toLowerCase();
 ---
 
-<button type="button" title={spinType} class="btn">
+<button type="button" title={spinMode} class="btn">
 	<svg>
 		<use href={`${import.meta.env.BASE_URL}/icons.svg#${icon}`}></use>
 	</svg>
 </button>
 
-<style define:vars={{ iconFill, iconStroke }}>
+<style>
 	@import '@styles/tokens/media-queries.css';
 
 	button {
 		flex: 1 1 auto;
 		outline: none;
 		padding-inline: var(--3);
+
+		&[title^='Rotate'] > svg {
+			scale: 1.2;
+			translate: 0 1px;
+		}
 
 		@media (--from-md-to-lg) {
 			padding-inline: var(--2_5);
@@ -33,8 +37,8 @@ const iconStroke: string = isRotationIcon ? 'none;' : 'currentColor;';
 		margin: auto;
 		width: var(--5);
 		height: var(--5);
-		fill: var(--iconFill);
-		stroke: var(--iconStroke);
+		fill: currentColor;
+		stroke: currentColor;
 
 		@media (--lg) {
 			width: var(--6);

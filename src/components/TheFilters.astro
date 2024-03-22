@@ -1,6 +1,6 @@
 ---
-import imgStore from '@ts/imgStore.ts';
 import FilterButton from '@components/FilterButton.astro';
+import { imgStore } from '@ts/imgStore.ts';
 ---
 
 <fieldset>
@@ -47,21 +47,22 @@ import FilterButton from '@components/FilterButton.astro';
 </style>
 
 <script>
-	import imgStore from '@ts/imgStore.ts';
-	import applyFilter from '@ts/modules/applyFilter.mts';
-	import { DOMElements, ACTIVE_FILTER_CLASS } from '@ts/app.ts';
+	import { imgStore } from '@ts/imgStore.ts';
+	import { activeFilterClass } from '@ts/constants.ts';
+	import { applyFilter } from '@ts/modules/applyFilter.mts';
+	import { DOMElements, getActiveFilterBtn } from '@ts/domElements.ts';
 
-	DOMElements.filtersContainer.addEventListener('click', activateSelectedFilter);
+	DOMElements.filtersContainer.addEventListener('click', activateNewFilter);
 
-	function activateSelectedFilter(event: Event) {
-		if (event.target === event.currentTarget) return;
+	function activateNewFilter({ target, currentTarget }: Event) {
+		if (target === currentTarget) return;
 
-		const target = event.target as HTMLButtonElement;
-		imgStore.activeFilterIndex = target.textContent.toLowerCase().trim();
-		DOMElements.activeFilterBtn.classList.remove(ACTIVE_FILTER_CLASS);
-		DOMElements.activeFilterBtn = target;
-		DOMElements.activeFilterBtn.classList.add(ACTIVE_FILTER_CLASS);
-		DOMElements.activeFilterBtn.scrollIntoView({ inline: 'center', behavior: 'smooth' });
+		const activeFilterBtn = getActiveFilterBtn();
+		const newFilterBtn = target as HTMLButtonElement & { textContent: string };
+		imgStore.activeFilter = newFilterBtn.textContent.toLowerCase().trim();
+		activeFilterBtn.classList.remove(activeFilterClass);
+		newFilterBtn.classList.add(activeFilterClass);
+		newFilterBtn.scrollIntoView({ inline: 'center', behavior: 'smooth' });
 		applyFilter({ newFilter: true });
 	}
 </script>

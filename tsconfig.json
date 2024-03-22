@@ -1,11 +1,25 @@
 {
 	"extends": "astro/tsconfigs/base",
 	"compilerOptions": {
-		"baseUrl": ".",
 		"paths": {
 			"@ts/*": ["src/assets/ts/*"],
 			"@styles/*": ["src/assets/styles/*"],
 			"@components/*": ["src/components/*"]
-		}
+		},
+		"baseUrl": ".",
+		"strict": true,
+		"noEmit": true,
+		"checkJs": true,
+		"target": "ESNext",
+		"noImplicitAny": true,
+		"noEmitOnError": true,
+		"removeComments": true,
+		"noImplicitReturns": true,
+		"verbatimModuleSyntax": true,
+		"allowArbitraryExtensions": true,
+		"allowImportingTsExtensions": true,
+		"noUncheckedIndexedAccess": true,
+		"noFallthroughCasesInSwitch": true,
+		"exactOptionalPropertyTypes": true
 	}
 }

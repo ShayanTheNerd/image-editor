@@ -21,13 +21,14 @@
 </style>
 
 <script>
-	import imgStore from '@ts/imgStore.ts';
-	import { DOMElements } from '@ts/app.ts';
-	import createImgCanvas from '@ts/modules/createImgCanvas.mts';
+	import { imgStore } from '@ts/imgStore.ts';
+	import { DOMElements } from '@ts/domElements.ts';
+	import { imgDownloadTimeoutMS } from '@ts/constants.ts';
+	import { createImgCanvas } from '@ts/modules/createImgCanvas.mts';
 
 	DOMElements.imgSaveAnchor.addEventListener('click', downloadImg);
 
-	function downloadImg() {
+	function downloadImg(this: typeof DOMElements.imgSaveAnchor) {
 		this.setAttribute('aria-disabled', 'true');
 		this.setAttribute('tabindex', '-1');
 		this.textContent = 'Saving...';
@@ -36,11 +37,12 @@
 		this.href = createImgCanvas().toDataURL();
 		this.download = `${name} (edited).${extension}`;
 
-		setTimeout(() => {
+		const downloadTimeout = setTimeout(() => {
 			this.setAttribute('aria-disabled', 'false');
 			this.setAttribute('tabindex', '0');
 			this.textContent = 'Save Image';
 			this.removeAttribute('download');
-		}, 1000);
+			clearTimeout(downloadTimeout);
+		}, imgDownloadTimeoutMS);
 	}
 </script>

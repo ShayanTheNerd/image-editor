@@ -1,17 +1,17 @@
-import imgStore from '@ts/imgStore.ts';
-import { DOMElements } from '@ts/app.ts';
+import { imgStore } from '@ts/imgStore.ts';
+import { DOMElements } from '@ts/domElements.ts';
 
 const mutationObserver = new MutationObserver(toggleImgControls);
 
-export default function observeImgStyles() {
-	mutationObserver.observe(DOMElements.selectedImg, { attributeFilter: ['style'] });
-}
-
 function toggleImgControls() {
-	const imgIsEdited: boolean = imgStore.isEdited;
+	const imgIsEdited = imgStore.isEdited;
 	const { resetFiltersBtn, imgSaveAnchor } = DOMElements;
 
 	resetFiltersBtn.disabled = !imgIsEdited;
-	imgSaveAnchor.setAttribute('aria-disabled', String(!imgIsEdited));
 	imgSaveAnchor.setAttribute('tabindex', imgIsEdited ? '0' : '-1');
+	imgSaveAnchor.setAttribute('aria-disabled', String(!imgIsEdited));
+}
+
+export function observeImgStyles(imgElement: HTMLImageElement) {
+	mutationObserver.observe(imgElement, { attributeFilter: ['style'] });
 }
