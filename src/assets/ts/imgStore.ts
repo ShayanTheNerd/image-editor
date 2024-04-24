@@ -1,6 +1,7 @@
 import type { FilterName, Filter, State, SpinMode } from '@ts/types.d.ts';
-import { deepCopy } from '@ts/utils.ts';
 import { splitFromLastDotRegExp } from '@ts/constants.ts';
+
+const deepCopy = <TObj = object>(obj: TObj): TObj => structuredClone(obj) || JSON.parse(JSON.stringify(obj));
 
 class ImgStore {
 	state: State = {
@@ -141,6 +142,4 @@ class ImgStore {
 	}
 }
 
-const imgStore = new ImgStore();
-
-export { type FilterName, imgStore };
+export const imgStore = new ImgStore();
