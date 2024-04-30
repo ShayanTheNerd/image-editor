@@ -6,7 +6,7 @@
 	"author": {
 		"name": "Shayan Zamani",
 		"url": "https://shayan-zamani.me/",
-		"email": "sh.zamani384@gmail.com"
+		"email": "dev.shayan.zamani@gmail.com"
 	},
 	"repository": {
 		"type": "git",
@@ -14,7 +14,7 @@
 		"url": "https://github.com/ShayanTheNerd/image-editor"
 	},
 	"bugs": {
-		"email": "sh.zamani384@gmail.com",
+		"email": "dev.shayan.zamani@gmail.com",
 		"url": "https://github.com/ShayanTheNerd/image-editor/issues"
 	},
 	"scripts": {
