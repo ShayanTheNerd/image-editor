@@ -17,6 +17,12 @@
 		"email": "sh.zamani384@gmail.com",
 		"url": "https://github.com/ShayanTheNerd/image-editor/issues"
 	},
+	"scripts": {
+		"format": "npx prettier . --config prettier.config.mjs --write --cache",
+		"dev": "astro dev --open --port=3000",
+		"build": "astro build",
+		"preview": "astro preview --open --port=8080"
+	},
 	"dependencies": {
 		"@formkit/auto-animate": "^0.8.1",
 		"context-filter-polyfill": "^0.3.13"
@@ -27,11 +33,5 @@
 		"lightningcss": "^1.24.0",
 		"prettier": "^3.2.5",
 		"prettier-plugin-astro": "^0.13.0"
-	},
-	"scripts": {
-		"format": "npx prettier --write .",
-		"dev": "astro dev --open --port=3000",
-		"build": "astro build",
-		"preview": "astro preview --open --port=8080"
 	}
 }

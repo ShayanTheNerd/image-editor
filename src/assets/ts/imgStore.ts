@@ -118,7 +118,7 @@ class ImgStore {
 		return `${name}.${extension}`;
 	}
 	get activeFilter(): Filter {
-		return this.state.filters.find(filter => filter.isActive) as Filter;
+		return this.state.filters.find((filter) => filter.isActive) as Filter;
 	}
 
 	/*** Setters ***/

@@ -50,7 +50,7 @@ const placeholderImgURL = `${DEV ? baseURL.slice(1) : baseURL}/img-placeholder.w
 
 	autoAnimate(imgDropZone, { disrespectUserMotionPreference: true });
 	imgDropZone.addEventListener('click', () => imgSelectInput.click());
-	dragDropEvents.forEach(event => imgDropZone.addEventListener(event, catchAndRenderImg));
+	dragDropEvents.forEach((event) => imgDropZone.addEventListener(event, catchAndRenderImg));
 
 	function catchAndRenderImg(event: DragEvent) {
 		event.preventDefault();
