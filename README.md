@@ -129,7 +129,3 @@ pnpm run build
 <p>
    This project is licensed under <a href="https://github.com/ShayanTheNerd/image-editor/blob/main/LICENSE.md">BSD 3 Clause License</a>. Created by <a href="https://shayan-zamani.me">Shayan Zamani</a>.
 </p>
-
-<br />
-
-<a href="https://github.com/ShayanTheNerd/image-editor?tab=readme-ov-file#online-image-editor">Back to top ⬆️</a>
