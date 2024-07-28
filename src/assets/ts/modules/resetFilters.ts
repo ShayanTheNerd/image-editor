@@ -1,7 +1,7 @@
 import { imgStore } from '@ts/imgStore.ts';
-import { spinImg } from '@ts/modules/spinImg.mts';
+import { spinImg } from '@ts/modules/spinImg.ts';
 import { activeFilterClass } from '@ts/constants.ts';
-import { applyFilter } from '@ts/modules/applyFilter.mts';
+import { applyFilter } from '@ts/modules/applyFilter.ts';
 import { DOMElements, getActiveFilterBtn } from '@ts/domElements.ts';
 
 export function resetFilters() {

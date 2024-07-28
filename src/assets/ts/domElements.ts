@@ -17,4 +17,8 @@ const DOMElements = Object.freeze({
 const getActiveFilterBtn = () => DOMElements.filtersContainer.querySelector(`.${activeFilterClass}`) as HTMLButtonElement;
 const getImgElement = () => document.getElementById('img') as HTMLImageElement;
 
-export { DOMElements, getActiveFilterBtn, getImgElement };
+export {
+	DOMElements,
+	getImgElement,
+	getActiveFilterBtn,
+};

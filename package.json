@@ -1,13 +1,14 @@
 {
+	"type": "module",
 	"packageManager": "pnpm@8.15.4",
-	"license": "BSD 3 Clause License",
-	"homepage": "https://github.com/ShayanTheNerd/image-editor",
-	"readme": "https://github.com/ShayanTheNerd/image-editor#readme",
 	"author": {
 		"name": "Shayan Zamani",
 		"url": "https://shayan-zamani.me/",
 		"email": "dev.shayan.zamani@gmail.com"
 	},
+	"license": "BSD 3 Clause License",
+	"homepage": "https://github.com/ShayanTheNerd/image-editor",
+	"readme": "https://github.com/ShayanTheNerd/image-editor#readme",
 	"repository": {
 		"type": "git",
 		"directory": "main",
@@ -18,18 +19,26 @@
 		"url": "https://github.com/ShayanTheNerd/image-editor/issues"
 	},
 	"scripts": {
-		"format": "npx prettier . --config prettier.config.mjs --write --cache",
-		"dev": "astro dev --open --port=3000",
+		"format": "npx prettier '**/*.{json,css,astro}' --config prettier.config.js --write --cache",
+		"lint": "eslint --fix --config eslint.config.js --ignore-pattern '.vscode/*.json' --cache-location '/node_modules/.eslintcache/",
+		"dev": "astro dev",
 		"build": "astro build",
-		"preview": "astro preview --open --port=8080"
+		"preview": "astro preview",
+		"all": "pnpm run format && pnpm run lint && pnpm run build"
 	},
 	"dependencies": {
 		"@formkit/auto-animate": "^0.8.1",
 		"context-filter-polyfill": "^0.3.13"
 	},
 	"devDependencies": {
+		"@antfu/eslint-config": "^2.23.2",
+		"@eslint/js": "^9.8.0",
+		"@stylistic/eslint-plugin": "^2.3.0",
+		"@types/eslint__js": "^8.42.3",
 		"astro": "^4.4.15",
 		"browserslist": "^4.23.0",
+		"eslint": "^9.8.0",
+		"eslint-plugin-vitest": "^0.5.4",
 		"lightningcss": "^1.24.0",
 		"prettier": "^3.2.5",
 		"prettier-plugin-astro": "^0.14.0"

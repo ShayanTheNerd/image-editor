@@ -1,5 +1,7 @@
 import 'context-filter-polyfill';
+
 import { imgStore } from '@ts/imgStore.ts';
+import { rotationDegs } from '@ts/constants.ts';
 import { getImgElement } from '@ts/domElements.ts';
 
 export function createImgCanvas() {
@@ -7,7 +9,7 @@ export function createImgCanvas() {
 	const { naturalWidth, naturalHeight } = imgElement;
 	const imgIsLandscape = imgStore.isLandscape;
 	const { rotationDeg, CSSFilters, verticalFlip, horizontalFlip } = imgStore.state;
-	const rotationRadian = (rotationDeg * Math.PI) / 180;
+	const rotationRadian = (rotationDeg * Math.PI) / rotationDegs.half;
 
 	const canvas = document.createElement('canvas');
 	canvas.width = imgIsLandscape ? naturalHeight : naturalWidth;

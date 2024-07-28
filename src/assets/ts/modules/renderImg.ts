@@ -1,7 +1,7 @@
 import { imgStore } from '@ts/imgStore.ts';
-import { resetFilters } from '@ts/modules/resetFilters.mts';
+import { resetFilters } from '@ts/modules/resetFilters.ts';
 import { DOMElements, getImgElement } from '@ts/domElements.ts';
-import { observeImgStyles } from '@ts/modules/observeImgStyles.mts';
+import { observeImgStyles } from '@ts/modules/observeImgStyles.ts';
 
 export function renderImg(imgFile: File) {
 	imgStore.title = imgFile.name;
@@ -11,7 +11,7 @@ export function renderImg(imgFile: File) {
 
 	/* prettier-ignore */
 	newImgElement.addEventListener('load', () => {
-      URL.revokeObjectURL(String(imgFile)); // Performance optimization
+		URL.revokeObjectURL(String(imgFile)); // Performance optimization
 		updateImgPreview(imgElement, newImgElement);
 	}, { once: true });
 }
@@ -30,7 +30,9 @@ function updateImgPreview(oldImgElement: HTMLImageElement, newImgElement: HTMLIm
 	oldImgElement.replaceWith(newImgElement);
 	observeImgStyles(newImgElement);
 
-	if (newImgElement.title.length) resetFilters(); // Reset filters if there is already another image
+	if (newImgElement.title.length) {
+		resetFilters(); // Reset filters if there is already another image.
+	}
 
 	const { editOptionsContainer, filtersContainer } = DOMElements;
 	editOptionsContainer.removeAttribute('disabled');

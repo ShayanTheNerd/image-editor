@@ -1,4 +1,5 @@
 import type { SpinMode } from '@ts/types.d.ts';
+
 import { imgStore } from '@ts/imgStore.ts';
 import { DOMElements, getImgElement } from '@ts/domElements.ts';
 

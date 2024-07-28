@@ -1,4 +1,41 @@
 {
 	"prettier.documentSelectors": ["**/*.astro"],
-	"[astro]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
+	"[astro]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+	"editor.formatOnSave": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "never" // Prevent conflicts with “perfectionist/sort-imports” rule.
+	},
+
+	/* Silent stylistic rules in the editor, but still auto fix them. */
+	"eslint.rules.customizations": [
+		{ "rule": "*sort*", "severity": "off" },
+		{ "rule": "*style*", "severity": "off" },
+		{ "rule": "*indent", "severity": "off" },
+		{ "rule": "*quotes", "severity": "off" },
+		{ "rule": "import-*", "severity": "off" },
+		{ "rule": "*console", "severity": "off" },
+		{ "rule": "*-spaces", "severity": "off" },
+		{ "rule": "*-spacing", "severity": "off" },
+		{ "rule": "*newline*", "severity": "off" },
+		{ "rule": "attribute*", "severity": "off" },
+		{ "rule": "import/first", "severity": "off" },
+		{ "rule": "format/prettier", "severity": "off" }
+	],
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"vue",
+		"html",
+		"markdown",
+		"json",
+		"jsonc",
+		"yaml",
+		"toml",
+		"gql",
+		"graphql"
+	]
 }

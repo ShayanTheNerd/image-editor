@@ -1,9 +1,8 @@
-import { spinModes } from '@ts/constants.ts';
+import type { spinModes } from '@ts/constants.ts';
 
-/* prettier-ignore */
 type SpinMode = typeof spinModes[number];
 
-type FilterName = 'brightness' | 'grayscale' | 'blur' | 'hue-rotate' | 'opacity' | 'contrast' | 'saturate' | 'sepia';
+type FilterName = 'blur' | 'sepia' | 'opacity' | 'contrast' | 'saturate' | 'grayscale' | 'brightness' | 'hue-rotate';
 
 type Filter = {
 	name: FilterName;
@@ -23,4 +22,4 @@ type State = {
 	filters: Filter[];
 };
 
-export type { SpinMode, FilterName, Filter, State };
+export type { State, Filter, SpinMode, FilterName };

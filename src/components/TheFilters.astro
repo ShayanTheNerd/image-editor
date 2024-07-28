@@ -1,5 +1,6 @@
 ---
 import FilterButton from '@components/FilterButton.astro';
+
 import { imgStore } from '@ts/imgStore.ts';
 ---
 
@@ -49,7 +50,7 @@ import { imgStore } from '@ts/imgStore.ts';
 <script>
 	import { imgStore } from '@ts/imgStore.ts';
 	import { activeFilterClass } from '@ts/constants.ts';
-	import { applyFilter } from '@ts/modules/applyFilter.mts';
+	import { applyFilter } from '@ts/modules/applyFilter.ts';
 	import { DOMElements, getActiveFilterBtn } from '@ts/domElements.ts';
 
 	DOMElements.filtersContainer.addEventListener('click', activateNewFilter);

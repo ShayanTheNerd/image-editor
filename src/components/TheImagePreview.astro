@@ -43,7 +43,7 @@ const placeholderImgURL = `${DEV ? baseURL.slice(1) : baseURL}/img-placeholder.w
 <script>
 	import autoAnimate from '@formkit/auto-animate';
 	import { DOMElements } from '@ts/domElements.ts';
-	import { renderImg } from '@ts/modules/renderImg.mts';
+	import { renderImg } from '@ts/modules/renderImg.ts';
 
 	const dragDropEvents = ['dragover', 'drop'] as const;
 	const { imgDropZone, imgSelectInput } = DOMElements;

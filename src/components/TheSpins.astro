@@ -1,5 +1,6 @@
 ---
 import SpinButton from '@components/SpinButton.astro';
+
 import { spinModes } from '@ts/constants.ts';
 ---
 
@@ -39,7 +40,7 @@ import { spinModes } from '@ts/constants.ts';
 </style>
 
 <script>
-	import { spinImg } from '@ts/modules/spinImg.mts';
+	import { spinImg } from '@ts/modules/spinImg.ts';
 	import { DOMElements } from '@ts/domElements.ts';
 
 	DOMElements.spinsContainer.addEventListener('click', spinImg);
