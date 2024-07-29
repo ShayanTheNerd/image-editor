@@ -94,6 +94,7 @@ class ImgStore {
 	reset() {
 		const { name, extension, rotationDeg } = this.state;
 		const normalizedRotationDeg = this.#isRotated ? Math.round(rotationDeg / fullRotationDeg) * fullRotationDeg : rotationDeg;
+
 		this.state = {
 			...deepCopy(this.#defaultState),
 			name,

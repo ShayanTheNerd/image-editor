@@ -13,7 +13,6 @@ const DOMElements = Object.freeze({
 	imgSaveAnchor: document.getElementById('img_save_anchor') as HTMLAnchorElement,
 });
 
-/* prettier-ignore */
 const getActiveFilterBtn = () => DOMElements.filtersContainer.querySelector(`.${activeFilterClass}`) as HTMLButtonElement;
 const getImgElement = () => document.getElementById('img') as HTMLImageElement;
 

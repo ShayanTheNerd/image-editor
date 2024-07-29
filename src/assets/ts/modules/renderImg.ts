@@ -9,7 +9,6 @@ export function renderImg(imgFile: File) {
 	const imgElement = getImgElement();
 	const newImgElement = generateNewImgElement(imgFile, imgElement);
 
-	/* prettier-ignore */
 	newImgElement.addEventListener('load', () => {
 		URL.revokeObjectURL(String(imgFile)); // Performance optimization
 		updateImgPreview(imgElement, newImgElement);
@@ -30,8 +29,9 @@ function updateImgPreview(oldImgElement: HTMLImageElement, newImgElement: HTMLIm
 	oldImgElement.replaceWith(newImgElement);
 	observeImgStyles(newImgElement);
 
+	// Reset filters if there is already another image.
 	if (newImgElement.title.length) {
-		resetFilters(); // Reset filters if there is already another image.
+		resetFilters();
 	}
 
 	const { editOptionsContainer, filtersContainer } = DOMElements;

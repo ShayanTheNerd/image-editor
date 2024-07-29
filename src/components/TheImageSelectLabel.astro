@@ -25,6 +25,9 @@
 
 	DOMElements.imgSelectInput.addEventListener('change', function () {
 		const file = this.files?.[0];
-		if (file) renderImg(file);
+
+		if (file) {
+			renderImg(file);
+		}
 	});
 </script>
