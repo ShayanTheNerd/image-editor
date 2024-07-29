@@ -1,4 +1,4 @@
-import type { State, Filter, SpinMode, FilterName } from '@ts/types.d.ts';
+import type { State, Filter, SpinMode, FilterName } from '@types';
 
 import { rotationDegs, splitFromLastDotRegExp } from '@ts/constants.ts';
 

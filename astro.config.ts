@@ -5,10 +5,19 @@ import { Features, browserslistToTargets } from 'lightningcss';
 export default defineConfig({
 	base: '/image-editor',
 	site: 'https://shayanthenerd.github.io',
-	build: { format: 'file', assets: 'assets' },
-	server: { open: true, host: '127.0.0.1', port: 3000 },
+	build: {
+		format: 'file',
+		assets: 'assets',
+	},
+	server: {
+		open: true,
+		port: 3000,
+		host: '127.0.0.1',
+	},
 	vite: {
-		build: { cssMinify: 'lightningcss' },
+		build: {
+			cssMinify: 'lightningcss',
+		},
 		css: {
 			transformer: 'lightningcss',
 			lightningcss: {

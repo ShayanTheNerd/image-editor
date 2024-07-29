@@ -1,11 +1,13 @@
 {
-	"extends": "astro/tsconfigs/base",
+	"extends": "astro/tsconfigs/strictest",
 	"compilerOptions": {
 		"paths": {
+			"@types": ["src/types.d.ts"],
 			"@ts/*": ["src/assets/ts/*"],
 			"@styles/*": ["src/assets/styles/*"],
 			"@components/*": ["src/components/*"]
 		},
+		"types": ["astro/client"],
 		"baseUrl": ".",
 		"strict": true,
 		"noEmit": true,

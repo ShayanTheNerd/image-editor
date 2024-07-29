@@ -19,12 +19,13 @@
 		"url": "https://github.com/ShayanTheNerd/image-editor/issues"
 	},
 	"scripts": {
+		"dev": "astro dev",
 		"format": "npx prettier '**/*.{json,css,astro}' --config prettier.config.js --write --cache",
 		"lint": "eslint --fix --config eslint.config.js --ignore-pattern '.vscode/*.json' --cache-location '/node_modules/.eslintcache/",
-		"dev": "astro dev",
 		"build": "astro build",
+		"removeEnvTypesFile": "node scripts/removeEnvTypesFile.js",
 		"preview": "astro preview",
-		"all": "pnpm run format && pnpm run lint && pnpm run build"
+		"all": "pnpm format && pnpm lint && pnpm build && pnpm removeEnvTypesFile"
 	},
 	"dependencies": {
 		"@formkit/auto-animate": "^0.8.1",
