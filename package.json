@@ -20,12 +20,13 @@
 	},
 	"scripts": {
 		"dev": "astro dev",
-		"format": "npx prettier '**/*.{json,css,astro}' --config prettier.config.js --write --cache",
-		"lint": "eslint --fix --config eslint.config.js --ignore-pattern '.vscode/*.json' --cache-location '/node_modules/.eslintcache/",
+		"format": "npx prettier --write '**/*.{json,css,astro}' --config=prettier.config.js --cache",
+		"lint": "eslint --fix --ignore-pattern='.vscode/*.json' --config=eslint.config.js --cache-location='/node_modules/.eslintcache/",
+		"test:unit": "vitest --config=vitest.config.ts",
 		"build": "astro build",
 		"removeEnvTypesFile": "node scripts/removeEnvTypesFile.js",
 		"preview": "astro preview",
-		"all": "pnpm format && pnpm lint && pnpm build && pnpm removeEnvTypesFile"
+		"all": "pnpm format && pnpm lint && pnpm test:unit --run && pnpm build && pnpm removeEnvTypesFile"
 	},
 	"dependencies": {
 		"@formkit/auto-animate": "^0.8.1",
@@ -42,6 +43,7 @@
 		"eslint-plugin-vitest": "^0.5.4",
 		"lightningcss": "^1.24.0",
 		"prettier": "^3.2.5",
-		"prettier-plugin-astro": "^0.14.0"
+		"prettier-plugin-astro": "^0.14.0",
+		"vitest": "^2.0.4"
 	}
 }

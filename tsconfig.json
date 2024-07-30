@@ -7,7 +7,7 @@
 			"@styles/*": ["src/assets/styles/*"],
 			"@components/*": ["src/components/*"]
 		},
-		"types": ["astro/client"],
+		"types": ["astro/client", "vitest"],
 		"baseUrl": ".",
 		"strict": true,
 		"noEmit": true,

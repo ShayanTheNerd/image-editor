@@ -1,14 +1,14 @@
 import type { State, Filter, SpinMode, FilterName } from '@types';
 
+import { deepClone } from '@ts/utils/deepClone.ts';
+import { spinIsRotation } from '@ts/utils/spinIsRotation.ts';
+import { resetRotationDeg } from '@ts/utils/resetRotationDeg.ts';
 import { rotationDegs, splitFromLastDotRegExp } from '@ts/constants.ts';
 
 const { left: leftRotationDeg, right: rightRotationDeg, half: halfRotationDeg, full: fullRotationDeg } = rotationDegs;
 
-function deepCopy<TObj = object>(obj: TObj) {
-	return structuredClone(obj) || JSON.parse(JSON.stringify(obj)) as TObj;
-}
-
 class ImgStore {
+	/*** State ***/
 	state: State = {
 		name: null,
 		extension: null,
@@ -74,32 +74,47 @@ class ImgStore {
 				isActive: false,
 			},
 		],
-	};
+	}; /* “satisfies” vs. type annotation: “satisfies” fixes “verticalFlip” and “horizontalFlip” to 1, causing problem in createImgCanvas. */
 
-	#defaultState = deepCopy(this.state);
+	#defaultState = deepClone(this.state);
 
 	/*** Methods ***/
+	updateSpinValue(spinMode: SpinMode) {
+		if (spinIsRotation(spinMode)) {
+			const rotationDeg = spinMode === 'Rotate Right' ? rightRotationDeg : leftRotationDeg;
+			this.state.rotationDeg += rotationDeg;
+		} else {
+			const flipMode = spinMode === 'Vertical Flip' ? 'verticalFlip' : 'horizontalFlip';
+			this.state[flipMode] *= -1;
+		}
+	}
+
 	updateCSSFilters() {
 		const BLUR_REDUCTION_FACTOR = 2.5;
 
-		this.state.CSSFilters = this.state.filters.reduce((acc, { name, value, unit }) => {
+		const filtersString = this.state.filters.reduce((acc, { name, value, unit }) => {
 			if (name === 'blur') {
 				value /= BLUR_REDUCTION_FACTOR; // Visually reduce blur effect
 			}
 
-			return `${acc}${name}(${value}${unit}) `;
+			return `${acc}${name}(${value}${unit})`;
 		}, '');
+
+		this.state.CSSFilters = filtersString;
+
+		return filtersString;
 	}
 
 	reset() {
+		const initialState = deepClone(this.#defaultState);
 		const { name, extension, rotationDeg } = this.state;
-		const normalizedRotationDeg = this.#isRotated ? Math.round(rotationDeg / fullRotationDeg) * fullRotationDeg : rotationDeg;
+		const adjustedRotationDeg = this.#isRotated ? resetRotationDeg(rotationDeg) : rotationDeg;
 
 		this.state = {
-			...deepCopy(this.#defaultState),
+			...initialState,
 			name,
 			extension,
-			rotationDeg: normalizedRotationDeg,
+			rotationDeg: adjustedRotationDeg,
 		};
 	}
 
@@ -144,27 +159,17 @@ class ImgStore {
 	}
 
 	/*** Setters ***/
+	set title(imgFileName: string) {
+		const [imgName, imgExtension] = imgFileName.split(splitFromLastDotRegExp);
+
+		Object.assign(this.state, { name: imgName, extension: imgExtension?.toLowerCase() });
+	}
+
 	/* Type “any” is required when getter and setter don't share the same type. */
 	set activeFilter(newFilterName: any | FilterName) {
 		this.activeFilter.isActive = false;
 		const newFilter = this.state.filters.find((filter: Filter) => filter.name === newFilterName) as Filter;
 		newFilter.isActive = true;
-	}
-
-	set title(imgFileName: string) {
-		const [imgName, imgExtension] = imgFileName.split(splitFromLastDotRegExp);
-		Object.assign(this.state, { name: imgName, extension: imgExtension?.toLowerCase() });
-	}
-
-	// eslint-disable-next-line accessor-pairs -- “rotationDeg” and “verticalFlip”/“horizontalFlip” are accessed separately.
-	set spin(spinMode: SpinMode) {
-		if (spinMode.startsWith('Rotate')) {
-			const rotationDeg = spinMode === 'Rotate Right' ? rightRotationDeg : leftRotationDeg;
-			this.state.rotationDeg += rotationDeg;
-		} else {
-			const flipMode = spinMode === 'Vertical Flip' ? 'verticalFlip' : 'horizontalFlip';
-			this.state[flipMode] *= -1;
-		}
 	}
 }
 

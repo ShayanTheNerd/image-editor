@@ -8,6 +8,7 @@ export function resetFilters() {
 	const { filtersContainer } = DOMElements;
 	const activeFilterBtn = getActiveFilterBtn();
 	const firstFilterBtn = filtersContainer.children[0] as HTMLButtonElement;
+
 	activeFilterBtn.classList.remove(activeFilterClass);
 	firstFilterBtn.classList.add(activeFilterClass);
 	filtersContainer.scrollTo({ left: 0, behavior: 'smooth' });

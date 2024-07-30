@@ -6,12 +6,12 @@ type Props = {
 };
 
 const { spinMode } = Astro.props as Props;
-const icon = spinMode.replace(' ', '_').toLowerCase();
+const spinIcon = spinMode.replaceAll(' ', '_').toLowerCase();
 ---
 
 <button type="button" title={spinMode} class="btn">
 	<svg>
-		<use href={`${import.meta.env.BASE_URL}/icons.svg#${icon}`}></use>
+		<use href={`${import.meta.env.BASE_URL}/icons.svg#${spinIcon}`}></use>
 	</svg>
 </button>
 

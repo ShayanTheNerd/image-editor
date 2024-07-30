@@ -40,8 +40,20 @@ import { spinModes } from '@ts/constants.ts';
 </style>
 
 <script>
+	import type { SpinMode } from '@types';
+
+	import { imgStore } from '@ts/imgStore.ts';
 	import { spinImg } from '@ts/modules/spinImg.ts';
 	import { DOMElements } from '@ts/domElements.ts';
 
-	DOMElements.spinsContainer.addEventListener('click', spinImg);
+	DOMElements.spinsContainer.addEventListener('click', ({ target, currentTarget }) => {
+		if (target === currentTarget) return;
+
+		const targetElement = target as HTMLElement;
+		const spinBtn = targetElement.closest('button') as HTMLButtonElement;
+		const spinMode = spinBtn.title.trim() as SpinMode;
+		imgStore.updateSpinValue(spinMode);
+
+		spinImg();
+	});
 </script>

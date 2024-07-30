@@ -167,7 +167,6 @@ const vitestRules = {
 	'vitest/prefer-to-be-truthy': 'error',
 	'vitest/prefer-to-be-object': 'error',
 	'vitest/no-standalone-expect': 'error',
-	'vitest/no-conditional-expect': 'error',
 	'vitest/no-conditional-in-test': 'error',
 	'vitest/prefer-to-have-length': 'error',
 	'vitest/prefer-hooks-in-order': 'error',
@@ -299,7 +298,7 @@ export default eslintAntfuConfig(
 		rules: { ...jsRules, ...tsRules, ...stylisticRules },
 	},
 	{
-		files: ['src/tests/**'],
+		files: ['tests/unit/**/*.test.ts'],
 		plugins: { eslintPluginVitest },
 		settings: {
 			vitest: {
@@ -311,7 +310,12 @@ export default eslintAntfuConfig(
 				...eslintPluginVitest.environments.env.globals,
 			},
 		},
-		rules: { ...vitestRules },
+		rules: {
+			...vitestRules,
+			'ts/no-unsafe-call': 'off',
+			'no-magic-numbers': 'off',
+			'ts/no-unsafe-member-access': 'off',
+		},
 	},
 	{ rules: generalRules },
 	{ ignores: ['**/*.json', 'src/env.d.ts'] },

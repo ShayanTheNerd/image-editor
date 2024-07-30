@@ -1,9 +1,9 @@
 {
-	/* prettier-ignore */
 	"recommendations": [
-      "csstools.postcss",
-      "esbenp.prettier-vscode",
-      "dbaeumer.vscode-eslint",
-      "astro-build.astro-vscode"
-  ]
+		"vitest.explorer",
+		"csstools.postcss",
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"astro-build.astro-vscode"
+	]
 }
