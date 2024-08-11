@@ -2,6 +2,7 @@ import eslintJS from '@eslint/js';
 import eslintAntfuConfig from '@antfu/eslint-config';
 import eslintPluginVitest from 'eslint-plugin-vitest';
 import eslintPluginStylistic from '@stylistic/eslint-plugin';
+import eslintPluginCypress from 'eslint-plugin-cypress/flat';
 
 /* eslint-disable no-magic-numbers -- Improve SNR */
 const jsRules = {
@@ -183,6 +184,13 @@ const vitestRules = {
 	'vitest/max-nested-describe': ['error', { max: 1 }],
 };
 
+const cypressRules = {
+	'cypress/no-pause': 'error',
+	'cypress/no-force': 'error',
+	'cypress/no-async-tests': 'off',
+	'cypress/assertion-before-screenshot': 'error',
+};
+
 const stylisticRules = {
 	...eslintPluginStylistic.configs['recommended-flat'].rules,
 
@@ -289,12 +297,11 @@ const generalRules = {
 
 export default eslintAntfuConfig(
 	{
-		files: ['**/*.js', '**/*.ts'],
+		files: ['**/*.{js,ts}'],
 		vue: false,
 		typescript: {
 			tsconfigPath: 'tsconfig.json',
 		},
-		// @ts-ignore: TypeScript can't properly infer the types.
 		rules: { ...jsRules, ...tsRules, ...stylisticRules },
 	},
 	{
@@ -316,6 +323,11 @@ export default eslintAntfuConfig(
 			'no-magic-numbers': 'off',
 			'ts/no-unsafe-member-access': 'off',
 		},
+	},
+	{
+		files: ['tests/cypress/**/*.ts'],
+		...eslintPluginCypress.configs.recommended,
+		rules: { ...cypressRules, 'no-magic-numbers': 'off' },
 	},
 	{ rules: generalRules },
 	{ ignores: ['**/*.json', 'src/env.d.ts'] },

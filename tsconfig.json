@@ -1,4 +1,5 @@
 {
+	"exclude": ["eslint.config.js"],
 	"extends": "astro/tsconfigs/strictest",
 	"compilerOptions": {
 		"paths": {

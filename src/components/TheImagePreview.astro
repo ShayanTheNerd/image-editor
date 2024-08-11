@@ -1,10 +1,9 @@
 ---
-const { DEV, BASE_URL: baseURL } = import.meta.env;
-const placeholderImgURL = `${DEV ? baseURL.slice(1) : baseURL}/img-placeholder.webp`;
+const placeholderImgPath = `${import.meta.env.BASE_URL}/img-placeholder.webp`;
 ---
 
 <figure id="img_drop_zone">
-	<img src={placeholderImgURL} alt="Placeholder" height="408" title="" id="img" />
+	<img src={placeholderImgPath} alt="Placeholder" height="408" title="" id="img" />
 </figure>
 
 <style>

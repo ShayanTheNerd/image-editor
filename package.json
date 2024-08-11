@@ -20,13 +20,14 @@
 	},
 	"scripts": {
 		"dev": "astro dev",
-		"format": "npx prettier --write '**/*.{json,css,astro}' --config=prettier.config.js --cache",
+		"build": "astro build",
+		"preview": "astro preview",
+		"format": "prettier --write '**/*.{json,css,astro}' --config=prettier.config.js --cache",
 		"lint": "eslint --fix --ignore-pattern='.vscode/*.json' --config=eslint.config.js --cache-location='/node_modules/.eslintcache/",
 		"test:unit": "vitest --config=vitest.config.ts",
-		"build": "astro build",
-		"removeEnvTypesFile": "node scripts/removeEnvTypesFile.js",
-		"preview": "astro preview",
-		"all": "pnpm format && pnpm lint && pnpm test:unit --run && pnpm build && pnpm removeEnvTypesFile"
+		"test:e2e": "concurrently \"pnpm dev\" \"cypress open\" --kill-others",
+		"test:e2e:ci": "concurrently \"pnpm preview\" \"cypress run --headed\" --kill-others",
+		"all": "pnpm format && pnpm lint && pnpm test:unit --run && pnpm build && pnpm test:e2e:ci"
 	},
 	"dependencies": {
 		"@formkit/auto-animate": "^0.8.1",
@@ -39,7 +40,11 @@
 		"@types/eslint__js": "^8.42.3",
 		"astro": "^4.4.15",
 		"browserslist": "^4.23.0",
+		"concurrently": "^8.2.2",
+		"cypress": "^13.13.2",
+		"cypress-vite": "^1.5.0",
 		"eslint": "^9.8.0",
+		"eslint-plugin-cypress": "^3.4.0",
 		"eslint-plugin-vitest": "^0.5.4",
 		"lightningcss": "^1.24.0",
 		"prettier": "^3.2.5",
