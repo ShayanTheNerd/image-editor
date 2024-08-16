@@ -4,6 +4,7 @@
 		"csstools.postcss",
 		"esbenp.prettier-vscode",
 		"dbaeumer.vscode-eslint",
-		"astro-build.astro-vscode"
+		"astro-build.astro-vscode",
+		"ms-playwright.playwright"
 	]
 }

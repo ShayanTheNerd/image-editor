@@ -19,7 +19,7 @@ function generateNewImgElement(imgFile: File, baseImgElement: HTMLImageElement) 
 	const newImgElement = baseImgElement.cloneNode() as HTMLImageElement;
 	newImgElement.removeAttribute('style'); // Remove old filters
 	newImgElement.style.objectFit = 'contain';
-	newImgElement.title = imgStore.title;
+	newImgElement.title = newImgElement.alt = imgStore.title;
 	newImgElement.src = URL.createObjectURL(imgFile);
 
 	return newImgElement;

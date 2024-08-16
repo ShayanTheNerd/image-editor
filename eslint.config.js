@@ -2,8 +2,8 @@ import eslintJS from '@eslint/js';
 import eslintAntfuConfig from '@antfu/eslint-config';
 import eslintPluginVitest from 'eslint-plugin-vitest';
 import eslintPluginStylistic from '@stylistic/eslint-plugin';
+import eslintPluginPlaywright from 'eslint-plugin-playwright';
 
-/* eslint-disable no-magic-numbers -- Improve SNR */
 const jsRules = {
 	...eslintJS.configs.recommended.rules,
 
@@ -183,6 +183,26 @@ const vitestRules = {
 	'vitest/max-nested-describe': ['error', { max: 1 }],
 };
 
+const playwrightRules = {
+	'playwright/max-expects': 'off',
+	'playwright/prefer-to-be': 'error',
+	'playwright/no-get-by-title': 'error',
+	'playwright/prefer-to-contain': 'error',
+	'playwright/no-wait-for-timeout': 'off',
+	'playwright/no-duplicate-hooks': 'error',
+	'playwright/prefer-strict-equal': 'error',
+	'playwright/prefer-hooks-on-top': 'error',
+	'playwright/prefer-to-have-count': 'error',
+	'playwright/prefer-to-have-length': 'error',
+	'playwright/prefer-hooks-in-order': 'error',
+	'playwright/prefer-equality-matcher': 'error',
+	'playwright/no-commented-out-tests': 'error',
+	'playwright/require-to-throw-message': 'error',
+	'playwright/prefer-comparison-matcher': 'error',
+	'playwright/max-nested-describe': ['error', { max: 1 }],
+	'playwright/prefer-lowercase-title': ['error', { ignoreTopLevelDescribe: true }],
+};
+
 const stylisticRules = {
 	...eslintPluginStylistic.configs['recommended-flat'].rules,
 
@@ -289,13 +309,16 @@ const generalRules = {
 
 export default eslintAntfuConfig(
 	{
-		files: ['**/*.js', '**/*.ts'],
+		files: ['**/*.{js,ts}'],
 		vue: false,
 		typescript: {
 			tsconfigPath: 'tsconfig.json',
 		},
-		// @ts-ignore: TypeScript can't properly infer the types.
 		rules: { ...jsRules, ...tsRules, ...stylisticRules },
+	},
+	{
+		files: ['eslint.config.js', 'playwright.config.ts'],
+		rules: { 'no-magic-numbers': 'off' },
 	},
 	{
 		files: ['tests/unit/**/*.test.ts'],
@@ -315,6 +338,15 @@ export default eslintAntfuConfig(
 			'ts/no-unsafe-call': 'off',
 			'no-magic-numbers': 'off',
 			'ts/no-unsafe-member-access': 'off',
+		},
+	},
+	{
+		files: ['tests/e2e/**/*.test.ts'],
+		...eslintPluginPlaywright.configs['flat/recommended'],
+		rules: {
+			...playwrightRules,
+			'dot-notation': 'off',
+			'no-magic-numbers': 'off',
 		},
 	},
 	{ rules: generalRules },
