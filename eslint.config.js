@@ -159,7 +159,6 @@ const vitestRules = {
 	'vitest/no-focused-tests': 'error',
 	'vitest/no-disabled-tests': 'error',
 	'vitest/prefer-to-contain': 'error',
-	'vitest/consistent-test-it': 'error',
 	'vitest/prefer-called-with': 'error',
 	'vitest/prefer-to-be-falsy': 'error',
 	'vitest/no-duplicate-hooks': 'error',
@@ -176,12 +175,12 @@ const vitestRules = {
 	'vitest/consistent-test-filename': 'error',
 	'vitest/no-test-return-statement': 'error',
 	'vitest/require-to-throw-message': 'error',
-	'vitest/require-top-level-describe': 'error',
 	'vitest/prefer-comparison-matcher': 'error',
 	'vitest/no-interpolation-in-snapshots': 'error',
 	'vitest/prefer-mock-promise-shorthand': 'error',
 	'vitest/prefer-snapshot-hint': ['error', 'always'],
 	'vitest/max-nested-describe': ['error', { max: 1 }],
+	'vitest/consistent-test-it': ['error', { fn: 'test', withinDescribe: 'test' }],
 };
 
 const cypressRules = {
@@ -307,25 +306,10 @@ export default eslintAntfuConfig(
 	{
 		files: ['tests/unit/**/*.test.ts'],
 		plugins: { eslintPluginVitest },
-		settings: {
-			vitest: {
-				typecheck: true,
-			},
-		},
-		languageOptions: {
-			globals: {
-				...eslintPluginVitest.environments.env.globals,
-			},
-		},
-		rules: {
-			...vitestRules,
-			'ts/no-unsafe-call': 'off',
-			'no-magic-numbers': 'off',
-			'ts/no-unsafe-member-access': 'off',
-		},
+		rules: { ...vitestRules, 'no-magic-numbers': 'off' },
 	},
 	{
-		files: ['tests/cypress/**/*.ts'],
+		files: ['tests/cypress/e2e/**/*.cy.ts'],
 		...eslintPluginCypress.configs.recommended,
 		rules: { ...cypressRules, 'no-magic-numbers': 'off' },
 	},

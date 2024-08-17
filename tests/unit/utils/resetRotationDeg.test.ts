@@ -1,15 +1,11 @@
-import { it, expect, describe } from 'vitest';
+import { test, expect } from 'vitest';
 import { resetRotationDeg } from '@ts/utils/resetRotationDeg.ts';
+import { rotationDegs as baseRotationDegs } from '@ts/constants.ts';
 
-describe('resetRotationDeg', () => {
-	it('should reset the rotation degree to a multiple of 360 degrees', () => {
-		const fullRotationDeg = 360;
-		const rotationDegs = [-450, -360, -270, -180, -90, 0, 90, 180, 270, 360, 450];
+const rotationDegs = [-450, -360, -270, -180, -90, 0, 90, 180, 270, 360, 450];
 
-		rotationDegs.forEach((rotationDeg) => {
-			const adjustedRotationDeg = resetRotationDeg(rotationDeg);
+test.each(rotationDegs)('%i° is reset to a multiple of 360°', (rotationDeg) => {
+	const adjustedRotationDeg = resetRotationDeg(rotationDeg);
 
-			expect(adjustedRotationDeg % fullRotationDeg).toBe(0);
-		});
-	});
+	expect(adjustedRotationDeg % baseRotationDegs.full).toBe(0);
 });

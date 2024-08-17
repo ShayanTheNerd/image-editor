@@ -1,6 +1,6 @@
 {
 	"type": "module",
-	"packageManager": "pnpm@8.15.4",
+	"packageManager": "pnpm@9.7.1",
 	"author": {
 		"name": "Shayan Zamani",
 		"url": "https://shayan-zamani.me/",
@@ -41,7 +41,7 @@
 		"astro": "^4.4.15",
 		"browserslist": "^4.23.0",
 		"concurrently": "^8.2.2",
-		"cypress": "^13.13.2",
+		"cypress": "^13.13.3",
 		"cypress-vite": "^1.5.0",
 		"eslint": "^9.8.0",
 		"eslint-plugin-cypress": "^3.4.0",
