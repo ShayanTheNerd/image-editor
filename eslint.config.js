@@ -314,5 +314,5 @@ export default eslintAntfuConfig(
 		rules: { ...cypressRules, 'no-magic-numbers': 'off' },
 	},
 	{ rules: generalRules },
-	{ ignores: ['**/*.json', 'src/env.d.ts'] },
+	{ ignores: ['**/*.json'] },
 );

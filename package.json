@@ -22,7 +22,7 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"format": "prettier --write '**/*.{json,css,astro}' --config=prettier.config.js --cache",
+		"format": "prettier --write '**/*.{json,md,css,astro}' --config=prettier.config.js --cache",
 		"lint": "eslint --fix --ignore-pattern='.vscode/*.json' --config=eslint.config.js --cache-location='/node_modules/.eslintcache/",
 		"test:unit": "vitest --config=vitest.config.ts",
 		"test:e2e": "concurrently \"pnpm dev\" \"cypress open\" --kill-others",

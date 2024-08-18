@@ -23,19 +23,5 @@
 		{ "rule": "import/first", "severity": "off" },
 		{ "rule": "format/prettier", "severity": "off" }
 	],
-	"eslint.validate": [
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact",
-		"vue",
-		"html",
-		"markdown",
-		"json",
-		"jsonc",
-		"yaml",
-		"toml",
-		"gql",
-		"graphql"
-	]
+	"eslint.validate": ["html", "javascript", "typescript"]
 }
