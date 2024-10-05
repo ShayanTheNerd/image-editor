@@ -11,9 +11,18 @@ importers:
       '@formkit/auto-animate':
         specifier: ^0.8.1
         version: 0.8.2
+      astro:
+        specifier: ^4.4.15
+        version: 4.12.2(@types/node@22.1.0)(lightningcss@1.25.1)(terser@5.31.3)(typescript@5.5.4)
+      browserslist:
+        specifier: ^4.23.0
+        version: 4.23.2
       context-filter-polyfill:
         specifier: ^0.3.13
         version: 0.3.13
+      lightningcss:
+        specifier: ^1.24.0
+        version: 1.25.1
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.23.2
@@ -27,12 +36,6 @@ importers:
       '@types/eslint__js':
         specifier: ^8.42.3
         version: 8.42.3
-      astro:
-        specifier: ^4.4.15
-        version: 4.12.2(@types/node@22.1.0)(lightningcss@1.25.1)(terser@5.31.3)(typescript@5.5.4)
-      browserslist:
-        specifier: ^4.23.0
-        version: 4.23.2
       cypress:
         specifier: ^13.13.3
         version: 13.13.3
@@ -48,9 +51,6 @@ importers:
       eslint-plugin-vitest:
         specifier: ^0.5.4
         version: 0.5.4(@typescript-eslint/eslint-plugin@8.0.0-alpha.40(@typescript-eslint/parser@8.0.0-alpha.40(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4))(eslint@9.8.0)(typescript@5.5.4)(vitest@2.0.4(@types/node@22.1.0)(jsdom@24.1.1)(lightningcss@1.25.1)(terser@5.31.3))
-      lightningcss:
-        specifier: ^1.24.0
-        version: 1.25.1
       prettier:
         specifier: ^3.2.5
         version: 3.3.3
