@@ -1,5 +1,5 @@
 import type { SpinMode } from '@types';
 
 export function spinIsRotation(spinMode: SpinMode) {
-	return spinMode.toLowerCase().includes('rotate');
+	return spinMode === 'Rotate Right' || spinMode === 'Rotate Left';
 }

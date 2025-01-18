@@ -22,7 +22,8 @@ it('initial UI state', () => {
 
 it('upload, edit, and download multiple images', () => {
 	/* Upload an image. */
-	cy.get('@imgSelectLabel').selectFile(`${FIXTURES_PATH}/pickle-rick.webp`).trigger('cancel');
+	cy.get('@imgSelectLabel').selectFile(`${FIXTURES_PATH}/pickle-rick.webp`);
+	cy.get('@imgSelectLabel').trigger('cancel');
 	cy.get('@imgSelectLabel').selectFile(`${FIXTURES_PATH}/pickle-rick.webp`);
 	cy.get('#edit_options_container').should('be.enabled');
 	cy.get('#reset_filters_btn').should('be.disabled');

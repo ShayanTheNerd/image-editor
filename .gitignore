@@ -17,9 +17,6 @@ src/env.d.ts
 # macOS-specific files
 .DS_Store
 
-# localhost mobile preview
-ngrok.exe
-
 # Cypress files
 tests/cypress/videos
 tests/cypress/downloads

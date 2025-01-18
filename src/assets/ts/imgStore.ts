@@ -5,7 +5,7 @@ import { spinIsRotation } from '@ts/utils/spinIsRotation.ts';
 import { resetRotationDeg } from '@ts/utils/resetRotationDeg.ts';
 import { rotationDegs, splitFromLastDotRegExp } from '@ts/constants.ts';
 
-const { left: leftRotationDeg, right: rightRotationDeg, half: halfRotationDeg, full: fullRotationDeg } = rotationDegs;
+const { full: fullRotationDeg, half: halfRotationDeg, right: rightRotationDeg, left: leftRotationDeg } = rotationDegs;
 
 class ImgStore {
 	/*** State ***/
@@ -74,7 +74,7 @@ class ImgStore {
 				isActive: false,
 			},
 		],
-	}; /* “satisfies” vs. type annotation: “satisfies” fixes “verticalFlip” and “horizontalFlip” to 1, causing problem in createImgCanvas. */
+	};
 
 	#defaultState = deepClone(this.state);
 
@@ -132,9 +132,9 @@ class ImgStore {
 
 	get #hasFilter() {
 		const filterValueIsChanged = (filter: Filter, index: number) => {
-			const defaultFilterValue = this.#defaultState.filters[index]!.value;
+			const defaultFilter = this.#defaultState.filters[index];
 
-			return filter.value !== defaultFilterValue;
+			return defaultFilter ? filter.value !== defaultFilter.value : false;
 		};
 
 		return this.state.filters.some(filterValueIsChanged);
@@ -165,8 +165,8 @@ class ImgStore {
 		Object.assign(this.state, { name: imgName, extension: imgExtension?.toLowerCase() });
 	}
 
-	/* Type “any” is required when getter and setter don't share the same type. */
-	set activeFilter(newFilterName: any | FilterName) {
+	/* Type `unknown` is required since getter and setter don't share the same type. */
+	set activeFilter(newFilterName: unknown | FilterName) {
 		this.activeFilter.isActive = false;
 		const newFilter = this.state.filters.find((filter: Filter) => filter.name === newFilterName) as Filter;
 		newFilter.isActive = true;

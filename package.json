@@ -1,7 +1,7 @@
 {
 	"name": "image-editor",
 	"type": "module",
-	"packageManager": "pnpm@9.12.0",
+	"packageManager": "bun@1.1.4",
 	"author": {
 		"name": "Shayan Zamani",
 		"url": "https://shayan-zamani.me/",
@@ -23,36 +23,38 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"format": "prettier --write '**/*.{json,md,css,astro}' --cache",
-		"lint": "eslint --fix --ignore-pattern='.vscode/*.json' --cache-location='/node_modules/.eslintcache/",
+		"format": "prettier --write . '!**/*.{js,ts}' --cache",
+		"lint": "eslint --fix --cache --cache-location='/node_modules/.eslintcache/",
 		"test:unit": "vitest",
 		"test:e2e": "start-server-and-test dev http://127.0.0.1:3000/image-editor 'cypress open'",
 		"test:e2e:ci": "start-server-and-test preview http://127.0.0.1:3000/image-editor 'cypress run'"
 	},
 	"simple-git-hooks": {
-		"pre-commit": "pnpm format && pnpm lint && pnpm test:unit --run && pnpm build && pnpm test:e2e:ci"
+		"pre-commit": "bun format && bun lint && bun test:unit --run && bun run build && bun test:e2e:ci"
 	},
 	"dependencies": {
-		"@formkit/auto-animate": "^0.8.1",
-		"astro": "^4.4.15",
-		"browserslist": "^4.23.0",
-		"context-filter-polyfill": "^0.3.13",
-		"lightningcss": "^1.24.0"
+		"@formkit/auto-animate": "0.8.2",
+		"astro": "5.1.7",
+		"browserslist": "4.24.4",
+		"context-filter-polyfill": "0.3.22",
+		"lightningcss": "1.29.1"
 	},
 	"devDependencies": {
-		"@antfu/eslint-config": "^2.23.2",
-		"@eslint/js": "^9.8.0",
-		"@stylistic/eslint-plugin": "^2.3.0",
-		"@types/eslint__js": "^8.42.3",
-		"cypress": "^13.13.3",
-		"cypress-vite": "^1.5.0",
-		"eslint": "^9.8.0",
-		"eslint-plugin-cypress": "^3.4.0",
-		"eslint-plugin-vitest": "^0.5.4",
-		"prettier": "^3.2.5",
-		"prettier-plugin-astro": "^0.14.0",
-		"simple-git-hooks": "^2.11.1",
-		"start-server-and-test": "^2.0.5",
-		"vitest": "^2.0.4"
+		"@eslint/js": "9.18.0",
+		"@stylistic/eslint-plugin": "2.13.0",
+		"eslint-plugin-import-x": "4.6.1",
+		"eslint-plugin-perfectionist": "4.6.0",
+		"cypress": "14.0.0",
+		"cypress-vite": "1.6.0",
+		"eslint": "9.18.0",
+		"eslint-plugin-cypress": "4.1.0",
+		"eslint-plugin-vitest": "0.5.4",
+		"globals": "15.14.0",
+		"prettier": "3.4.2",
+		"prettier-plugin-astro": "0.14.1",
+		"simple-git-hooks": "2.11.1",
+		"start-server-and-test": "2.0.10",
+		"typescript-eslint": "8.20.0",
+		"vitest": "3.0.2"
 	}
 }

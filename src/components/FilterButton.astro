@@ -12,12 +12,7 @@ const { index, name } = Astro.props as Props;
 const fontSize = `var(--font-${name === 'hue-rotate' ? 'base' : 'md'})`;
 ---
 
-<button
-	type="button"
-	data-test={name.replaceAll('-', '_')}
-	class:list={index === 0 ? activeFilterClass : ''}
-	class="btn"
->
+<button type="button" data-test={name.replaceAll('-', '_')} class:list={index === 0 ? activeFilterClass : ''} class="btn">
 	{name}
 </button>
 

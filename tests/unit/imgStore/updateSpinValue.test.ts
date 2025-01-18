@@ -3,16 +3,22 @@ import { imgStore } from '@ts/imgStore.ts';
 import { spinModes } from '@ts/constants.ts';
 import { spinIsRotation } from '@ts/utils/spinIsRotation.ts';
 
-test.each(spinModes)('“%s” updates the rotation degree or vertical/horizontal flip', (spinMode) => {
+const rotationModes = spinModes.filter(spinIsRotation);
+const flipModes = spinModes.filter((mode) => !spinIsRotation(mode));
+
+test.each(rotationModes)('“%s” updates the rotation degree', (spinMode) => {
 	imgStore.updateSpinValue(spinMode);
 
-	const { rotationDeg, verticalFlip, horizontalFlip } = imgStore.state;
+	const { rotationDeg } = imgStore.state;
 
-	// eslint-disable-next-line test/no-conditional-in-test
-	if (spinIsRotation(spinMode)) {
-		expect(rotationDeg === 0 || rotationDeg % 90 === 0).toBeTruthy();
-	} else {
-		expect([1, -1]).toContain(verticalFlip);
-		expect([1, -1]).toContain(horizontalFlip);
-	}
+	expect(rotationDeg === 0 || rotationDeg % 90 === 0).toBeTruthy();
+});
+
+test.each(flipModes)('“%s” updates the flip mode', (spinMode) => {
+	imgStore.updateSpinValue(spinMode);
+
+	const { verticalFlip, horizontalFlip } = imgStore.state;
+
+	expect([1, -1]).toContain(verticalFlip);
+	expect([1, -1]).toContain(horizontalFlip);
 });
